@@ -17,6 +17,14 @@
     align-items: center;
 }
 
+.navbar-link a:hover{
+    text-decoration: underline;
+}
+
+.navbar-link a{
+    color: #141413;
+}
+
 .navbar-link {
     padding: 20px 15px;
     font-size: 16px;
