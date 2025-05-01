@@ -18,6 +18,11 @@
 }
 
 @font-face {
+  font-family: 'StyA-Light';
+  src: url(../src/assets/styrene/StyreneA-Light.otf);
+}
+
+@font-face {
   font-family: 'StyB-Bold';
   src: url(../src/assets/styrene/StyreneB-Bold.otf);
 }
@@ -30,6 +35,11 @@
 @font-face {
   font-family: 'StyB-Regular';
   src: url(../src/assets/styrene/StyreneB-Regular.otf);
+}
+
+@font-face {
+  font-family: 'StyB-Light';
+  src: url(../src/assets/styrene/StyreneB-Light.otf);
 }
 
 /* ************************* */
@@ -57,7 +67,11 @@
 }
 
 /* ************* */
-
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 img{max-width:100%;}
 input.text,
 input[type="text"],
@@ -91,7 +105,8 @@ html {
   scroll-behavior: smooth;
 }
 body{
-  font-family: 'Poppins-Regular';
+  font-family: var(--stea-Regular);
+  background: #F0EEE6;
 }
 .p_0{
   padding: 0px;
@@ -109,6 +124,11 @@ li{
 .main{
   width: 100%;
 }
+.container{
+  width: 100%;
+  max-width: 95%;
+  margin: 0px auto;
+}
 
 :root {
   
@@ -116,9 +136,11 @@ li{
   --stea-bold: 'StyA-Bold';
   --stea-Medium: 'StyA-Medium';
   --stea-Regular: 'StyA-Regular';
+  --stea-Light: 'StyA-Light';
   --steb-bold: 'StyB-Bold';
   --steb-Medium: 'StyB-Medium';
   --steb-Regular: 'StyB-Regular';
+  --steb-Light: 'StyB-Light';
 
   --tiem-Bold: 'tiem-Bold';
   --tiem-Medium: 'tiem-Medium';
