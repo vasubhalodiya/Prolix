@@ -106,6 +106,8 @@ html {
 }
 body{
   font-family: var(--stea-Regular);
+  font-weight: 400;
+  color: #141413;
   background: #F0EEE6;
 }
 .p_0{
@@ -142,10 +144,10 @@ li{
   --steb-Regular: 'StyB-Regular';
   --steb-Light: 'StyB-Light';
 
-  --tiem-Bold: 'tiem-Bold';
-  --tiem-Medium: 'tiem-Medium';
-  --tiem-Regular: 'tiem-Regular';
-  --tiem-SemiBold: 'tiem-SemiBold';
+  --tie-Bold: 'Tie-Bold';
+  --tie-Medium: 'Tie-Medium';
+  --tie-Regular: 'Tie-Regular';
+  --tie-SemiBold: 'Tie-SemiBold';
 
 
 
