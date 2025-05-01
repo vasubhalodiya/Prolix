@@ -1,3 +1,172 @@
+/* *********************************** */
+
+/* Styrene */
+
+@font-face {
+  font-family: 'StyA-Bold';
+  src: url(../src/assets/styrene/StyreneA-Bold.otf);
+}
+
+@font-face {
+  font-family: 'StyA-Medium';
+  src: url(../src/assets/styrene/StyreneA-Medium.otf);
+}
+
+@font-face {
+  font-family: 'StyA-Regular';
+  src: url(../src/assets/styrene/StyreneA-Regular.otf);
+}
+
+@font-face {
+  font-family: 'StyB-Bold';
+  src: url(../src/assets/styrene/StyreneB-Bold.otf);
+}
+
+@font-face {
+  font-family: 'StyB-Medium';
+  src: url(../src/assets/styrene/StyreneB-Medium.otf);
+}
+
+@font-face {
+  font-family: 'StyB-Regular';
+  src: url(../src/assets/styrene/StyreneB-Regular.otf);
+}
+
+/* ************************* */
+
+/* Styrene */
+
+@font-face {
+  font-family: 'Tie-Bold';
+  src: url(../src/assets/tiempos/TestTiemposText-Bold.otf);
+}
+
+@font-face {
+  font-family: 'Tie-Medium';
+  src: url(../src/assets/tiempos/TestTiemposText-Medium.otf);
+}
+
+@font-face {
+  font-family: 'Tie-Regular';
+  src: url(../src/assets/tiempos/TestTiemposText-Regular.otf);
+}
+
+@font-face {
+  font-family: 'Tie-SemiBold';
+  src: url(../src/assets/tiempos/TestTiemposText-Semibold.otf);
+}
+
+/* ************* */
+
+img{max-width:100%;}
+input.text,
+input[type="text"],
+input[type="button"],
+input[type="submit"],
+input[type="email"],
+input[type="tel"],
+textarea,
+.input-checkbox {
+  outline:0;
+}
+h1,h2,h3,h4,h5,h6,p{margin:0px;}
+input:focus{outline:0;}
+textarea:focus{outline:0;}
+button:focus{outline:0;}
+a{cursor: pointer;text-decoration:none;transition:all 0.5s ease;}
+a:focus, a:hover{text-decoration:none;outline:0;}
+.TC{text-align:center;}
+.TL{text-align:left;}
+.TR{text-align:right;}
+.margin_auto{margin:auto;float:none;}
+.padding{padding:0;}
+.al{width:100%;height:100%;display:table;}
+.alm{width:100%;height:100%;display:table-cell;vertical-align:middle;}
+abbr[title] {
+  border-bottom: none !important;
+  cursor: inherit !important;
+  text-decoration: none !important;
+}
+html {
+  scroll-behavior: smooth;
+}
+body{
+  font-family: 'Poppins-Regular';
+}
+.p_0{
+  padding: 0px;
+}
+.pl-0{
+  padding-left: 0px;
+}
+ul{
+  margin: 0;
+  padding: 0;
+}
+li{
+  list-style: none;
+}
+.main{
+  width: 100%;
+}
+
 :root {
   
+  /* Font */
+  --stea-bold: 'StyA-Bold';
+  --stea-Medium: 'StyA-Medium';
+  --stea-Regular: 'StyA-Regular';
+  --steb-bold: 'StyB-Bold';
+  --steb-Medium: 'StyB-Medium';
+  --steb-Regular: 'StyB-Regular';
+
+  --tiem-Bold: 'tiem-Bold';
+  --tiem-Medium: 'tiem-Medium';
+  --tiem-Regular: 'tiem-Regular';
+  --tiem-SemiBold: 'tiem-SemiBold';
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
