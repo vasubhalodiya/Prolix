@@ -56,11 +56,11 @@ function App() {
   return (
     <>
     
-    <LoggerComponents />
+    {/* <LoggerComponents /> */}
     <TimerComponents />
-    <DataFetcher />
-    <MultiEffectComponents />
-    <ResizeComponents />
+    {/* <DataFetcher /> */}
+    {/* <MultiEffectComponents /> */}
+    {/* <ResizeComponents /> */}
 
     {/* <div>
         <h3>Count is: {count}</h3>
