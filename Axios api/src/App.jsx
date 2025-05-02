@@ -1,17 +1,13 @@
 import './App.css'
-import { getPost } from './api'
-import { useState, useEffect } from 'react'
+import AxiosPrep from './api/AxiosPrep.jsx'
+
 
 function App() {
-
-  useEffect(() => {
-    getPost().then(posts => console.log(posts));
-  }, []);
   
 
   return (
     <>
-      
+      <AxiosPrep />
     </>
   )
 }
