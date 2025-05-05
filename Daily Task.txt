@@ -1,0 +1,12 @@
+30 apr - make to-do lost in js and react js using usestate
+
+1 may - create anthropic ai company website home page in react an learn useeffect hook (love babbar )
+
+2 may - axios api use ro get and post data
+
+Get - fetch data
+Post - upload data
+
+User api free avaliable hoy chhe
+
+5 may - axios use to data edit and delete and paggination - rtk(react toolkit) learn
