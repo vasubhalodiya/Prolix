@@ -47,17 +47,21 @@ const App = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (isEditing) {
-            const updatedData = data.map(post =>
-                post.id === editId ? { ...post, title: newPost.title, body: newPost.body } : post
-            );
-            setData(updatedData);
-            setIsEditing(false);
-            setEditId(null);
-            setNewPost({ title: '', body: '' });
+            const updatedPost = { ...newPost, id: editId };
+            axios.put(`https://jsonplaceholder.typicode.com/posts/${editId}`, updatedPost)
+                .then(() => {
+                    const updatedData = data.map(post =>
+                        post.id === editId ? updatedPost : post
+                    );
+                    setData(updatedData);
+                    setIsEditing(false);
+                    setEditId(null);
+                    setNewPost({ title: '', body: '' });
+                });
         } else {
             const newId = data.length > 0 ? data[data.length - 1].id + 1 : 1;
             const customPost = { ...newPost, id: newId };
-
+    
             axios.post('https://jsonplaceholder.typicode.com/posts', customPost)
                 .then(() => {
                     setData([...data, customPost]);
@@ -65,6 +69,7 @@ const App = () => {
                 });
         }
     };
+    
 
     const handleEdit = (id) => {
         const selectedPost = data.find((post) => post.id === id);
@@ -75,9 +80,13 @@ const App = () => {
     
 
     const handleDelete = (id) => {
-        const filtered = data.filter((post) => post.id !== id);
-        setData(filtered);
+        axios.delete(`https://jsonplaceholder.typicode.com/posts/${id}`)
+            .then(() => {
+                const filtered = data.filter(post => post.id !== id);
+                setData(filtered);
+            });
     };
+    
 
     return (
         <div style={{ margin: '20px' }}>
