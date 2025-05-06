@@ -1,8 +1,8 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
-import Login from "./pages/Login";
-import Admin from "./pages/Admin";
-import User from "./pages/User";
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Login from '../components/Login';
+import Admin from '../components/Admin';
+import User from '../components/User';
 
 const AppRoutes = () => {
   return (

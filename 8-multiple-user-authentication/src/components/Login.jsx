@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; // to handle routing
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate(); // for navigating to pages after login
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
@@ -16,13 +16,12 @@ const Login = () => {
       );
 
       if (user) {
-        // If user found, based on role navigate to the respective page
         if (user.role === "admin") {
-          navigate("/admin"); // Admin page
+          navigate("/admin");
         } else if (user.role === "user") {
-          navigate("/user"); // User page
+          navigate("/user");
         } else {
-          navigate("/"); // Default page if other roles
+          navigate("/");
         }
       } else {
         setError("Invalid email or password");
@@ -42,12 +41,14 @@ const Login = () => {
         onChange={(e) => setEmail(e.target.value)}
         placeholder="Enter email"
       />
+      <br />
       <input
         type="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         placeholder="Enter password"
       />
+      <br />
       <button onClick={handleLogin}>Login</button>
       {error && <p>{error}</p>}
     </div>
