@@ -50,7 +50,7 @@ const Login = () => {
       />
       <br />
       <button onClick={handleLogin}>Login</button>
-      {error && <p>{error}</p>}
+      {error && <div className="error-message">{error}</div>}
     </div>
   );
 };

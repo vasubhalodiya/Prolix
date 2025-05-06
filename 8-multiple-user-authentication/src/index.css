@@ -12,3 +12,25 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.error-message {
+  width: 200px;
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.error-message {
+  background-color: #fdd;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid red;
+}
+
+.error-warning {
+  color: orange;
+  border-color: orange;
+  background-color: #fff3e0;
+}
