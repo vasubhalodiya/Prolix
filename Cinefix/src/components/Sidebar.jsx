@@ -1,9 +1,16 @@
 import React from 'react'
+import './Sidebar.css';
 
 const Sidebar = () => {
   return (
     <>
-        <i class="fa-regular fa-house"></i>
+      <div className="sidebar">
+        <div className="sidebar-cnt">
+          <div className="sidebar-logo">
+            <h1 className='logo'>CINEFIX</h1>
+          </div>
+        </div>
+      </div>
     </>
 )
 }
