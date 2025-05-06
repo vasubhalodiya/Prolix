@@ -1,3 +1,5 @@
+===== 2025 =====
+
 30 apr - make to-do lost in js and react js using usestate
 
 1 may - create anthropic ai company website home page in react an learn useeffect hook (love babbar )
@@ -9,4 +11,6 @@ Post - upload data
 
 User api free avaliable hoy chhe
 
-5 may - axios use to data edit and delete and paggination - rtk(react toolkit) learn
+5 may - axios use to data edit and delete and paggination - rtk(react toolkit) use to create counter app- love babbar
+
+6 may - Redux query and mutation

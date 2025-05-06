@@ -1,11 +1,20 @@
 import React from "react";
-import AppRoutes from "./routes/AppRoutes";
+import './app.css';
+import Discovery from './pages/menu/Discovery';
+import Sidebar from "./components/Sidebar";
+// import AppRoutes from "./routes/AppRoutes";
+
 
 const App = () => {
   return (
     <>
       <div>
-        <AppRoutes />
+        <Sidebar />
+        <div className="app-layout">
+          <main className="main-cnt">
+            <Discovery />
+          </main>
+        </div>
       </div>
     </>
   );

@@ -5,10 +5,9 @@ import './discovery.css'
 const Discovery = () => {
     return (
         <>
-
+            <h3>hi</h3>
         </>
     )
 }
 
-<h1>Discovery</h1>
 export default Discovery
