@@ -8,13 +8,11 @@ import Sidebar from "./components/Sidebar/Sidebar";
 const App = () => {
   return (
     <>
-      <div>
-        <Sidebar />
-        <div className="app-layout">
-          <main className="main-cnt">
-            <Discovery />
-          </main>
-        </div>
+      <Sidebar />
+      <div className="app-layout">
+        <main className="main-cnt">
+          <Discovery />
+        </main>
       </div>
     </>
   );
