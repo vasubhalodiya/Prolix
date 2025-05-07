@@ -44,21 +44,24 @@ export default function StudioSlider() {
 
     return (
         <div className="slider-container">
-            <h2 className="slider-title">Movie Studios</h2>
+            <div className="slider-head">
+                <h2 className="slider-title">Movie Studios</h2>
+                <div className="slider-btn">
+                    <button
+                        onClick={() => scroll('left')}
+                        className="arrow-button left-arrow"
+                        disabled={isAtStart}><i class="fa-regular fa-arrow-left"></i>
+                    </button>
+                    <button
+                        onClick={() => scroll('right')}
+                        className="arrow-button right-arrow"
+                        disabled={isAtEnd}><i class="fa-regular fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
             <div className="slider-wrapper">
                 {!isAtStart && <div className="gradient-overlay left-gradient"></div>}
                 {!isAtEnd && <div className="gradient-overlay right-gradient"></div>}
-
-                <button
-                    onClick={() => scroll('left')}
-                    className="arrow-button left-arrow"
-                    disabled={isAtStart}>&lt;
-                </button>
-                <button
-                    onClick={() => scroll('right')}
-                    className="arrow-button right-arrow"
-                    disabled={isAtEnd}>&gt;
-                </button>
 
                 <div ref={scrollContainerRef} className="slider-content">
                     {movieStudios.map((studio) => (
