@@ -1,0 +1,118 @@
+.discovery
+{
+    width: 75%;
+}
+ 
+.disc-header-latest-movie-poster {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.latest-movie-poster-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Gradient Overlay */
+.disc-header-latest-movie-poster::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), transparent);
+    z-index: 9;
+}
+
+.disc-studios-card
+{
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
