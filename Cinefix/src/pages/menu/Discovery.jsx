@@ -5,7 +5,6 @@ import './discovery.css'
 const Discovery = () => {
     return (
         <>
-            <h3>hi</h3>
         </>
     )
 }

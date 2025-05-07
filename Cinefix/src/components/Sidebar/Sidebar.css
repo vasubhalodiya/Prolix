@@ -1,0 +1,133 @@
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: var(--secondary-color);
+  /* padding: 20px; */
+  padding-top: 0;
+  position: fixed;
+}
+
+.sidebar-logo
+{
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo
+{
+  width: 100px;
+}
+
+.sidebar-list-group
+{
+  margin-bottom: 20px;
+}
+
+.sidebar-list
+{
+  margin-top: 20px;
+}
+
+.sidebar-title h6
+{
+  color: var(--text-light-color);
+  font-size: 15px;
+  font-family: 'Int-Medium';
+  margin-bottom: 10px;
+  padding: 0 20px;
+}
+
+.sidebar-link-list
+{
+  padding: 0 20px;
+}
+
+.sidebar-link
+{
+  height: 45px;
+  color: var(--text-color);
+  font-size: 15px;
+  font-family: 'Int-Medium';
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 15px;
+  padding: 0 15px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+
+}
+
+.sidebar-link i
+{
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.sidebar-link:hover
+{
+  background-color: var(--primary-color);
+  color: var(--light-color);
+}
+
+.sidebar-link:hover i
+{
+  color: var(--green-color);
+  font-weight: 800;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

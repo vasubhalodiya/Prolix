@@ -1,0 +1,112 @@
+.navbar
+{
+    margin-left: 250px;
+    background-color: var(--primary-color);
+}
+
+.navbar-cnt
+{
+    width: 100%;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+}
+
+.navbar-links
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.navbar-link
+{
+    font-size: 15px;
+    color: var(--text-color);
+    font-family: 'Int-Medium';
+    text-decoration: none;
+    padding-bottom: 4px;
+    background-image: linear-gradient(to right, var(--green-color) 100%, transparent 0%);
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 0% 2px;
+    transition: background-size 0.4s ease;
+    letter-spacing: 0.5px;
+}
+
+.navbar-link:hover {
+    color: var(--light-color);
+    background-size: 100% 2px;
+}
+
+.navbar-profile-section
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.navbar-notification
+{
+    position: relative;
+}
+
+.notification-icon
+{
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.notification-indication
+{
+    width: 8px;
+    height: 8px;
+    background-color: var(--red-color);
+    border-radius: 50%;
+    position: absolute;
+    top: 0px;
+    right: -1px;
+}
+
+.navbar-profile
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+    padding: 5px;
+    border-radius: 7px;
+}
+
+.navbar-profile img
+{
+    width: 25px;
+    border-radius: 3px;
+}
+
+.profile-dropdown i
+{
+    color: var(--text-color);
+    font-size: 14px;
+    margin: 0 4px 0px 7px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
