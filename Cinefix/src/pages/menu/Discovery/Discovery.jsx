@@ -20,7 +20,7 @@ const Discovery = () => {
               </div>
               <div className="latest-movie-poster-txt-btns">
                 <Button variant="iconText" icon="fa-light fa-clapperboard-play" style={{ color: 'green' }}>Watch Now</Button>
-                <Button variant="text" icon="fa-light fa-backpack">Add</Button>
+                <Button variant="text" icon="fa-light fa-backpack">Add Backpack</Button>
               </div>
             </div>
           </div>
