@@ -15,6 +15,8 @@
     height: 100%;
     object-fit: cover;
     display: block;
+
+    position: relative;
 }
 
 /* Gradient Overlay */
@@ -36,7 +38,14 @@
     gap: 25px;
 }
 
-  
+.latest-movie-poster-txt
+{
+    position: absolute;
+    bottom: 20%;
+    left: 7%;
+    z-index: 10;
+    text-align: left;
+}
 
 
 

@@ -29,17 +29,26 @@ export default function StudioSlider() {
             const container = scrollContainerRef.current;
             if (container) {
                 setIsAtStart(container.scrollLeft <= 10);
-                setIsAtEnd(
-                    container.scrollWidth - container.clientWidth - container.scrollLeft <= 10
-                );
+                setIsAtEnd(container.scrollWidth - container.clientWidth - container.scrollLeft <= 10);
             }
         };
 
         const container = scrollContainerRef.current;
+
+        const handleWheel = (event) => {
+            event.preventDefault(); // Prevents default scroll behavior
+            const direction = event.deltaY > 0 ? 'right' : 'left';
+            scroll(direction);
+        };
+
         container?.addEventListener('scroll', checkScrollPosition);
+        container?.addEventListener('wheel', handleWheel, { passive: false });
         checkScrollPosition();
 
-        return () => container?.removeEventListener('scroll', checkScrollPosition);
+        return () => {
+            container?.removeEventListener('scroll', checkScrollPosition);
+            container?.removeEventListener('wheel', handleWheel);
+        };
     }, []);
 
     return (
@@ -50,12 +59,12 @@ export default function StudioSlider() {
                     <button
                         onClick={() => scroll('left')}
                         className="arrow-button left-arrow"
-                        disabled={isAtStart}><i class="fa-regular fa-arrow-left"></i>
+                        disabled={isAtStart}><i className="fa-regular fa-arrow-left"></i>
                     </button>
                     <button
                         onClick={() => scroll('right')}
                         className="arrow-button right-arrow"
-                        disabled={isAtEnd}><i class="fa-regular fa-arrow-right"></i>
+                        disabled={isAtEnd}><i className="fa-regular fa-arrow-right"></i>
                     </button>
                 </div>
             </div>

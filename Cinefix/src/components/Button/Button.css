@@ -18,3 +18,13 @@
     color: var(--red-color);
     border: 1px solid var(--red-color);
 }
+
+.btn-icon-text {
+    background-color: var(--red-color);
+    color: var(--light-color);
+    border: none;
+}
+
+.btn-icon {
+    font-size: 14px;
+}
