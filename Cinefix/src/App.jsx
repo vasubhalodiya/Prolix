@@ -1,8 +1,7 @@
 import React from "react";
 import './app.css';
-import Discovery from './pages/menu/Discovery/Discovery';
 import Sidebar from "./components/Sidebar/Sidebar";
-// import AppRoutes from "./routes/AppRoutes";
+import AppRoutes from "./routes/AppRoutes";
 
 
 const App = () => {
@@ -11,7 +10,7 @@ const App = () => {
       <Sidebar />
       <div className="app-layout">
         <main className="main-cnt">
-          <Discovery />
+          <AppRoutes />
         </main>
       </div>
     </>

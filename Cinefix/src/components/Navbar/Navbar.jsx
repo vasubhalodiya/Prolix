@@ -2,6 +2,8 @@ import React from 'react'
 import './Navbar.css';
 import Button from '../Button/Button'
 import images from '../../utils/images';
+import { Link } from 'react-router-dom';
+import NavLink from '../NavLink/NavLink';
 
 const Navbar = () => {
   return (
@@ -9,10 +11,10 @@ const Navbar = () => {
           <div className="navbar-cnt">
             <div className="navbar-link-list">
               <ul className="navbar-links">
-                <a href="#"><li className="navbar-link">Movies</li></a>
-                <a href="#"><li className="navbar-link">Series</li></a>
-                <a href="#"><li className="navbar-link">Tv Shows</li></a>
-                <a href="#"><li className="navbar-link">Sports</li></a>
+                <NavLink to="/movies" label="Movies" />
+                <NavLink to="/series" label="Series" />
+                <NavLink to="/tvshows" label="Tv Shows" />
+                <NavLink to="/sports" label="Sports" />
               </ul>
             </div>
             <div className="navbar-profile-section">

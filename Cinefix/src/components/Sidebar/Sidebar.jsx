@@ -2,7 +2,8 @@ import React from 'react'
 import './Sidebar.css';
 import Navbar from '../Navbar/Navbar';
 import images from '../../utils/images';
-
+import { Link } from 'react-router-dom';
+import NavLink from '../NavLink/NavLink';
 
 const Sidebar = () => {
   return (
@@ -19,26 +20,10 @@ const Sidebar = () => {
               </div>
               <div className="sidebar-link-list">
                 <ul className="sidebar-links">
-                  <a href="#">
-                    <li className="sidebar-link">
-                      <i className="fa-regular fa-compass"></i>Discovery
-                    </li>
-                  </a>
-                  <a href="#">
-                    <li className="sidebar-link">
-                      <i className="fa-regular fa-magnifying-glass"></i>Search
-                    </li>
-                  </a>
-                  <a href="#">
-                    <li className="sidebar-link">
-                      <i className="fa-regular fa-layer-group"></i>Category
-                    </li>
-                  </a>
-                  <a href="#">
-                    <li className="sidebar-link">
-                      <i className="fa-regular fa-star"></i>Top Rated
-                    </li>
-                  </a>
+                <NavLink to="/" iconClass="fa-regular fa-compass" label="Discovery" isSidebar={true} />
+                <NavLink to="/search" iconClass="fa-regular fa-magnifying-glass" label="Search" isSidebar={true} />
+                <NavLink to="/category" iconClass="fa-regular fa-layer-group" label="Category" isSidebar={true} />
+                <NavLink to="/toprated" iconClass="fa-regular fa-star" label="Top Rated" isSidebar={true} />
                 </ul>
               </div>
             </div>
@@ -48,21 +33,9 @@ const Sidebar = () => {
               </div>
               <div className="sidebar-link-list">
                 <ul className="sidebar-links">
-                  <a href="#">
-                    <li className="sidebar-link">
-                      <i className="fa-light fa-backpack"></i>My Backpack
-                    </li>
-                  </a>
-                  <a href="#">
-                    <li className="sidebar-link">
-                      <i className="fa-regular fa-download"></i>Download
-                    </li>
-                  </a>
-                  <a href="#">
-                    <li className="sidebar-link">
-                      <i className="fa-regular fa-gear"></i>Setting
-                    </li>
-                  </a>
+                <NavLink to="/mybackpack" iconClass="fa-light fa-backpack" label="My Backpack" isSidebar={true} />
+                <NavLink to="/download" iconClass="fa-regular fa-download" label="Download" isSidebar={true} />
+                <NavLink to="/setting" iconClass="fa-regular fa-gear" label="Setting" isSidebar={true} />
                 </ul>
               </div>
             </div>
