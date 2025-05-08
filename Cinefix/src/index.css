@@ -63,10 +63,131 @@
   color: var(--light-color);
   background-color: var(--primary-color);
   font-family: 'Int-Regular';
-  
 }
 
 body {
   margin-top: 65px;
 }
+
+.section-heading {
+  color: var(--light-color);
+  font-size: 23px;
+  font-family: 'Int-SemiBold';
+  letter-spacing: 0.5px;
+}
+
+i {font-size: 14px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

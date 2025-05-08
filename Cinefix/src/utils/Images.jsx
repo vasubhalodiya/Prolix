@@ -9,8 +9,9 @@ import star_wars from '../assets/images/star-wars.svg';
 import hbo from '../assets/images/hbo.svg';
 import peacock from '../assets/images/peacock.svg';
 // movie thumbnail
-import poster from "../assets/images/poster.jpg";
+import dr_strange from "../assets/images/dr-strange.jpg";
 import galaxy from "../assets/images/galaxy.jpg";
+import mufasa from "../assets/images/mufasa.jpg";
 
 
 const images = {
@@ -25,8 +26,9 @@ const images = {
     hbo,
     peacock,
     // movie thumbnail
-    poster,
+    dr_strange,
     galaxy,
+    mufasa,
 };
 
 export default images;

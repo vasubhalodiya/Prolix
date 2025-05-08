@@ -1,6 +1,6 @@
 .discovery
 {
-    width: 75%;
+    width: 74%;
 }
  
 .disc-header-latest-movie-poster {
@@ -89,12 +89,29 @@
     gap: 10px;
 }
 
+/* ***************************************************** */
 
+.top-rated
+{
+    width: 22%;
+    height: 100%;
+    background-color: var(--primary-color);
+    position: fixed;
+    top: 65px;
+    right: 0;
+    z-index: 10;
+    padding: 20px;
+}
 
+.top-rated-cnt-cards-list
+{
+    margin-top: 20px;
+}
 
-
-
-
+.btn-outline
+{
+    width: 100% !important;
+}
 
 
 

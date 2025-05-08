@@ -43,7 +43,7 @@ export default function CommonSlider({ title, data, renderCard }) {
     return (
         <div className="slider-container">
             <div className="slider-head">
-                <h2 className="slider-title">{title}</h2>
+                <h2 className="section-heading">{title}</h2>
                 <div className="slider-btn">
                     <button onClick={() => scroll('left')} disabled={isAtStart} className="arrow-button">
                         <i className="fa-regular fa-arrow-left"></i>
