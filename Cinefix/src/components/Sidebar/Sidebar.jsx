@@ -50,7 +50,7 @@ const Sidebar = () => {
                 <ul className="sidebar-links">
                   <a href="#">
                     <li className="sidebar-link">
-                      <i className="fa-regular fa-heart"></i>My List
+                      <i className="fa-light fa-backpack"></i>My Backpack
                     </li>
                   </a>
                   <a href="#">

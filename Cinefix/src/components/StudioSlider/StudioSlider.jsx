@@ -74,7 +74,7 @@ export default function StudioSlider() {
 
                 <div ref={scrollContainerRef} className="slider-content">
                     {movieStudios.map((studio) => (
-                        <div key={studio.id} className="studio-card">
+                        <div key={studio.id} className="studios-card">
                             <img src={studio.image} alt={`Logo ${studio.id}`} className='studios-img' />
                         </div>
                     ))}

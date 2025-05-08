@@ -27,7 +27,7 @@
     left: 0;
     width: 60%;
     height: 100%;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), transparent);
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 40%, transparent);
     z-index: 9;
 }
 
@@ -42,20 +42,52 @@
 {
     position: absolute;
     bottom: 20%;
-    left: 7%;
+    left: 5%;
     z-index: 10;
     text-align: left;
 }
 
+.movie-watch-btn
+{
+    padding: 20px !important;
+}
 
+.latest-movie-poster-txt-title
+{
+    margin-bottom: 30px;
+}
 
+.movie-type
+{
+    width: 90px;
+    height: 40px;
+    color: var(--text-light-color);
+    background-color: rgb(131, 131, 131, 0.3);
+    border-radius: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.movie-name
+{
+    color: var(--light-color);
+    font-size: 35px;
+    font-family: 'Int-Bold';
+}
 
+.movie-episode
+{
+    color: var(--text-color);
+    font-size: 14px;
+    font-family: 'Int-Medium';
+}
 
-
-
-
-
+.latest-movie-poster-txt-btns
+{
+    display: flex;
+    gap: 10px;
+}
 
 
 

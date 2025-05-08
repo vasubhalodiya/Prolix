@@ -3,13 +3,7 @@ import './discovery.css'
 import images from '../../../utils/images';
 import StudioSlider from '@/components/StudioSlider/StudioSlider';
 import Button from '@/components/Button/Button';
-
-const movieStudios = [
-  { name: 'Studio 1', image: 'https://img.icons8.com/?size=100&id=V3uqgKkQdUwc&format=png&color=0087FF' },
-  { name: 'Studio 2', image: 'https://img.icons8.com/?size=100&id=V3uqgKkQdUwc&format=png&color=0087FF' },
-  { name: 'Studio 3', image: 'https://img.icons8.com/?size=100&id=V3uqgKkQdUwc&format=png&color=0087FF' },
-  // Add more studios as needed
-];
+import ContinueWatching from '@/components/ContinueWatching/ContinueWatching';
 
 const Discovery = () => {
   return (
@@ -19,15 +13,21 @@ const Discovery = () => {
           <div className="disc-header-latest-movie-poster">
             <img src={images.poster} alt="" className='latest-movie-poster-img' />
             <div className="latest-movie-poster-txt">
-              <h6 className='movie-type'>Movie</h6> {/*  Movie / Series / Tv Show / Sport */}
-              <h1 className='movie-Name'>Doctor Strange</h1>
-              <h6 className='movie-episode'>1 Season • 6 Episodes • Marvel</h6>
-              <Button variant="iconText" icon="fa-solid fa-play">Play Now</Button>
+              <div className="latest-movie-poster-txt-title">
+                <h6 className='movie-type'>Movie</h6> {/*  Movie / Series / Tv Show / Sport */}
+                <h1 className='movie-name'>Doctor Strange</h1>
+                <h6 className='movie-episode'>1 Season • 6 Episodes • Marvel</h6>
+              </div>
+              <div className="latest-movie-poster-txt-btns">
+                <Button variant="iconText" icon="fa-light fa-clapperboard-play" style={{ color: 'green' }}>Watch Now</Button>
+                <Button variant="text" icon="fa-light fa-backpack">Add</Button>
+              </div>
             </div>
           </div>
           <div className="disc-studios-card">
-          <StudioSlider studios={movieStudios} />
+          <StudioSlider />
           </div>
+          <ContinueWatching />
         </div>
       </div>
     </>

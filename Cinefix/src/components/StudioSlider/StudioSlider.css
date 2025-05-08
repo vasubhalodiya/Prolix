@@ -1,7 +1,7 @@
 .slider-container {
     width: 100%;
     /* max-width: 1200px; */
-    margin: 40px 0px;
+    margin-top: 20px;
 }
 
 .slider-title {
@@ -73,7 +73,7 @@
     display: flex;
     overflow-x: auto;
     scroll-behavior: smooth;
-    padding: 20px 0px;
+    padding-top: 10px;
     scrollbar-width: none;
     -ms-overflow-style: none;
     gap: 20px;
@@ -83,7 +83,7 @@
     display: none;
 }
 
-.studio-card {
+.studios-card {
     width: 180px;
     height: 110px;
     padding: 15px;

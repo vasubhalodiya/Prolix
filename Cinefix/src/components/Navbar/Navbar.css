@@ -1,8 +1,19 @@
-.navbar
+/* .navbar
 {
     margin-left: 250px;
     background-color: var(--primary-color);
+} */
+
+.navbar {
+    position: fixed; /* ya sticky */
+    top: 0;
+    left: 250px; /* agar sidebar fix hai to */
+    right: 0;
+    z-index: 1000; /* taaki sab ke upar dikhe */
+    background-color: var(--primary-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
+
 
 .navbar-cnt
 {
@@ -29,7 +40,7 @@
     font-family: 'Int-Medium';
     text-decoration: none;
     padding-bottom: 4px;
-    background-image: linear-gradient(to right, var(--green-color) 100%, transparent 0%);
+    background-image: linear-gradient(to right, var(--red-color) 100%, transparent 0%);
     background-repeat: no-repeat;
     background-position: 0 100%;
     background-size: 0% 2px;
