@@ -3,10 +3,8 @@ import { useGetMoviesQuery } from '../../../redux/movieApi';
 import MovieCard from '../../../components/MovieCard/MovieCard';
 import '../../../components/MovieCard/MovieCard.css';
 
-
 const Movies = () => {
   const { data: movies, isLoading, isError, error } = useGetMoviesQuery(); // Fetch movies using RTK Query hook
-
   const [genres, setGenres] = useState([]); // Store genres list
 
   useEffect(() => {
@@ -50,12 +48,12 @@ const Movies = () => {
                 poster={movie.backdrop_path || movie.poster_path} // Use backdrop path if available
                 title={movie.title}
                 rating={movie.vote_average}
-                genre={getGenreName(movie.genre_ids[0])} // Fetch the genre name based on genre ID
-                studio={getStudioNames(movie.production_companies)} // Pass the studio names
+                genre={getGenreName(movie.genre_ids[0])}
+                studio={getStudioNames(movie.production_companies)}
               />
             ))
           ) : (
-            <p>No movies available</p> // Display message if no movies are available
+            <p>No movies available</p>
           )}
         </div>
       </div>
