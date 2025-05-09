@@ -1,5 +1,5 @@
 import React from "react";
-import './app.css';
+import './App.css';
 import Sidebar from "./components/Sidebar/Sidebar";
 import AppRoutes from "./routes/AppRoutes";
 
