@@ -6,7 +6,7 @@ const TopRatedCard = ({ rank, title, poster, rating, genre }) => {
 
     return (
         <>
-            <button>
+            <button className='master-btn'>
                 <div className="top-rated-card">
                     <div className="top-rated-rank-img-part">
                         <div className="top-rated-card-rank">{rank}</div>
@@ -21,7 +21,7 @@ const TopRatedCard = ({ rank, title, poster, rating, genre }) => {
                             <i className="fa-light fa-film"></i> {genre}
                         </h6>
                         <h4 className="top-rated-movie-rating moviecard-rating">
-                            <i className="fa-solid fa-star"></i> {rating}
+                            <i className="fa-solid fa-star"></i> {rating ? rating.toFixed(1) : "N/A"}
                         </h4>
                     </div>
                 </div>

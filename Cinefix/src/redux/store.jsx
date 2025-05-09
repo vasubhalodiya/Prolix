@@ -1,12 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import topRatedMoviesReducer from './topRatedMoviesSlice';
-import moviesReducer from './moviesSlice';
+import commonReducer from './commonReducer';
 
 const store = configureStore({
   reducer: {
-    topRatedMovies: topRatedMoviesReducer,
-    movies: moviesReducer,
+    topRatedMovies: commonReducer.topRatedMovies,
+    movies: commonReducer.movies,
   },
 });
 
-export default store; // Add this line to export store as default
+export default store;

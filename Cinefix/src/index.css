@@ -73,8 +73,25 @@ i {
   font-size: 14px;
 }
 
-button {
+.master-btn {
   cursor: pointer;
+  text-align: left;
+  display: flex;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  padding: 10px;
+  border: none;
+}
+
+.master-btn:hover {
+  transform: scale(1.1);
+  /* background-color: var(--secondary-color); */
+  /* border: 1px solid var(--border-color); */
+}
+
+.master-btn:hover .moviecard-title {
+  color: var(--red-color);
+  transition: all 0.3s ease;
 }
 
 .section-heading {
@@ -86,9 +103,10 @@ button {
 
 .moviecard-title {
   color: var(--light-color);
-  font-size: 18px;
+  font-size: 17px;
   font-family: 'Int-SemiBold';
   letter-spacing: 0.5px;
+  line-height: 25px;
 }
 
 .moviecard-rating {

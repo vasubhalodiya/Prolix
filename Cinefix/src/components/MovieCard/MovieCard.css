@@ -15,7 +15,6 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    line-height: 27px;
 }
 
 .moviecard-rating {
@@ -33,6 +32,7 @@
 
 .movies-list {
     display: grid;
-    gap: 16px;
+    gap: 15px;
     grid-template-columns: repeat(4, 1fr);
+    margin-top: 10px;
 }

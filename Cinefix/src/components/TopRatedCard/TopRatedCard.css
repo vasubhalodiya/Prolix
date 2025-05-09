@@ -3,7 +3,6 @@
     align-items: start;
     justify-content: left;
     gap: 15px;
-    margin-bottom: 30px;
 }
 
 .top-rated-card-img {
@@ -61,7 +60,7 @@
 .top-rated-rank-img-part
 {
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: center;
 }
 

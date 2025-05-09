@@ -37,9 +37,10 @@ const Discovery = () => {
                 <h2 className='section-heading'>Recommendation</h2>
               </div>
               <div className="movie-sidebar-cnt-cards-list">
+                {/* <MovieCard />
                 <MovieCard />
-                <MovieCard />
-                <Button variant="outline">See All</Button>
+                <MovieCard /> */}
+                <h4>Coming Soon...</h4>
               </div>
             </div>
           </div>
