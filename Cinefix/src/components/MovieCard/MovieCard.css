@@ -1,0 +1,38 @@
+.moviecard {
+    margin-bottom: 20px;
+}
+
+.moviecard-img {
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+.moviecard-title {
+    margin-bottom: 7px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 27px;
+}
+
+.moviecard-rating {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.moviecard-genres {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 7px;
+}
+
+.movies-list {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(4, 1fr);
+}

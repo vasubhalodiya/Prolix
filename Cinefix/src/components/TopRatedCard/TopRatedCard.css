@@ -1,33 +1,26 @@
 .top-rated-card {
-    width: 100%;
-    height: 100%;
     display: flex;
     align-items: start;
-    justify-content: center;
+    justify-content: left;
     gap: 15px;
     margin-bottom: 30px;
 }
 
-.top-rated-card-img-section
-{
-    max-width: 45%;
-}
-
 .top-rated-card-img {
-    width: 100%;
+    width: 140px;
     height: 100%;
     border-radius: 10px;
 }
 
 .top-rated-movie-title {
-    width: 135px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    width: 140px;
+    white-space: wrap;
+    text-align: left;
+    /* overflow: hidden; */
+    /* text-overflow: ellipsis; */
 }
 
-.top-rated-movie-code
-{
+.top-rated-movie-code {
     width: 60px;
     height: 30px;
     color: var(--text-light-color);
@@ -41,63 +34,43 @@
     margin-bottom: 10px;
 }
 
-.top-rated-movie-title
-{
-    color: var(--light-color);
-    font-size: 18px;
-    font-family: 'Int-SemiBold';
-    letter-spacing: 0.5px;
+.top-rated-movie-title {
     margin-bottom: 10px;
 }
 
-.top-rated-movie-mode
-{
-    color: var(--text-color);
-    font-size: 14px;
-    font-family: 'Int-Medium';
+.top-rated-movie-genres {
     margin-bottom: 7px;
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.top-rated-movie-rating
-{
-    color: var(--text-light-color);
-    font-size: 17px;
-    font-family: 'Int-SemiBold';
+.top-rated-movie-rating {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.top-rated-movie-rating i
-{
-    color: #FFD700;
+.top-rated-card-rank {
+    color: var(--light-color);
+    font-size: 60px;
+    font-family: 'Int-SemiBold';
+    margin-right: 20px;
 }
 
+.top-rated-rank-img-part
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.top-rated-movie-list
+{
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+}
 
 
 

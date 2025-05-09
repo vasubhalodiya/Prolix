@@ -4,7 +4,7 @@ import images from '../../../utils/images';
 import StudioSlider from '@/components/StudioSlider/StudioSlider';
 import Button from '@/components/Button/Button';
 import ContinueWatching from '@/components/ContinueWatching/ContinueWatching';
-import TopRatedCard from '@/components/TopRatedCard/TopRatedCard';
+import MovieCard from '@/components/MovieCard/MovieCard';
 
 const Discovery = () => {
   return (
@@ -31,15 +31,14 @@ const Discovery = () => {
           <div className="disc-continue-watching-slider">
             <ContinueWatching />
           </div>
-          <div className="top-rated">
-            <div className="top-rated-cnt">
-              <div className="top-rated-cnt-head">
-                <h2 className='section-heading'>Top Rated</h2>
+          <div className="movie-sidebar">
+            <div className="movie-sidebar-cnt">
+              <div className="movie-sidebar-cnt-head">
+                <h2 className='section-heading'>Recommendation</h2>
               </div>
-              <div className="top-rated-cnt-cards-list">
-                <TopRatedCard title="Mufasa"/>
-                <TopRatedCard title="Avengers Endgame"/>
-                <TopRatedCard title="Thor"/>
+              <div className="movie-sidebar-cnt-cards-list">
+                <MovieCard />
+                <MovieCard />
                 <Button variant="outline">See All</Button>
               </div>
             </div>
