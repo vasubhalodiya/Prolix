@@ -1,18 +1,21 @@
 import { API_URL } from "@/contant";
 import { setMovies, setMoviesError, setMoviesLoading } from "../reducer/movie";
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-export const movieApi = createApi({
-  reducerPath: 'movieApi',
-  baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
+export const moviesApi = createApi({
+  reducerPath: 'moviesApi',
+  baseQuery: fetchBaseQuery({ baseUrl: `${API_URL}` }),
+
+
   endpoints: (builder) => ({
     getMovies: builder.mutation({
-        query: ({ filters } = {}) => {
-          const params = new URLSearchParams(filters || {}).toString();
-  
+        query: () => {
+
           return {
-            url: `/interview/get-interviews?${params}`,
+            url: `/3/discover/movie?api_key=0c9eb6c7265733aad8b14540ca4cdf5f&with_genres=28,12,16`,
             method: "GET",
-            headers: getHeaders(),
+            headers: {  Accept: "application/json",
+                "Content-Type": "application/json",},
           };
         },
         async onQueryStarted(_, { dispatch, queryFulfilled }) {
@@ -22,7 +25,7 @@ export const movieApi = createApi({
             const response = await queryFulfilled;
             dispatch(
               setMovies({
-                data: response.data.interviews,
+                movies: response.data.results,
               })
             );
           } catch (e) {
@@ -31,8 +34,7 @@ export const movieApi = createApi({
           }
         },
       }),
-    
   }),
 });
 
-export const { useGetMoviesMutation } = movieApi;
+export const { useGetMoviesMutation } = moviesApi;

@@ -1,11 +1,12 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const movies = createSlice({
   name: "movies",
   initialState: {
-    data: [],
-    loading: false,
-    error: ""
+    movies: [],
+    recomandedMovies: [],
+    isLoading: false,
+    error: null
   },
   reducers: {
     setMovies(state, action) {

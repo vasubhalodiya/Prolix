@@ -3,13 +3,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchMoviesStart, fetchMoviesSuccess, fetchMoviesFailure } from '../../../redux/moviesSlice';
 import MovieCard from '../../../components/MovieCard/MovieCard';
 import '../../../components/MovieCard/MovieCard.css';
+import { useGetMoviesMutation } from '@/redux/action/movie';
 
 const Movies = () => {
   const dispatch = useDispatch();
   const { movies, loading, error } = useSelector((state) => state.movies);
   const [genres, setGenres] = useState([]);
 
+  const [getMovies] = useGetMoviesMutation();
+
   useEffect(() => {
+    console.log("first")
+    getMovies();
+
     // Fetch genres list
     fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=0c9eb6c7265733aad8b14540ca4cdf5f&language=en-US')
       .then((response) => response.json())
@@ -21,15 +27,8 @@ const Movies = () => {
     // Fetch movies
     dispatch(fetchMoviesStart());
     // fetch('https://api.themoviedb.org/3/discover/movie?api_key=0c9eb6c7265733aad8b14540ca4cdf5f&with_genres=28,12,16')
-    fetch('https://api.themoviedb.org/3/discover/movie?api_key=0c9eb6c7265733aad8b14540ca4cdf5f&with_genres=28,12,16')
-      .then((response) => response.json())
-      .then((data) => {
-        dispatch(fetchMoviesSuccess(data.results));
-      })
-      .catch((error) => {
-        dispatch(fetchMoviesFailure(error.message));
-      });
-  }, [dispatch]);
+
+    }, [dispatch]);
 
   // Function to get genre name from genre ID
   const getGenreName = (genreId) => {
