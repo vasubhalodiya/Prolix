@@ -1,11 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import commonReducer from './commonReducer';
+import { movieApi } from './movieApi';
 
 const store = configureStore({
   reducer: {
-    topRatedMovies: commonReducer.topRatedMovies,
-    movies: commonReducer.movies,
+    [movieApi.reducerPath]: movieApi.reducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(movieApi.middleware),
 });
 
 export default store;
