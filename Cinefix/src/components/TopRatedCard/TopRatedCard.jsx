@@ -15,7 +15,6 @@ const TopRatedCard = ({ rank, title, poster, rating, genre, onClick }) => {
                         </div>
                     </div>
                     <div className="top-rated-card-txt">
-                        <h6 className="top-rated-movie-code">PG-13</h6>
                         <h5 className="top-rated-movie-title moviecard-title">{title}</h5>
                         <h6 className="top-rated-movie-genres moviecard-genres">
                             <i className="fa-light fa-film"></i> {genre}

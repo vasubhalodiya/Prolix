@@ -2,20 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { useGetMoviesQuery } from '../../../redux/movieApi';
 import MovieCard from '../../../components/MovieCard/MovieCard';
 import '../../../components/MovieCard/MovieCard.css';
+import { useNavigate } from 'react-router-dom';
 
 const Movies = () => {
-  const { data: movies, isLoading, isError, error } = useGetMoviesQuery(); // Fetch movies using RTK Query hook
-  const [genres, setGenres] = useState([]); // Store genres list
+  const { data: movies, isLoading, isError, error } = useGetMoviesQuery();
+  const [genres, setGenres] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch genres list from the API
     fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=0c9eb6c7265733aad8b14540ca4cdf5f&language=en-US')
       .then((response) => response.json())
       .then((data) => setGenres(data.genres))
       .catch((error) => console.error('Error fetching genres:', error));
   }, []);
 
-  // Function to get genre name from genre ID
   const getGenreName = (genreId) => {
     const genre = genres.find((genre) => genre.id === genreId);
     return genre ? genre.name : 'Unknown';
@@ -26,12 +26,16 @@ const Movies = () => {
     return productionCompanies.map((company) => company.name).join(', ');
   };
 
+  const handleCardClick = (movieId) => {
+    navigate(`/movies/${movieId}`);
+  };
+
   if (isLoading) {
-    return <div>Loading...</div>; // Display loading message while fetching
+    return <div>Loading...</div>;
   }
 
   if (isError) {
-    return <div>Error: {error.message}</div>; // Display error message if fetching fails
+    return <div>Error: {error.message}</div>;
   }
 
   return (
@@ -48,6 +52,7 @@ const Movies = () => {
                 rating={movie.vote_average}
                 genre={getGenreName(movie.genre_ids[0])}
                 studio={getStudioNames(movie.production_companies)}
+                onClick={() => navigate(`/movies/${movie.id}`)}
               />
             ))
           ) : (

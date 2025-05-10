@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useGetSeriesQuery } from '../../../redux/movieApi';
 import MovieCard from '../../../components/MovieCard/MovieCard';
 import '../../../components/MovieCard/MovieCard.css';
+import { useNavigate } from 'react-router-dom';
 
 const Series = () => {
   const { data: series, isLoading, isError, error } = useGetSeriesQuery();
   const [genres, setGenres] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch('https://api.themoviedb.org/3/genre/tv/list?api_key=0c9eb6c7265733aad8b14540ca4cdf5f&language=en-US')
@@ -22,6 +24,10 @@ const Series = () => {
   const getStudioNames = (productionCompanies) => {
     if (!productionCompanies || productionCompanies.length === 0) return 'Unknown Studio';
     return productionCompanies.map((company) => company.name).join(', ');
+  };
+
+  const handleCardClick = (movieId) => {
+    navigate(`/series/${movieId}`);
   };
 
   if (isLoading) {
@@ -48,6 +54,7 @@ const Series = () => {
                 rating={series.vote_average}
                 // genre={getGenreName(series.genre_ids[0])}
                 studio={getStudioNames(series.production_companies)}
+                onClick={() => navigate(`/series/${series.id}`)}
               />
             ))
           ) : (

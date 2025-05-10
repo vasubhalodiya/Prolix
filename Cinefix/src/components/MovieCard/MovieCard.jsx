@@ -1,12 +1,12 @@
 import React from 'react'
 import './Moviecard.css';
 
-const MovieCard = ({ poster, title, rating, genre }) => {
+const MovieCard = ({ poster, title, rating, genre, onClick }) => {
     const imageUrl = `https://image.tmdb.org/t/p/w780/${poster}`;
 
     return (
         <>
-            <button className='master-btn'>
+            <button className='master-btn' onClick={onClick}>
                 <div className="moviecard">
                     <div className="moviecard-cnt">
                         <div className="moviecard-img-section">

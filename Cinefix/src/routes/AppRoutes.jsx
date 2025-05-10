@@ -27,6 +27,9 @@ const AppRoutes = () => {
         <Route path="/recentplayed" element={<RecentPlayed />} />
         <Route path="/setting" element={<Setting />} />
         <Route path="/toprated/:movieId" element={<MovieDetails />} />
+        <Route path="/movies/:movieId" element={<MovieDetails />} />
+        <Route path="/series/:movieId" element={<MovieDetails />} />
+        <Route path="/tvshows/:movieId" element={<MovieDetails />} />
 
       </Routes>
   );

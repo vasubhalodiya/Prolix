@@ -10,6 +10,8 @@ const MovieDetails = () => {
   const [videoKey, setVideoKey] = useState(null);
   const [recommendations, setRecommendations] = useState([]);
 
+  const type = location.pathname.includes("/series/") ? "tv" : "movie";
+
   useEffect(() => {
     if (!movieId) {
       console.error("movieId is undefined!");
@@ -21,7 +23,7 @@ const MovieDetails = () => {
         const API_KEY = "0c9eb6c7265733aad8b14540ca4cdf5f";
 
         const res = await fetch(
-          `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&append_to_response=videos`
+          `https://api.themoviedb.org/3/${type}/${movieId}?api_key=${API_KEY}&append_to_response=videos`
         );
         const data = await res.json();
         setMovieDetails(data);
@@ -58,7 +60,7 @@ const MovieDetails = () => {
 
   return (
     <>
-      {/* <div className="movie-sidebar">
+      <div className="movie-sidebar">
         <div className="movie-sidebar-cnt">
           <div className="movie-sidebar-cnt-head">
             <h2 className='section-heading'>Recommendation</h2>
@@ -74,8 +76,8 @@ const MovieDetails = () => {
             ))}
           </div>
         </div>
-      </div> */}
-      <MovieSidebar />
+      </div>
+      <MovieSidebar recommendations={recommendations} />
     </>
   );
 };
@@ -85,3 +87,4 @@ export default MovieDetails;
 
 // rec = recommendations
 // res = response
+

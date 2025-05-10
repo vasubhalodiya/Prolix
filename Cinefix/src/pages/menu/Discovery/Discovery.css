@@ -100,7 +100,7 @@
     top: 65px;
     right: 0;
     z-index: 10;
-    padding: 20px;
+    padding: 10px 20px;
 }
 
 .movie-sidebar-cnt-cards-list
@@ -118,11 +118,30 @@
     width: 100% !important;
 }
 
+.discovery-top-rated
+{
+    margin-top: 10px;
+}
 
+.discovery-top-rated .top-rated-card-rank
+{
+    font-size: 30px;
+}
 
+.discovery-top-rated .master-btn
+{
+    padding: 0;
+}
 
+.discovery-top-rated .top-rated-card
+{
+    margin-bottom: 20px;
+}
 
-
+.discovery-top-rated .moviecard-title
+{
+    line-height: 20px;
+}
 
 
 

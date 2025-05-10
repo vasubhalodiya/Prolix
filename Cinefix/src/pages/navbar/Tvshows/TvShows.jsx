@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useGetTvShowsQuery } from '../../../redux/movieApi';
 import MovieCard from '../../../components/MovieCard/MovieCard';
 import '../../../components/MovieCard/MovieCard.css';
+import { useNavigate } from 'react-router-dom';
 
 const TvShows = () => {
   const { data: tvshows, isLoading, isError, error } = useGetTvShowsQuery();
   const [genres, setGenres] = useState([]);
+  const navigate = useNavigate();
+  
 
   useEffect(() => {
       fetch('https://api.themoviedb.org/3/discover/tv?api_key=0c9eb6c7265733aad8b14540ca4cdf5f&with_origin_country=IN&with_genres=18&language=en-US')
@@ -24,6 +27,10 @@ const TvShows = () => {
       return productionCompanies.map((company) => company.name).join(', ');
     };
   
+    const handleCardClick = (movieId) => {
+      navigate(`/tvshows/${movieId}`);
+    };
+
     if (isLoading) {
       return <div>Loading...</div>;
     }
@@ -47,6 +54,7 @@ const TvShows = () => {
                 rating={tv.vote_average}
                 // genre={getGenreName(tv.genre_ids[0])}
                 studio={getStudioNames(tv.production_companies)}
+                onClick={() => navigate(`/tvshows/${tv.id}`)}
               />
             ))
           ) : (

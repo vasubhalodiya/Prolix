@@ -19,7 +19,7 @@
     /* text-overflow: ellipsis; */
 }
 
-.top-rated-movie-code {
+/* .top-rated-movie-code {
     width: 60px;
     height: 30px;
     color: var(--text-light-color);
@@ -31,7 +31,7 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 10px;
-}
+} */
 
 .top-rated-movie-title {
     margin-bottom: 10px;
