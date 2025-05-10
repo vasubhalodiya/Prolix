@@ -1,6 +1,6 @@
 .discovery
 {
-    width: 74%;
+    width: 76%;
 }
  
 .disc-header-latest-movie-poster {
@@ -93,7 +93,7 @@
 
 .movie-sidebar
 {
-    width: 21%;
+    width: 20%;
     height: 100%;
     background-color: var(--primary-color);
     position: fixed;

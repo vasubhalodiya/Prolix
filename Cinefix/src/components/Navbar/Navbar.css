@@ -106,7 +106,10 @@
     margin: 0 4px 0px 7px;
 }
 
-
+.navbar-subscribe-btn button
+{
+    padding: 6px 15px;
+}
 
 
 

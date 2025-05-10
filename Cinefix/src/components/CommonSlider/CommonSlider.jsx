@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import './CommonSlider.css';  // Update the CSS file name accordingly
+import './CommonSlider.css';
 
 export default function CommonSlider({ title, data, renderCard }) {
     const [isAtStart, setIsAtStart] = useState(true);

@@ -6,19 +6,19 @@ export const movieApi = createApi({
     baseUrl: 'https://api.themoviedb.org/3/',
   }),
   endpoints: (builder) => ({
-    // Endpoint for fetching top-rated movies
+    // top-rated movies
     getTopRatedMovies: builder.query({
       query: () => 'discover/movie?api_key=0c9eb6c7265733aad8b14540ca4cdf5f&with_companies=2&sort_by=vote_average.desc&vote_count.gte=100&page=1&language=en-US',
     }),
-    // Endpoint for fetching popular movies
+    // movies
     getMovies: builder.query({
       query: () => 'discover/movie?api_key=0c9eb6c7265733aad8b14540ca4cdf5f&with_genres=28,12,16',
     }),
-    // Endpoint for fetching popular series
+    // series
     getSeries: builder.query({
       query: () => 'discover/tv?api_key=0c9eb6c7265733aad8b14540ca4cdf5f&with_companies=420&language=en-US',
     }),
-    // Endpoint for fetching popular tv shows
+    // tv shows
     getTvShows: builder.query({
       query: () => 'discover/tv?api_key=0c9eb6c7265733aad8b14540ca4cdf5f&with_origin_country=IN&first_air_date.gte=2023-01-01&language=en-US',
     }),

@@ -34,7 +34,7 @@ const Sidebar = () => {
               <div className="sidebar-link-list">
                 <ul className="sidebar-links">
                 <NavLink to="/mybackpack" iconClass="fa-light fa-backpack" label="My Backpack" isSidebar={true} />
-                <NavLink to="/download" iconClass="fa-regular fa-download" label="Download" isSidebar={true} />
+                <NavLink to="/recentplayed" iconClass="fa-regular fa-clock-rotate-left" label="Recent Played" isSidebar={true} />
                 <NavLink to="/setting" iconClass="fa-regular fa-gear" label="Setting" isSidebar={true} />
                 </ul>
               </div>

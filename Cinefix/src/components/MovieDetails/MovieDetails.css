@@ -1,0 +1,31 @@
+.recommendation-cards-list .moviecard {
+    margin-bottom: 10px;
+}
+
+.recommendation-cards-list .moviecard-txt {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.recommendation-cards-list .moviecard-title {
+    margin-bottom: 0;
+    max-width: 185px;
+    -webkit-line-clamp: 1;
+}
+
+.recommendation-cards-list .movie-sidebar-cnt-cards-list button {
+    margin-bottom: 0;
+}
+
+.recommendation-cards-list .master-btn {
+    padding: 7px;
+}
+
+.recommendation-cards-list.movie-sidebar-cnt-cards-list {
+    margin-top: 10px;
+}
+
+.recommendation-cards-list.movie-sidebar-cnt-cards-list .master-btn {
+    margin-bottom: 0;
+}

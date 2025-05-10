@@ -43,7 +43,7 @@ const Movies = () => {
             movies.results.map((movie) => (
               <MovieCard
                 key={movie.id}
-                poster={movie.backdrop_path || movie.poster_path} // Use backdrop path if available
+                poster={movie.backdrop_path || movie.poster_path} // backdrop_path = horizontal, poster_path = vertical
                 title={movie.title}
                 rating={movie.vote_average}
                 genre={getGenreName(movie.genre_ids[0])}

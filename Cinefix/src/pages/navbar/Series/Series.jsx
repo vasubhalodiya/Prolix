@@ -4,18 +4,16 @@ import MovieCard from '../../../components/MovieCard/MovieCard';
 import '../../../components/MovieCard/MovieCard.css';
 
 const Series = () => {
-  const { data: series, isLoading, isError, error } = useGetSeriesQuery(); // Fetch movies using RTK Query hook
-  const [genres, setGenres] = useState([]); // Store genres list
+  const { data: series, isLoading, isError, error } = useGetSeriesQuery();
+  const [genres, setGenres] = useState([]);
 
   useEffect(() => {
-    // Fetch genres list from the API
     fetch('https://api.themoviedb.org/3/genre/tv/list?api_key=0c9eb6c7265733aad8b14540ca4cdf5f&language=en-US')
       .then((response) => response.json())
       .then((data) => setGenres(data.genres))
       .catch((error) => console.error('Error fetching genres:', error));
   }, []);
 
-  // Function to get genre name from genre ID
   const getGenreName = (genreId) => {
     const genre = genres.find((genre) => genre.id === genreId);
     return genre ? genre.name : 'Unknown';
@@ -27,12 +25,12 @@ const Series = () => {
   };
 
   if (isLoading) {
-    return <div>Loading...</div>; // Display loading message while fetching
+    return <div>Loading...</div>;
   }
 
   if (isError) {
     console.log('Error:', error);
-    return <div>Error: {error.message}</div>; // Display error message if fetching fails
+    return <div>Error: {error.message}</div>;
   }
 
 
