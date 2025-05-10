@@ -14,7 +14,6 @@ const Navbar = () => {
                 <NavLink to="/movies" label="Movies" />
                 <NavLink to="/series" label="Series" />
                 <NavLink to="/tvshows" label="Tv Shows" />
-                <NavLink to="/sports" label="Sports" />
               </ul>
             </div>
             <div className="navbar-profile-section">

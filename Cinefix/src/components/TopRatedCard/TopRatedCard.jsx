@@ -1,12 +1,12 @@
 import React from 'react';
 import './TopRatedCard.css';
 
-const TopRatedCard = ({ rank, title, poster, rating, genre }) => {
+const TopRatedCard = ({ rank, title, poster, rating, genre, onClick }) => {
     const imageUrl = `https://image.tmdb.org/t/p/w500/${poster}`;
 
     return (
         <>
-            <button className='master-btn'>
+            <button className='master-btn' onClick={onClick}>
                 <div className="top-rated-card">
                     <div className="top-rated-rank-img-part">
                         <div className="top-rated-card-rank">{rank}</div>

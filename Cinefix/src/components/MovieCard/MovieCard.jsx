@@ -16,7 +16,8 @@ const MovieCard = ({ poster, title, rating, genre }) => {
                             <h5 className="moviecard-title">{title}</h5>
                             <div className="moviecard-genres">
                                 <h4 className="moviecard-rating"><i className="fa-solid fa-star"></i>{rating ? rating.toFixed(1) : "N/A"}</h4>
-                                <h6 className="moviecard-genres">•&ensp;{genre}</h6>
+                                {/* <h6 className="moviecard-genres">•&ensp;{genre}</h6> */}
+                                {genre && <h6 className="moviecard-genres">•&ensp;{genre}</h6>}
                             </div>
                         </div>
                     </div>

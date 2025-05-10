@@ -14,3 +14,5 @@ User api free avaliable hoy chhe
 5 may - axios use to data edit and delete and paggination - rtk(react toolkit) use to create counter app- love babbar
 
 6 may - Redux query and mutation, authentication
+
+7 may - Cinefix website creation

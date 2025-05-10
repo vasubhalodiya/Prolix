@@ -27,12 +27,10 @@ const Movies = () => {
   };
 
   if (isLoading) {
-    console.log('Loading...');
     return <div>Loading...</div>; // Display loading message while fetching
   }
 
   if (isError) {
-    console.log('Error:', error);
     return <div>Error: {error.message}</div>; // Display error message if fetching fails
   }
 

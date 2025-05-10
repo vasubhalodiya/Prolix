@@ -2,7 +2,6 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Movies from '../pages/navbar/Movie/Movies';
 import Series from '../pages/navbar/Series/Series';
-import Sports from '../pages/navbar/Sports/Sports';
 import TVshows from '../pages/navbar/Tvshows/TvShows';
 import Download from '../pages/library/Download/Download';
 import MyBackpack from '../pages/library/MyBackpack/MyBackpack';
@@ -11,6 +10,7 @@ import Category from '../pages/menu/Category/Category';
 import Discovery from '../pages/menu/Discovery/Discovery';
 import Search from '../pages/menu/Search/Search';
 import TopRated from '../pages/menu/TopRated/TopRated';
+import MovieDetails from '../components/MovieDetails/MovieDetails';
 
 const AppRoutes = () => {
   return (
@@ -19,7 +19,6 @@ const AppRoutes = () => {
         <Route path="/" element={<Discovery />} />
         <Route path="/movies" element={<Movies />} />
         <Route path="/series" element={<Series />} />
-        <Route path="/sports" element={<Sports />} />
         <Route path="/tvshows" element={<TVshows />} />
         <Route path="/download" element={<Download />} />
         <Route path="/mybackpack" element={<MyBackpack />} />
@@ -27,7 +26,8 @@ const AppRoutes = () => {
         <Route path="/category" element={<Category />} />
         <Route path="/search" element={<Search />} />
         <Route path="/toprated" element={<TopRated />} />
-        
+        <Route path="/toprated/:movieId" element={<MovieDetails />} />
+
       </Routes>
   );
 };

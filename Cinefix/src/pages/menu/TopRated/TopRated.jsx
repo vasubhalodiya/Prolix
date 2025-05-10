@@ -3,10 +3,13 @@ import React, { useState, useEffect } from 'react';
 import { useGetTopRatedMoviesQuery } from '../../../redux/movieApi'; // Use the correct query hook
 import TopRatedCard from '../../../components/TopRatedCard/TopRatedCard';
 import '../../../components/TopRatedCard/TopRatedCard.css';
+import { useNavigate } from 'react-router-dom';
+
 
 const TopRated = () => {
   const { data: movies, isLoading, isError, error } = useGetTopRatedMoviesQuery(); // Use the correct RTK Query hook
   const [genres, setGenres] = useState([]); // Store genres list
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Fetch genres list
@@ -21,6 +24,11 @@ const TopRated = () => {
     const genre = genres.find((genre) => genre.id === genreId);
     return genre ? genre.name : 'Unknown';
   };
+
+  const handleCardClick = (movieId) => {
+    navigate(`/movie/${movieId}`);
+  };
+
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -43,7 +51,9 @@ const TopRated = () => {
               poster={movie.poster_path}
               rating={movie.vote_average}
               genre={getGenreName(movie.genre_ids[0])}
+              onClick={() => navigate(`/toprated/${movie.id}`)}
             />
+
           ))
         ) : (
           <p>No top-rated movies available</p>
