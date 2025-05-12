@@ -5,11 +5,11 @@
 } */
 
 .navbar {
-    position: fixed; /* ya sticky */
+    position: fixed;
     top: 0;
-    left: 250px; /* agar sidebar fix hai to */
+    left: 250px;
     right: 0;
-    z-index: 1000; /* taaki sab ke upar dikhe */
+    z-index: 9999999999999999;
     background-color: var(--primary-color);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }

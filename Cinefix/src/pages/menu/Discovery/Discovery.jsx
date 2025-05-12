@@ -52,7 +52,7 @@ const Discovery = () => {
 
   return (
     <>
-      <div className="discovery">
+      <div className="discovery master-container">
         <div className="discovery-cnt">
           <div className="disc-header-latest-movie-poster">
             <img src={images.dr_strange} alt="" className='latest-movie-poster-img' />

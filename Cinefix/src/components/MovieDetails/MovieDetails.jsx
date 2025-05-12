@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import MovieCard from "../MovieCard/MovieCard";
-import "./MovieDetails.css";
 import MovieSidebar from "../MovieSidebar/MovieSidebar";
+import "./MovieDetails.css";
 
 const MovieDetails = () => {
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
   const [videoKey, setVideoKey] = useState(null);
   const [recommendations, setRecommendations] = useState([]);
+  const [showVideo, setShowVideo] = useState(false);
 
   const type = location.pathname.includes("/series/") ? "tv" : "movie";
 
@@ -59,32 +60,78 @@ const MovieDetails = () => {
   }
 
   return (
-    <>
-      <div className="movie-sidebar">
-        <div className="movie-sidebar-cnt">
-          <div className="movie-sidebar-cnt-head">
-            <h2 className='section-heading'>Recommendation</h2>
+    <div className="movie-details-container master-container">
+      <div className="movie-main-details">
+        <div className="movie-info">
+          {videoKey && (
+            <div className="trailer">
+              {!showVideo ? (
+                <div className="trailer-relative">
+                  <img
+                    src={`https://image.tmdb.org/t/p/w500${movieDetails.backdrop_path}`}
+                    alt={movieDetails.title || movieDetails.name}
+                    className="movie-thumbnail"
+                  />
+                  <div
+                    className="movie-play-btn-detail"
+                    onClick={() => setShowVideo(true)}
+                  >
+                    <div className="play-btn">
+                      <div className="play-btn-circle">
+                        <i className="fa-solid fa-play btn-play"></i>
+                      </div>
+                      <div className="play-btn-text moviecard-title">
+                        {movieDetails.title || movieDetails.name}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <iframe
+                  width="100%"
+                  height="500"
+                  src={`https://www.youtube.com/embed/${videoKey}?autoplay=1`}
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              )}
+            </div>
+          )}
+          <div className="movie-details-section">
+            <h1 className="movie-details-title">
+              {movieDetails.title || movieDetails.name}
+            </h1>
+            <p className="movie-details-genres">
+              <i className="fa-light fa-film"></i>{" "}
+              {movieDetails.genres ? movieDetails.genres?.slice(0, 2).map((g) => g.name).join(" • ") : "N/A"}
+            </p>
+            <p className="movie-details-rating">
+              <i className="fa-solid fa-star"></i>{" "}
+              {movieDetails.vote_average ? movieDetails.vote_average.toFixed(1) : "N/A"}
+            </p>
+            <p className="movie-details-release-date">
+              <i className="fa-light fa-calendar-days"></i>{" "}
+              {movieDetails.release_date ||
+              movieDetails.first_air_date ? movieDetails.release_date || movieDetails.first_air_date : "N/A"}
+            </p>
           </div>
-          <div className="movie-sidebar-cnt-cards-list recommendation-cards-list">
-            {recommendations.map((rec) => (
-              <MovieCard
-                key={rec.id}
-                poster={rec.backdrop_path || rec.poster_path} // backdrop_path = horizontal, poster_path = vertical
-                title={rec.title}
-                rating={rec.vote_average}
-              />
-            ))}
+          <div className="movie-details-storyline-txt-section">
+            <h5 className="top-rated-movie-title moviecard-title">Storyline</h5>
+            <p className="movie-details-storyline">
+              {movieDetails.overview ? movieDetails.overview : "No Storyline Avaliable."}
+            </p>
           </div>
         </div>
       </div>
+
       <MovieSidebar recommendations={recommendations} />
-    </>
+    </div>
   );
 };
 
 export default MovieDetails;
 
-
-// rec = recommendations
-// res = response
-
+// // rec = recommendations
+// // res = response

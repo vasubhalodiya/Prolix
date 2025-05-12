@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import './Moviecard.css';
 
 const MovieCard = ({ poster, title, rating, genre, onClick }) => {
@@ -6,7 +6,7 @@ const MovieCard = ({ poster, title, rating, genre, onClick }) => {
 
     return (
         <>
-            <button className='master-btn' onClick={onClick}>
+            <button className="master-btn" onClick={onClick}>
                 <div className="moviecard">
                     <div className="moviecard-cnt">
                         <div className="moviecard-img-section">
@@ -15,8 +15,9 @@ const MovieCard = ({ poster, title, rating, genre, onClick }) => {
                         <div className="moviecard-txt">
                             <h5 className="moviecard-title">{title}</h5>
                             <div className="moviecard-genres">
-                                <h4 className="moviecard-rating"><i className="fa-solid fa-star"></i>{rating ? rating.toFixed(1) : "N/A"}</h4>
-                                {/* <h6 className="moviecard-genres">•&ensp;{genre}</h6> */}
+                                <h4 className="moviecard-rating">
+                                    <i className="fa-solid fa-star"></i>{rating ? rating.toFixed(1) : "N/A"}
+                                </h4>
                                 {genre && <h6 className="moviecard-genres">•&ensp;{genre}</h6>}
                             </div>
                         </div>
@@ -24,7 +25,7 @@ const MovieCard = ({ poster, title, rating, genre, onClick }) => {
                 </div>
             </button>
         </>
-    )
-}
+    );
+};
 
 export default MovieCard;
