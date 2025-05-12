@@ -1,0 +1,120 @@
+.payment-success-container
+{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.payment-success-heading
+{
+    width: 100%;
+    height: 65px;
+    background-color: var(--primary-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.payment-success-heading .logo
+{
+    width: 100px;
+}
+
+.payment-success-title
+{
+    max-width: 28%;
+    text-align: center;
+}
+
+.payment-success-big-heading
+{
+    margin-bottom: 20px;
+}
+
+.payment-success-paragraph
+{
+    color: var(--text-color);
+    font-size: 17px;
+    font-family: 'Int-Medium';
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

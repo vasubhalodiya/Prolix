@@ -59,6 +59,7 @@
   --red-color: #e43a3a;
   --border-color: #3a3a3a;
   --yellow-color: #FFD700;
+  --green-color: #19e24f;
 
   color: var(--light-color);
   background-color: var(--primary-color);

@@ -12,6 +12,8 @@ import peacock from '../assets/images/peacock.svg';
 import dr_strange from "../assets/images/dr-strange.jpg";
 import galaxy from "../assets/images/galaxy.jpg";
 import mufasa from "../assets/images/mufasa.jpg";
+// other logo
+import payment_successfull from "../assets/images/payment-successfull.png";
 
 
 const images = {
@@ -29,6 +31,8 @@ const images = {
     dr_strange,
     galaxy,
     mufasa,
+    //other logo
+    payment_successfull
 };
 
 export default images;

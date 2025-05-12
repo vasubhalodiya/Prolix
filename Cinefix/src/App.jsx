@@ -18,22 +18,32 @@
 // };
 
 // export default App;
-import React from "react";
+
+import React, { useEffect } from "react";
 import './App.css';
 import Sidebar from "./components/Sidebar/Sidebar";
 import AppRoutes from "./routes/AppRoutes";
-import { useLocation } from "react-router-dom";  // Import useLocation from react-router-dom
+import { useLocation } from "react-router-dom";
 
 const App = () => {
-  const location = useLocation(); // Hook to get current route
+  const location = useLocation();
 
-  // Check if the current route is Subscribe page
-  const hideSidebar = location.pathname === "/subscribe"; 
+  const hideSidebarRoutes = ["/subscribe", "/paymentsuccessfull"];
+  const isResetLayout = hideSidebarRoutes.includes(location.pathname);
+
+  useEffect(() => {
+    if (isResetLayout) {
+      document.body.classList.add("reset-css");
+    } else {
+      document.body.classList.remove("reset-css");
+    }
+
+    return () => document.body.classList.remove("reset-css");
+  }, [location.pathname, isResetLayout]);
 
   return (
     <>
-      {/* Conditional rendering of Sidebar */}
-      {!hideSidebar && <Sidebar />}
+      {!isResetLayout && <Sidebar />}
       <div className="app-layout">
         <main className="main-cnt">
           <AppRoutes />

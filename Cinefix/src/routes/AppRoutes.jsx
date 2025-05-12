@@ -11,6 +11,7 @@ import TopRated from '../pages/menu/TopRated/TopRated';
 import MyBackpack from '../pages/library/MyBackpack/MyBackpack';
 import Setting from '../pages/library/Setting/Setting';
 import MovieDetails from '../components/MovieDetails/MovieDetails';
+import PaymentSuccessfull from '../pages/navbar/PaymentSuccessfull/PaymentSuccessfull';
 
 const AppRoutes = () => {
   return (
@@ -32,6 +33,7 @@ const AppRoutes = () => {
         <Route path="/tvshows/:movieId" element={<MovieDetails />} />
         <Route path="/moviedetails/:movieId" element={<MovieDetails />} />
         <Route path="/:contentType/:movieId" element={<MovieDetails />} />
+        <Route path="/paymentsuccessfull" element={<PaymentSuccessfull />} />
 
       </Routes>
   );
