@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import MovieCard from "../MovieCard/MovieCard";
 import MovieSidebar from "../MovieSidebar/MovieSidebar";
 import "./MovieDetails.css";
 
 const MovieDetails = () => {
   const { movieId } = useParams();
+  const location = useLocation();
   const [movieDetails, setMovieDetails] = useState(null);
   const [videoKey, setVideoKey] = useState(null);
   const [recommendations, setRecommendations] = useState([]);
   const [showVideo, setShowVideo] = useState(false);
 
+  // Determine type of content (movie or tv)
   const type = location.pathname.includes("/series/") ? "tv" : "movie";
 
   useEffect(() => {
@@ -29,7 +31,7 @@ const MovieDetails = () => {
         const data = await res.json();
         setMovieDetails(data);
 
-        if (data.videos && data.videos.results.length > 0) {
+        if (data.videos?.results?.length) {
           setVideoKey(data.videos.results[0].key);
         }
 
@@ -40,11 +42,9 @@ const MovieDetails = () => {
             `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_companies=${companyId}`
           );
           const recData = await recRes.json();
-
           const filtered = recData.results.filter(
             (movie) => movie.id !== data.id
           );
-
           setRecommendations(filtered.slice(0, 3));
         }
       } catch (error) {
@@ -53,7 +53,7 @@ const MovieDetails = () => {
     };
 
     fetchMovieDetails();
-  }, [movieId]);
+  }, [movieId, type]); // Make sure to depend on `movieId` and `type`
 
   if (!movieDetails) {
     return <div>Loading...</div>;
@@ -105,33 +105,41 @@ const MovieDetails = () => {
             </h1>
             <p className="movie-details-genres">
               <i className="fa-light fa-film"></i>{" "}
-              {movieDetails.genres ? movieDetails.genres?.slice(0, 2).map((g) => g.name).join(" • ") : "N/A"}
+              {movieDetails.genres
+                ? movieDetails.genres.slice(0, 2).map((g) => g.name).join(" • ")
+                : "N/A"}
             </p>
             <p className="movie-details-rating">
               <i className="fa-solid fa-star"></i>{" "}
-              {movieDetails.vote_average ? movieDetails.vote_average.toFixed(1) : "N/A"}
+              {movieDetails.vote_average
+                ? movieDetails.vote_average.toFixed(1)
+                : "N/A"}
             </p>
             <p className="movie-details-release-date">
               <i className="fa-light fa-calendar-days"></i>{" "}
               {movieDetails.release_date ||
-              movieDetails.first_air_date ? movieDetails.release_date || movieDetails.first_air_date : "N/A"}
+              movieDetails.first_air_date
+                ? movieDetails.release_date || movieDetails.first_air_date
+                : "N/A"}
             </p>
           </div>
           <div className="movie-details-storyline-txt-section">
             <h5 className="top-rated-movie-title moviecard-title">Storyline</h5>
             <p className="movie-details-storyline">
-              {movieDetails.overview ? movieDetails.overview : "No Storyline Avaliable."}
+              {movieDetails.overview
+                ? movieDetails.overview
+                : "No Storyline Available."}
             </p>
           </div>
         </div>
       </div>
 
-      <MovieSidebar recommendations={recommendations} />
+      {/* Only render MovieSidebar if there are recommendations */}
+      {recommendations.length > 0 && <MovieSidebar recommendations={recommendations} />}
     </div>
   );
 };
 
 export default MovieDetails;
-
-// // rec = recommendations
-// // res = response
+// // // rec = recommendations
+// // // res = response
