@@ -82,7 +82,8 @@ li {
   list-style: none;
 }
 
-body {
+/* body or .app-layout */
+.app-layout {
   margin-top: 65px;
 }
 
