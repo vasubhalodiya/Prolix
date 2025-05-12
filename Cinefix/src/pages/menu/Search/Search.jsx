@@ -51,7 +51,6 @@ const SearchPage = () => {
       .then((data) => setGenres(data.genres))
       .catch((error) => console.error('Error fetching genres:', error));
   }, []);
-  
 
   const getGenreName = (genreId) => {
     const genre = genres.find((genre) => genre.id === genreId);
