@@ -1,14 +1,25 @@
-// src/pages/MyBackpack.jsx
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { removeFromBackpack } from '../redux/backpackSlice'; // import removeFromBackpack action
+// src/pages/library/MyBackpack.jsx
+import React, { useEffect, useState } from "react";
 
 const MyBackpack = () => {
-  const dispatch = useDispatch();
-  const backpackMovies = useSelector((state) => state.backpack.movies);
+  const [backpackMovies, setBackpackMovies] = useState([]);
+
+  const loadBackpack = () => {
+    const stored = localStorage.getItem("myBackpack");
+    if (stored) setBackpackMovies(JSON.parse(stored));
+  };
+
+  useEffect(() => {
+    loadBackpack();
+    // Sync when movie is added
+    window.addEventListener("backpackUpdated", loadBackpack);
+    return () => window.removeEventListener("backpackUpdated", loadBackpack);
+  }, []);
 
   const handleRemoveFromBackpack = (movieId) => {
-    dispatch(removeFromBackpack({ id: movieId })); // Remove movie from backpack
+    const updated = backpackMovies.filter((movie) => movie.id !== movieId);
+    setBackpackMovies(updated);
+    localStorage.setItem("myBackpack", JSON.stringify(updated));
   };
 
   return (
@@ -19,10 +30,10 @@ const MyBackpack = () => {
           {backpackMovies.map((movie) => (
             <div key={movie.id} className="movie-card">
               <img
-                src={`https://image.tmdb.org/t/p/w200/${movie.poster}`}
-                alt={movie.title}
+                src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+                alt={movie.title || movie.name}
               />
-              <p>{movie.title}</p>
+              <p>{movie.title || movie.name}</p>
               <button onClick={() => handleRemoveFromBackpack(movie.id)}>
                 Remove from Backpack
               </button>

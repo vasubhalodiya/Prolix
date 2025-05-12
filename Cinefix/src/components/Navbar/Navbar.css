@@ -111,7 +111,27 @@
     padding: 6px 15px;
 }
 
+.navbar-subscribe-btn .navbar-link
+{
+    width: 110px;
+    height: 40px;
+    background-color: var(--red-color);
+    color: var(--light-color);
+    border: none;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background-image: none;
+    transition: all 0.3s ease;
+}
 
+.navbar-subscribe-btn .navbar-link:hover
+{
+    height: 40px;
+    background-color: #cb1f1f;
+}
 
 
 

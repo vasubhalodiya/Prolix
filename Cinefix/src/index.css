@@ -73,6 +73,15 @@ textarea:focus {
   outline: 0;
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
 body {
   margin-top: 65px;
 }
@@ -102,8 +111,7 @@ i {
   transition: all 0.3s ease;
 }
 
-.master-error
-{
+.master-error {
   width: 200px;
   height: 40px;
   color: var(--red-color);
@@ -118,8 +126,7 @@ i {
   justify-content: center;
 }
 
-.master-loading
-{
+.master-loading {
   width: 200px;
   height: 40px;
   color: #006eff;
