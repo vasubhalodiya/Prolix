@@ -7,12 +7,14 @@ import ContinueWatching from '@/components/ContinueWatching/ContinueWatching';
 import { useEffect, useState } from 'react';
 import TopRatedCard from '@/components/TopRatedCard/TopRatedCard';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 const Discovery = () => {
   const [topRatedMovies, setTopRatedMovies] = useState([]);
   const [genres, setGenres] = useState([]);
   const navigate = useNavigate();
+  const continueList = useSelector((state) => state.continueWatching);
 
   useEffect(() => {
     const fetchTopRatedMovies = async () => {
@@ -71,9 +73,9 @@ const Discovery = () => {
           <div className="disc-studios-slider">
             <StudioSlider />
           </div>
-          <div className="disc-continue-watching-slider">
+          {/* <div className="disc-continue-watching-slider">
             <ContinueWatching />
-          </div>
+          </div> */}
           <div className="movie-sidebar">
             <div className="movie-sidebar-cnt">
               <div className="movie-sidebar-cnt-head">
