@@ -66,7 +66,8 @@ const SubscribeCard = ({ type, price, features, isActive, onSubscribe }) => {
         <div className={`subscribe-card-type ${isActive ? 'active' : ''}`}>
           <p className="subscribe-card-type-mode">{type}</p>
           <p className="subscribe-card-type-price">
-            ₹{price}<span>/Month</span>
+            {/* ₹{price}<span>/Month</span> */}
+            ₹{price}<span>{type === 'Yearly Subscription' ? '/Year' : '/Month'}</span>
           </p>
         </div>
         <div className="subscribe-card-offer-lists">
@@ -86,13 +87,11 @@ const SubscribeCard = ({ type, price, features, isActive, onSubscribe }) => {
         </div>
         {/* Conditionally render the 'Get Started' or 'Buy Now' button */}
         <div className="subscribe-card-buy">
-        <Button
-  variant={isActive ? 'filled' : 'outline'}
-  onClick={() => onSubscribe()}
->
-  {isActive ? 'Buy Now' : 'Get Started'}
-</Button>
-
+          <Button
+            variant={isActive ? 'filled' : 'outline'}
+            onClick={() => onSubscribe()}>
+            {isActive ? 'Buy Now' : 'Get Started'}
+          </Button>
 
         </div>
       </div>

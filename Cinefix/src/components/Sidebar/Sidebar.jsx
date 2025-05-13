@@ -23,6 +23,7 @@ const Sidebar = () => {
                 <NavLink to="/" iconClass="fa-regular fa-compass" label="Discovery" isSidebar={true} />
                 <NavLink to="/search" iconClass="fa-regular fa-magnifying-glass" label="Search" isSidebar={true} />
                 <NavLink to="/toprated" iconClass="fa-regular fa-star" label="Top Rated" isSidebar={true} />
+                <NavLink to="/premium" iconClass="fa-regular fa-crown" label="Premium" isSidebar={true} />
                 </ul>
               </div>
             </div>

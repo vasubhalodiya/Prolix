@@ -32,7 +32,7 @@ const images = {
     galaxy,
     mufasa,
     //other logo
-    payment_successfull
+    payment_successfull,
 };
 
 export default images;

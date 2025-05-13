@@ -3,8 +3,11 @@ import './Subscribe.css';
 import { Link } from 'react-router-dom';
 import images from '../../../utils/images';
 import SubscribeCard from '@/components/SubscribeCard/SubscribeCard';
+import { useNavigate } from 'react-router-dom';
 
 const Subscribe = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     document.body.classList.add('reset-css');
     return () => {
@@ -13,19 +16,18 @@ const Subscribe = () => {
   }, []);
 
   const handlePayment = async (amount) => {
-    console.log("Payment initiated for amount:", amount); // Debug
+    console.log("Payment initiated for amount:", amount);
+
     try {
       const res = await fetch("http://localhost:5000/create-order", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({ amount }) // <- important
+        body: JSON.stringify({ amount })
       });
-
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || "Failed to create order");
-
       const options = {
         key: "rzp_test_f72l5fnGjUGpvZ",
         amount: data.amount,
@@ -35,7 +37,8 @@ const Subscribe = () => {
         order_id: data.id,
         handler: function (response) {
           console.log("Payment successful!", response);
-          // redirect or toast
+          localStorage.setItem('isSubscribed', 'true'); // Set subscription status
+          navigate('/paymentsuccessfull'); // Redirect to payment successful page
         },
         prefill: {
           name: "Vasu",
@@ -46,13 +49,14 @@ const Subscribe = () => {
           color: "#121212"
         }
       };
-
       const razor = new window.Razorpay(options);
       razor.open();
+
     } catch (error) {
       console.error("Error in payment flow:", error);
     }
   };
+
 
   const plans = [
     {
@@ -70,9 +74,9 @@ const Subscribe = () => {
     },
     {
       type: 'Monthly Subscription',
-      price: '4.99',
+      price: '189',
       isActive: true, // This plan will be static and active by default
-      amountInINR: 499,
+      amountInINR: 189,
       features: [
         { text: 'Streaming in high quality', available: true },
         { text: 'With the best audio quality', available: true },
@@ -83,9 +87,9 @@ const Subscribe = () => {
     },
     {
       type: 'Yearly Subscription',
-      price: '49.99',
+      price: '2189',
       isActive: false, // Set to false as per requirement
-      amountInINR: 4999,
+      amountInINR: 2189,
       features: [
         { text: 'Streaming in high quality', available: true },
         { text: 'With the best audio quality', available: true },
@@ -109,7 +113,7 @@ const Subscribe = () => {
           <h2 className='subscribe-big-txt'>It's easy to get started</h2>
           <h2 className='subscribe-small-txt'>Choose the best plan to enjoy the best movies and series</h2>
         </div>
-        <div className="subscribe-section">
+        {/* <div className="subscribe-section">
           {plans.map((plan, index) => (
             <SubscribeCard
               key={index}
@@ -120,7 +124,20 @@ const Subscribe = () => {
               onSubscribe={() => handlePayment(plan.amountInINR)} // Handle subscription payment directly
             />
           ))}
+        </div> */}
+        <div className="subscribe-section">
+          {plans.map((plan, index) => (
+            <SubscribeCard
+              key={index}
+              type={plan.type}
+              price={plan.price}
+              features={plan.features}
+              isActive={plan.isActive}
+              onSubscribe={() => handlePayment(plan.amountInINR)}>
+            </SubscribeCard>
+          ))}
         </div>
+
       </div>
     </div>
   );

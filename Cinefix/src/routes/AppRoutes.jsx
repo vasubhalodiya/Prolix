@@ -1,5 +1,5 @@
 // src/routes/AppRoutes.jsx
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Movies from '../pages/navbar/Movie/Movies';
 import Series from '../pages/navbar/Series/Series';
 import TVshows from '../pages/navbar/Tvshows/TvShows';
@@ -14,8 +14,13 @@ import MovieDetails from '../components/MovieDetails/MovieDetails';
 import PaymentSuccessfull from '../pages/navbar/PaymentSuccessfull/PaymentSuccessfull';
 import ProtectedPage from '../pages/navbar/protected/ProtectedPage';
 import ProtectedRoute from './ProtectedRoute';
+import { useSelector } from 'react-redux';
+
 
 const AppRoutes = () => {
+  const isSubscribed = localStorage.getItem('subscribed') === 'true';
+
+
   return (
     <Routes>
       {/* Define routes for all the pages */}
@@ -36,12 +41,13 @@ const AppRoutes = () => {
       <Route path="/moviedetails/:movieId" element={<MovieDetails />} />
       <Route path="/:contentType/:movieId" element={<MovieDetails />} />
       <Route path="/paymentsuccessfull" element={<PaymentSuccessfull />} />
-      <Route path="/premium" element={<ProtectedPage />} />
       <Route path="/premium" element={
-          <ProtectedRoute>
-            <ProtectedPage />
-          </ProtectedRoute>
-        }/>
+        <ProtectedRoute>
+          <ProtectedPage />
+        </ProtectedRoute>
+      } />
+      {/* <Route path="/paymentsuccessfull" element={isSubscribed ? <Navigate to="/" /> : <Discovery />} /> */}
+      <Route path="/paymentsuccessfull" element={<Navigate to="/" />} />
     </Routes>
   );
 };

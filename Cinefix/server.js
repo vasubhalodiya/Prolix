@@ -1,4 +1,3 @@
-
 import express from 'express';
 import Razorpay from 'razorpay';
 import cors from 'cors';
@@ -29,7 +28,6 @@ app.post('/create-order', async (req, res) => {
     res.status(500).json({ error: 'Error creating Razorpay order' });
   }
 });
-
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
