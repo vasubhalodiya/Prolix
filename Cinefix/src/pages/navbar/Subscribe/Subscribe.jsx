@@ -57,6 +57,13 @@ const Subscribe = () => {
     }
   };
 
+  useEffect(() => {
+    const subscribedStatus = localStorage.getItem("isSubscribed");
+    if (subscribedStatus === "true") {
+      navigate("/");
+    }
+  }, [navigate]);
+
 
   const plans = [
     {

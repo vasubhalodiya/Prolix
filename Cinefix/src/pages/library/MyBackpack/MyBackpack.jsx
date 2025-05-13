@@ -29,10 +29,7 @@ const MyBackpack = () => {
         <div className="backpack-movies">
           {backpackMovies.map((movie) => (
             <div key={movie.id} className="movie-card">
-              <img
-                src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-                alt={movie.title || movie.name}
-              />
+              <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.title || movie.name}/>
               <p>{movie.title || movie.name}</p>
               <button onClick={() => handleRemoveFromBackpack(movie.id)}>
                 Remove from Backpack

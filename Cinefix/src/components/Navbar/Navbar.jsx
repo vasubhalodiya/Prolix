@@ -3,8 +3,20 @@ import './Navbar.css';
 import images from '../../utils/images';
 import { Link } from 'react-router-dom';
 import NavLink from '../NavLink/NavLink';
+import { useState, useEffect } from 'react';
+
 
 const Navbar = () => {
+  const [isSubscribed, setIsSubscribed] = useState(false); // default: not subscribed
+  useEffect(() => {
+    // ✅ Check from localStorage OR API call
+    const subscribedStatus = localStorage.getItem("isSubscribed");
+
+    if (subscribedStatus === "true") {
+      setIsSubscribed(true);
+    }
+  }, []);
+
   return (
     <div className="navbar">
       <div className="navbar-cnt">
@@ -16,9 +28,14 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-profile-section">
-          <div className="navbar-subscribe-btn">
+          {/* <div className="navbar-subscribe-btn">
             <NavLink to="/subscribe" label="Subscribe" className="button-link"/>
-          </div>
+          </div> */}
+          {!isSubscribed && (
+            <div className="navbar-subscribe-btn">
+              <NavLink to="/subscribe" label="Subscribe" className="button-link" />
+            </div>
+          )}
           <div className="navbar-notification">
             <i className="fa-light fa-bell notification-icon"></i>
             <div className="notification-indication"></div>

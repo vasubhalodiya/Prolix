@@ -7,14 +7,6 @@ const PaymentSuccessfull = () => {
   const [timer, setTimer] = useState(3);
   const navigate = useNavigate();
 
-  const isSubscribed = false;
-
-  useEffect(() => {
-    if (isSubscribed) {
-      navigate('/');
-    }
-  }, [isSubscribed, navigate]);
-
   useEffect(() => {
     if (timer === 0) {
       navigate('/premium');
@@ -28,6 +20,7 @@ const PaymentSuccessfull = () => {
     return () => clearInterval(countdown);
   }, [timer, navigate]);
 
+
   useEffect(() => {
     window.scrollTo(0, 0);
     document.body.classList.add('reset-css');
@@ -36,6 +29,17 @@ const PaymentSuccessfull = () => {
     };
   }, []);
 
+  useEffect(() => {
+      const subscribedStatus = localStorage.getItem("isSubscribed");
+      if (subscribedStatus === "false") {
+        navigate("/");
+      }
+      else
+      {
+        navigate("/paymentsuccessfull");
+      }
+    }, [navigate]);
+  
   return (
     <div className="payment-success">
       <div className="payment-success-heading">
