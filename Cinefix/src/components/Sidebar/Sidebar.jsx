@@ -1,7 +1,7 @@
 import React from 'react'
 import './Sidebar.css';
 import Navbar from '../Navbar/Navbar';
-import images from '../../utils/Images';
+import images from '@/utils/Images';
 import { Link } from 'react-router-dom';
 import NavLink from '../NavLink/NavLink';
 
