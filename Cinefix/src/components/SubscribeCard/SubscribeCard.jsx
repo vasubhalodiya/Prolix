@@ -55,18 +55,19 @@
 // }
 
 // export default SubscribeCard
-
 import React from 'react';
-import './SubscribeCard.css';
 import Button from '../Button/Button';
+import './SubscribeCard.css';
 
-const SubscribeCard = ({ type, price, features, isActive }) => {
+const SubscribeCard = ({ type, price, features, isActive, onSubscribe }) => {
   return (
     <div className={`subscribe-card ${isActive ? 'active' : ''}`}>
       <div className="subscribe-card-cnt">
         <div className={`subscribe-card-type ${isActive ? 'active' : ''}`}>
           <p className="subscribe-card-type-mode">{type}</p>
-          <p className="subscribe-card-type-price">${price}<span>/Month</span></p>
+          <p className="subscribe-card-type-price">
+            ₹{price}<span>/Month</span>
+          </p>
         </div>
         <div className="subscribe-card-offer-lists">
           <ul className="subscribe-card-offer-list">
@@ -83,8 +84,16 @@ const SubscribeCard = ({ type, price, features, isActive }) => {
             ))}
           </ul>
         </div>
+        {/* Conditionally render the 'Get Started' or 'Buy Now' button */}
         <div className="subscribe-card-buy">
-          <Button variant={isActive ? 'filled' : 'outline'}>Get Started</Button>
+        <Button
+  variant={isActive ? 'filled' : 'outline'}
+  onClick={() => onSubscribe()}
+>
+  {isActive ? 'Buy Now' : 'Get Started'}
+</Button>
+
+
         </div>
       </div>
     </div>

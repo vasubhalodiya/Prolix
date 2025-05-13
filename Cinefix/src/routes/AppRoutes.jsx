@@ -12,30 +12,37 @@ import MyBackpack from '../pages/library/MyBackpack/MyBackpack';
 import Setting from '../pages/library/Setting/Setting';
 import MovieDetails from '../components/MovieDetails/MovieDetails';
 import PaymentSuccessfull from '../pages/navbar/PaymentSuccessfull/PaymentSuccessfull';
+import ProtectedPage from '../pages/navbar/protected/ProtectedPage';
+import ProtectedRoute from './ProtectedRoute';
 
 const AppRoutes = () => {
   return (
-      <Routes>
-        {/* Define routes for all the pages */}
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/series" element={<Series />} />
-        <Route path="/tvshows" element={<TVshows />} />
-        <Route path="/subscribe" element={<Subscribe />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/" element={<Discovery />} />
-        <Route path="/search" element={<Search />} />
-        <Route path="/toprated" element={<TopRated />} />
-        <Route path="/mybackpack" element={<MyBackpack />} />
-        <Route path="/setting" element={<Setting />} />
-        <Route path="/toprated/:movieId" element={<MovieDetails />} />
-        <Route path="/movies/:movieId" element={<MovieDetails />} />
-        <Route path="/series/:movieId" element={<MovieDetails />} />
-        <Route path="/tvshows/:movieId" element={<MovieDetails />} />
-        <Route path="/moviedetails/:movieId" element={<MovieDetails />} />
-        <Route path="/:contentType/:movieId" element={<MovieDetails />} />
-        <Route path="/paymentsuccessfull" element={<PaymentSuccessfull />} />
-
-      </Routes>
+    <Routes>
+      {/* Define routes for all the pages */}
+      <Route path="/movies" element={<Movies />} />
+      <Route path="/series" element={<Series />} />
+      <Route path="/tvshows" element={<TVshows />} />
+      <Route path="/subscribe" element={<Subscribe />} />
+      <Route path="/profile" element={<Profile />} />
+      <Route path="/" element={<Discovery />} />
+      <Route path="/search" element={<Search />} />
+      <Route path="/toprated" element={<TopRated />} />
+      <Route path="/mybackpack" element={<MyBackpack />} />
+      <Route path="/setting" element={<Setting />} />
+      <Route path="/toprated/:movieId" element={<MovieDetails />} />
+      <Route path="/movies/:movieId" element={<MovieDetails />} />
+      <Route path="/series/:movieId" element={<MovieDetails />} />
+      <Route path="/tvshows/:movieId" element={<MovieDetails />} />
+      <Route path="/moviedetails/:movieId" element={<MovieDetails />} />
+      <Route path="/:contentType/:movieId" element={<MovieDetails />} />
+      <Route path="/paymentsuccessfull" element={<PaymentSuccessfull />} />
+      <Route path="/premium" element={<ProtectedPage />} />
+      <Route path="/premium" element={
+          <ProtectedRoute>
+            <ProtectedPage />
+          </ProtectedRoute>
+        }/>
+    </Routes>
   );
 };
 
