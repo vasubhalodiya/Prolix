@@ -47,7 +47,6 @@ const AppRoutes = () => {
         </ProtectedRoute>
       } />
       {/* <Route path="/paymentsuccessfull" element={isSubscribed ? <Navigate to="/" /> : <Discovery />} /> */}
-      <Route path="/paymentsuccessfull" element={<Navigate to="/" />} />
     </Routes>
   );
 };

@@ -16,41 +16,41 @@ const Discovery = () => {
   const navigate = useNavigate();
   const continueList = useSelector((state) => state.continueWatching);
 
-  useEffect(() => {
-    const fetchTopRatedMovies = async () => {
-      try {
-        const API_KEY = "0c9eb6c7265733aad8b14540ca4cdf5f"; // Your API key
-        const companyId = 2; // Example company ID
-        const res = await fetch(
-          `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_companies=${companyId}&sort_by=vote_average.desc&vote_count.gte=100&page=1&language=en-US`
-        );
-        const data = await res.json();
+  // useEffect(() => {
+  //   const fetchTopRatedMovies = async () => {
+  //     try {
+  //       const API_KEY = "0c9eb6c7265733aad8b14540ca4cdf5f"; // Your API key
+  //       const companyId = 2; // Example company ID
+  //       const res = await fetch(
+  //         `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_companies=${companyId}&sort_by=vote_average.desc&vote_count.gte=100&page=1&language=en-US`
+  //       );
+  //       const data = await res.json();
 
-        const top3Movies = data.results.slice(0, 5);
-        setTopRatedMovies(top3Movies);
-      } catch (error) {
-        console.error("Error fetching top-rated movies:", error);
-      }
-    };
+  //       const top3Movies = data.results.slice(0, 5);
+  //       setTopRatedMovies(top3Movies);
+  //     } catch (error) {
+  //       console.error("Error fetching top-rated movies:", error);
+  //     }
+  //   };
 
-    fetchTopRatedMovies();
-  }, []);
+  //   fetchTopRatedMovies();
+  // }, []);
 
-  useEffect(() => {
-    fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=0c9eb6c7265733aad8b14540ca4cdf5f&language=en-US')
-      .then((response) => response.json())
-      .then((data) => setGenres(data.genres))
-      .catch((error) => console.error('Error fetching genres:', error));
-  }, []);
+  // useEffect(() => {
+  //   fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=0c9eb6c7265733aad8b14540ca4cdf5f&language=en-US')
+  //     .then((response) => response.json())
+  //     .then((data) => setGenres(data.genres))
+  //     .catch((error) => console.error('Error fetching genres:', error));
+  // }, []);
 
-  const getGenreName = (genreId) => {
-    const genre = genres.find((genre) => genre.id === genreId);
-    return genre ? genre.name : 'Unknown';
-  };
+  // const getGenreName = (genreId) => {
+  //   const genre = genres.find((genre) => genre.id === genreId);
+  //   return genre ? genre.name : 'Unknown';
+  // };
 
-  const handleCardClick = (movieId) => {
-    navigate(`/toprated/${movieId}`);
-  };
+  // const handleCardClick = (movieId) => {
+  //   navigate(`/toprated/${movieId}`);
+  // };
 
   return (
     <>
@@ -76,7 +76,7 @@ const Discovery = () => {
           {/* <div className="disc-continue-watching-slider">
             <ContinueWatching />
           </div> */}
-          <div className="movie-sidebar">
+          {/* <div className="movie-sidebar">
             <div className="movie-sidebar-cnt">
               <div className="movie-sidebar-cnt-head">
                 <h2 className='section-heading'>Top Rated</h2>
@@ -99,7 +99,7 @@ const Discovery = () => {
                 )}
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

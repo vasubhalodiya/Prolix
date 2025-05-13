@@ -12,11 +12,17 @@ export const movieApi = createApi({
     }),
     // movies
     getMovies: builder.query({
-      query: () => 'discover/movie?api_key=0c9eb6c7265733aad8b14540ca4cdf5f&with_genres=28,12,16',
+      // query: () => 'discover/movie?api_key=0c9eb6c7265733aad8b14540ca4cdf5f&with_companies=420&sort_by=release_date.asc&primary_release_date.gte=2025-05-13', //coming soon movies
+      query: () => 'discover/movie?api_key=0c9eb6c7265733aad8b14540ca4cdf5f&with_companies=420&language=en-US&release_date.gte=2013-01-01&release_date.lte=2025-12-31&page=1',
+
+      // Marvel Studios: 420(tmdb studio id)
+      // DC Films: 495(tmdb studio id)
+      // Universal Pictures Studio: 2(tmdb studio id)
+      // 20th Century Studios: 25(tmdb studio id)
     }),
     // series
     getSeries: builder.query({
-      query: () => 'discover/tv?api_key=0c9eb6c7265733aad8b14540ca4cdf5f&with_companies=420&language=en-US',
+      query: () => 'discover/tv?api_key=0c9eb6c7265733aad8b14540ca4cdf5f&with_companies=420&language=en-US&page=1',
     }),
     // tv shows
     getTvShows: builder.query({

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import confetti from 'canvas-confetti/dist/confetti.module.mjs'; // ✅ Correct import
 import { useNavigate } from 'react-router-dom';
 import './ProtectedPage.css';
-
+ 
 const ProtectedPage = () => {
     const navigate = useNavigate();
 
