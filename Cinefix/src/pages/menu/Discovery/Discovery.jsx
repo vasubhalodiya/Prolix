@@ -3,11 +3,11 @@ import './discovery.css'
 import images from '../../../utils/images';
 import StudioSlider from '@/components/StudioSlider/StudioSlider';
 import Button from '@/components/Button/Button';
-import ContinueWatching from '@/components/ContinueWatching/ContinueWatching';
 import { useEffect, useState } from 'react';
-import TopRatedCard from '@/components/TopRatedCard/TopRatedCard';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import ComingSoonMovies from '@/components/ComingSoonMovies/ComingSoonMovies';
+import ContinueWatching from '@/components/PopularMovies/PopularMovies';
 
 
 const Discovery = () => {
@@ -54,28 +54,17 @@ const Discovery = () => {
 
   return (
     <>
-      <div className="discovery master-container">
+      <div className="discovery">
         <div className="discovery-cnt">
-          <div className="disc-header-latest-movie-poster">
-            <img src={images.dr_strange} alt="" className='latest-movie-poster-img' />
-            <div className="latest-movie-poster-txt">
-              <div className="latest-movie-poster-txt-title">
-                <h6 className='movie-type'>Movie</h6> {/*  Movie / Series / Tv Show / Sport */}
-                <h1 className='movie-name'>Doctor Strange</h1>
-                <h6 className='movie-episode'>1 Season • 6 Episodes • Marvel</h6>
-              </div>
-              <div className="latest-movie-poster-txt-btns">
-                <Button variant="iconText" icon="fa-light fa-clapperboard-play" style={{ color: 'green' }}>Watch Now</Button>
-                <Button variant="text" icon="fa-light fa-backpack">Add Backpack</Button>
-              </div>
-            </div>
+          <div className="coming-soon-movies-slider slider-section">
+            <ComingSoonMovies/>
           </div>
-          <div className="disc-studios-slider">
+          <div className="disc-studios-slider slider-section">
             <StudioSlider />
           </div>
-          {/* <div className="disc-continue-watching-slider">
+          <div className="disc-continue-watching-slider">
             <ContinueWatching />
-          </div> */}
+          </div>
           {/* <div className="movie-sidebar">
             <div className="movie-sidebar-cnt">
               <div className="movie-sidebar-cnt-head">
