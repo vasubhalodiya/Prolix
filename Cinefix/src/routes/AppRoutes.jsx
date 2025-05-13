@@ -12,7 +12,7 @@ import MyBackpack from '../pages/library/MyBackpack/MyBackpack';
 import Setting from '../pages/library/Setting/Setting';
 import MovieDetails from '../components/MovieDetails/MovieDetails';
 import PaymentSuccessfull from '../pages/navbar/PaymentSuccessfull/PaymentSuccessfull';
-import ProtectedPage from '../pages/navbar/Protected/ProtectedPage';
+import ProtectedPage from '../pages/navbar/protected/ProtectedPage';
 import ProtectedRoute from './ProtectedRoute';
 import { useSelector } from 'react-redux';
 
