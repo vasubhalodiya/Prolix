@@ -1,8 +1,8 @@
-
 import React, { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import MovieSidebar from "../MovieSidebar/MovieSidebar";
 import "./MovieDetails.css";
+import { toast } from 'react-toastify';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -55,7 +55,7 @@ const MovieDetails = () => {
     const stored = JSON.parse(localStorage.getItem("myBackpack")) || [];
 
     if (stored.some((m) => m.id === movie.id)) {
-      alert("Already in backpack");
+      toast.warning('Already in backpack');
       return;
     }
 
@@ -68,7 +68,7 @@ const MovieDetails = () => {
     const updated = [...stored, movieToStore];
     localStorage.setItem("myBackpack", JSON.stringify(updated));
     window.dispatchEvent(new Event("backpackUpdated"));
-    alert("Added to backpack ✅");
+    toast.success('Added to backpack');
   };
 
   if (!movieDetails) return <div>Loading...</div>;
@@ -115,9 +115,12 @@ const MovieDetails = () => {
           )}
 
           <div className="movie-details-section">
-            <h1 className="movie-details-title">
-              {movieDetails.title || movieDetails.name}
-            </h1>
+            <div className="movie-details-title-with-btn">
+              <h1 className="movie-details-title">
+                {movieDetails.title || movieDetails.name}
+              </h1>
+              <button className="add-to-backpack-btn" onClick={() => handleAddToBackpack(movieDetails)}><i class="fa-regular fa-backpack"></i>Add to Backpack</button>
+            </div>
             <p className="movie-details-genres">
               <i className="fa-light fa-film"></i>{" "}
               {movieDetails.genres
@@ -142,12 +145,6 @@ const MovieDetails = () => {
               {movieDetails.overview || "No Storyline Available."}
             </p>
           </div>
-
-          <button
-            className="add-to-backpack-btn"
-            onClick={() => handleAddToBackpack(movieDetails)}>
-            Add to Backpack
-          </button>
         </div>
       </div>
 

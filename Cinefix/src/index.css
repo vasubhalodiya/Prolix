@@ -213,7 +213,10 @@ i {
   display: none !important;
 }
 
-
+.custom-toast:nth-child(1)
+{
+  margin-top: 20%;
+}
 
 
 

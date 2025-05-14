@@ -8,6 +8,7 @@ import { auth } from "./firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -24,10 +25,10 @@ const Login = () => {
   const handleLogin = async () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      alert("Login successful!");
+      toast.success("Login successful!");
       navigate("/profile");
     } catch (error) {
-      alert(error.message);
+      toast.error("Invalid Email or Password!");
     }
   };
 

@@ -48,3 +48,19 @@ src/
 ├── App.jsx                 # Root component
 ├── main.jsx                # React DOM render
 └── index.css               # Global base styles
+
+; *******************************************************
+
+import { toast } from 'react-toastify';
+
+toast.success("Login successful!");   // Green
+toast.error("Something went wrong!"); // Red
+toast.info("New update available.");  // Blue
+toast.warning("Password is weak!");   // Orange
+toast("This is a neutral message.");  // Default color
+
+toast.success("Custom toast", {
+  style: { backgroundColor: "#4caf50", color: "white" }
+});
+
+

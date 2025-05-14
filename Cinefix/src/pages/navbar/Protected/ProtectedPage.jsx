@@ -1,12 +1,20 @@
 import React, { useEffect } from 'react';
-import confetti from 'canvas-confetti/dist/confetti.module.mjs';
 import { useNavigate } from 'react-router-dom';
+import { checkSubscription } from '../../../utils/checkSubscription'; // Import checkSubscription logic
 import './ProtectedPage.css';
- 
+import confetti from 'canvas-confetti/dist/confetti.module.mjs';
+
 const ProtectedPage = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
+        // Check if the user is subscribed
+        if (!checkSubscription()) {
+            navigate('/subscribe'); // Redirect to subscribe if expired or not subscribed
+            return;
+        }
+
+        // If the user hasn't celebrated yet, trigger the confetti animation
         const hasCelebrated = sessionStorage.getItem('hasCelebrated');
         if (!hasCelebrated) {
             const duration = 2000;
@@ -54,14 +62,14 @@ const ProtectedPage = () => {
             sessionStorage.setItem('hasCelebrated', 'true');
             return () => clearTimeout(timeout);
         }
-    }, []);
+    }, [navigate]);
 
     return (
         <div className="premium">
             <div className="premium-content">
                 <i className="fa-solid fa-crown fa-bounce premium-icon"></i>
-                <h1 className='premium-txt-title'>Welcome to Premium 🎉</h1>
-                <p className='premium-txt'>Enjoy unlimited, ad-free streaming with exclusive movies, series, and more.</p>
+                <h1 className="premium-txt-title">Welcome to Premium 🎉</h1>
+                <p className="premium-txt">Enjoy unlimited, ad-free streaming with exclusive movies, series, and more.</p>
             </div>
         </div>
     );
