@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
+import "./MyBackpack.css";
+import { useNavigate } from 'react-router-dom';
 
 const MyBackpack = () => {
   const [backpackMovies, setBackpackMovies] = useState([]);
+  const navigate = useNavigate();
 
   const loadBackpack = () => {
     const stored = localStorage.getItem("myBackpack");
@@ -22,16 +25,16 @@ const MyBackpack = () => {
 
   return (
     <div>
-      <h1>My Backpack</h1>
+      <h1 className="section-heading">My Backpack</h1>
       {backpackMovies.length > 0 ? (
-        <div className="backpack-movies">
+        <div className="backpack-movies-section">
           {backpackMovies.map((movie) => (
-            <div key={movie.id} className="movie-card">
-              <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.title || movie.name}/>
-              <p>{movie.title || movie.name}</p>
-              <button onClick={() => handleRemoveFromBackpack(movie.id)}>
-                Remove from Backpack
-              </button>
+            <div key={movie.id} className="backpack-movie-card">
+              <div className="backpack-movie-card-dtl" onClick={() => navigate(`/movie/${movie.id}`)}>
+                <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.title || movie.name} className="backpack-movie-card-img" />
+                <p className="backpack-movie-title moviecard-title">{movie.title || movie.name}</p>
+              </div>
+              <button onClick={() => handleRemoveFromBackpack(movie.id)} className="backpack-remove-btn"><i class="fa-regular fa-trash-can"></i> Remove</button>
             </div>
           ))}
         </div>

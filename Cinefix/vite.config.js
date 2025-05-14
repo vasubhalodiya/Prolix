@@ -5,9 +5,10 @@ import path from 'path';
 
 export default defineConfig({
   plugins: [react()],
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, 'src'),
-    },
+  // vite.config.js
+resolve: {
+  alias: {
+    '@': path.resolve(__dirname, 'src'), // ✅ Needed to use '@/redux/movieApi'
   },
+}
 });

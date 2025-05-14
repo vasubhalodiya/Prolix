@@ -48,9 +48,24 @@
 
 /* ============ */
 
-:root {
+/* :root {
 
-  /* COLORS */
+  --primary-color: #191919;
+  --secondary-color: #1f1f1f;
+  --light-color: #ffffff;
+  --text-color: #9299a0;
+  --text-light-color: #bfc6cc;
+  --red-color: #e43a3a;
+  --border-color: #3a3a3a;
+  --yellow-color: #FFD700;
+  --green-color: #19e24f;
+
+  color: var(--light-color);
+  background-color: var(--primary-color);
+  font-family: 'Int-Regular';
+} */
+
+:root {
   --primary-color: #191919;
   --secondary-color: #1f1f1f;
   --light-color: #ffffff;
@@ -65,6 +80,19 @@
   background-color: var(--primary-color);
   font-family: 'Int-Regular';
 }
+
+[data-theme='light'] {
+  --primary-color: #ffffff;
+  --secondary-color: #f3f3f3;
+  --light-color: #000000;
+  --text-color: #333333;
+  --text-light-color: #666666;
+  --red-color: #e43a3a;
+  --border-color: #d1d1d1;
+  --yellow-color: #f5c518;
+  --green-color: #19e24f;
+}
+
 
 input:focus {
   outline: 0;
@@ -83,6 +111,7 @@ li {
   list-style: none;
 }
 
+button{cursor: pointer;}
 /* body or .app-layout */
 .app-layout {
   margin-top: 65px;

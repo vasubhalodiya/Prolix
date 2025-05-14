@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ComingSoonMovies from '@/components/ComingSoonMovies/ComingSoonMovies';
-import ContinueWatching from '@/components/PopularMovies/PopularMovies';
+import PopularMovies from '@/components/PopularMovies/PopularMovies';
 
 
 const Discovery = () => {
@@ -63,7 +63,7 @@ const Discovery = () => {
             <StudioSlider />
           </div>
           <div className="disc-continue-watching-slider">
-            <ContinueWatching />
+            <PopularMovies />
           </div>
           {/* <div className="movie-sidebar">
             <div className="movie-sidebar-cnt">

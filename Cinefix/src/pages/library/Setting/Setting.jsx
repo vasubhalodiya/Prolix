@@ -1,8 +1,12 @@
+import ThemeToggle from '@/components/ThemeToggle/ThemeToggle'
 import React from 'react'
+
 
 const Setting = () => {
   return (
-    <div>Setting</div>
+    <>
+      {/* <ThemeToggle /> */}
+    </>
   )
 }
 

@@ -10,7 +10,6 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 
 const Signup = () => {
-  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -25,11 +24,6 @@ const Signup = () => {
   const handleSignup = async () => {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-  
-      await updateProfile(userCredential.user, {
-        displayName: username,
-      });
-  
       alert("Signup successful!");
       navigate("/login");
     } catch (error) {
@@ -48,10 +42,6 @@ const Signup = () => {
           </div>
           <div className="auth-form">
             <h2 className='auth-title'>Create Account</h2>
-            <div className="auth-input-field">
-              <h6 className='auth-input-title'>Username</h6>
-              <input type="text" placeholder="Username" className='auth-input' onChange={(e) => setUsername(e.target.value)}/>
-            </div>
             <div className="auth-input-field">
               <h6 className='auth-input-title'>Email Address</h6>
               <input type="text" placeholder="Email" className='auth-input' onChange={(e) => setEmail(e.target.value)}/>

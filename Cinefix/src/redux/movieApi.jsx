@@ -9,8 +9,13 @@ export const movieApi = createApi({
     getTopRatedMovies: builder.query({
       query: () => 'discover/movie?api_key=0c9eb6c7265733aad8b14540ca4cdf5f&with_companies=2&sort_by=vote_average.desc&vote_count.gte=100&page=1&language=en-US',
     }),
+    getComingSoonMovies: builder.query({
+      query: () => 'discover/movie?api_key=0c9eb6c7265733aad8b14540ca4cdf5f&with_companies=420&sort_by=release_date.asc&primary_release_date.gte=2025-05-13', //coming soon movies
+    }),
+    getPopularMovies: builder.query({
+      query: () => 'discover/movie?api_key=0c9eb6c7265733aad8b14540ca4cdf5f&with_companies=25',
+    }),
     getMovies: builder.query({
-      // query: () => 'discover/movie?api_key=0c9eb6c7265733aad8b14540ca4cdf5f&with_companies=420&sort_by=release_date.asc&primary_release_date.gte=2025-05-13', //coming soon movies
       query: () => 'discover/movie?api_key=0c9eb6c7265733aad8b14540ca4cdf5f&with_companies=420&language=en-US&release_date.gte=2013-01-01&release_date.lte=2025-12-31&page=1',
 
       // Marvel Studios: 420(tmdb studio id)
@@ -27,4 +32,4 @@ export const movieApi = createApi({
   }),
 });
 
-export const { useGetMoviesQuery, useGetTopRatedMoviesQuery, useGetSeriesQuery, useGetTvShowsQuery } = movieApi;
+export const { useGetMoviesQuery, useGetTopRatedMoviesQuery, useGetSeriesQuery, useGetTvShowsQuery, useGetComingSoonMoviesQuery, useGetPopularMoviesQuery } = movieApi;

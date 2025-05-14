@@ -1,0 +1,118 @@
+.backpack-movies
+{
+    margin-top: 30px;
+}
+
+.backpack-movies-section
+{
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(5, 1fr);
+    margin-top: 10px;
+}
+
+.backpack-movie-card
+{
+    cursor: pointer;
+}
+
+.backpack-movie-card-img
+{
+    width: 100%;
+    border-radius: 10px;
+}
+
+.backpack-movie-title.moviecard-title
+{
+    margin-bottom: 7px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 10px;
+}
+
+.backpack-remove-btn
+{
+    width: 100%;
+    height: 37px;
+    color: var(--red-color);
+    background-color: rgb(255, 200, 200);
+    font-size: 16px;
+    font-family: 'Int-Medium';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 1px solid var(--red-color);
+    border-radius: 10px;
+    margin-top: 20px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

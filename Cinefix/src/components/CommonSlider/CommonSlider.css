@@ -5,6 +5,7 @@
 
 .slider-wrapper {
     position: relative;
+    margin-top: 10px;
 }
 
 .slider-head
@@ -65,7 +66,6 @@
     display: flex;
     overflow-x: auto;
     scroll-behavior: smooth;
-    padding-top: 10px;
     scrollbar-width: none;
     -ms-overflow-style: none;
     gap: 20px;

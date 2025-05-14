@@ -5,7 +5,7 @@
     border-radius: 15px;
     border: var(--border-color) 1px solid;
     flex-shrink: 0;
-    cursor: pointer;
+    /* cursor: pointer; */
     display: flex;
     align-items: center;
     justify-content: center;
