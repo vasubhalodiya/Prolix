@@ -67,7 +67,7 @@ const MovieDetails = () => {
 
     const updated = [...stored, movieToStore];
     localStorage.setItem("myBackpack", JSON.stringify(updated));
-    window.dispatchEvent(new Event("backpackUpdated")); // Optional: for sync
+    window.dispatchEvent(new Event("backpackUpdated"));
     alert("Added to backpack ✅");
   };
 

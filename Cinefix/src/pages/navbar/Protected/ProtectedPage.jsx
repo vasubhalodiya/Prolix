@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import confetti from 'canvas-confetti/dist/confetti.module.mjs'; // ✅ Correct import
+import confetti from 'canvas-confetti/dist/confetti.module.mjs';
 import { useNavigate } from 'react-router-dom';
 import './ProtectedPage.css';
  
@@ -7,13 +7,11 @@ const ProtectedPage = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Trigger only once per session
         const hasCelebrated = sessionStorage.getItem('hasCelebrated');
         if (!hasCelebrated) {
-            const duration = 2000; // 2 sec max
+            const duration = 2000;
             const animationEnd = Date.now() + duration;
 
-            // 🎉 Side cannons
             const fireCannons = () => {
                 confetti({
                     particleCount: 80,
@@ -33,7 +31,6 @@ const ProtectedPage = () => {
                 });
             };
 
-            // 🎇 Bottom firecracker
             const fireFirecracker = () => {
                 confetti({
                     particleCount: 100,
@@ -45,20 +42,16 @@ const ProtectedPage = () => {
                 });
             };
 
-            // Fire once on load
             fireCannons();
             fireFirecracker();
 
-            // Optional: fire again after 1 second (if within 2s)
             const timeout = setTimeout(() => {
                 if (Date.now() < animationEnd) {
                     fireCannons();
                 }
             }, 1000);
 
-            // Save celebration flag
             sessionStorage.setItem('hasCelebrated', 'true');
-
             return () => clearTimeout(timeout);
         }
     }, []);

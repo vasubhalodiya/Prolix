@@ -73,6 +73,12 @@
     letter-spacing: 0.5px;
 }
 
+.subscribe-card-buy .btn-outline,
+.subscribe-card-buy .btn-filled
+{
+    padding: 10px;
+}
+
 /* ********************************** */
 
 .subscribe-card.active {

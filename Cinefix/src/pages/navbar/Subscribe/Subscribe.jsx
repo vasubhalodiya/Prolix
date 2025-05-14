@@ -37,16 +37,16 @@ const Subscribe = () => {
         order_id: data.id,
         handler: function (response) {
           console.log("Payment successful!", response);
-          localStorage.setItem('isSubscribed', 'true'); // Set subscription status
-          navigate('/paymentsuccessfull'); // Redirect to payment successful page
+          localStorage.setItem('isSubscribed', 'true');
+          navigate('/paymentsuccessfull');
         },
         prefill: {
           name: "Vasu",
           email: "vasu@example.com",
-          contact: "9999999999"
+          contact: "1234567890"
         },
         theme: {
-          color: "#121212"
+          color: "#e43a3a"
         }
       };
       const razor = new window.Razorpay(options);
@@ -69,7 +69,7 @@ const Subscribe = () => {
     {
       type: 'Free Trial',
       price: '0',
-      isActive: false, // Set to false as per requirement
+      isActive: false,
       amountInINR: 0,
       features: [
         { text: 'Streaming in high quality', available: true },
@@ -82,7 +82,7 @@ const Subscribe = () => {
     {
       type: 'Monthly Subscription',
       price: '189',
-      isActive: true, // This plan will be static and active by default
+      isActive: true,
       amountInINR: 189,
       features: [
         { text: 'Streaming in high quality', available: true },
@@ -95,7 +95,7 @@ const Subscribe = () => {
     {
       type: 'Yearly Subscription',
       price: '2189',
-      isActive: false, // Set to false as per requirement
+      isActive: false,
       amountInINR: 2189,
       features: [
         { text: 'Streaming in high quality', available: true },
@@ -108,7 +108,7 @@ const Subscribe = () => {
   ];
 
   return (
-    <div className="subscribe">
+    <div className="subscribe reset-css">
       <div className="subscribe-container">
         <div className="subscribe-heading">
           <Link to="/">
@@ -120,18 +120,6 @@ const Subscribe = () => {
           <h2 className='subscribe-big-txt'>It's easy to get started</h2>
           <h2 className='subscribe-small-txt'>Choose the best plan to enjoy the best movies and series</h2>
         </div>
-        {/* <div className="subscribe-section">
-          {plans.map((plan, index) => (
-            <SubscribeCard
-              key={index}
-              type={plan.type}
-              price={plan.price}
-              features={plan.features}
-              isActive={plan.isActive} // Directly pass the isActive prop as true/false
-              onSubscribe={() => handlePayment(plan.amountInINR)} // Handle subscription payment directly
-            />
-          ))}
-        </div> */}
         <div className="subscribe-section">
           {plans.map((plan, index) => (
             <SubscribeCard

@@ -11,8 +11,6 @@ const Button = ({ children, variant = 'filled', onClick, icon }) => {
 
   return (
     <>
-      {/* <button className={`btn ${variant === 'outline' ? 'btn-outline' : 'btn-filled'}`} onClick={onClick}>{children}</button> */}
-
       <button className={`btn ${variantClass}`} onClick={onClick}>
         {icon && <i className={`btn-icon ${icon}`}></i>}
         {children}

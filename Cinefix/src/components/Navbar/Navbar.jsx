@@ -1,21 +1,30 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import './Navbar.css';
 import images from '../../utils/images';
-import { Link } from 'react-router-dom';
 import NavLink from '../NavLink/NavLink';
-import { useState, useEffect } from 'react';
-
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../Auth/AuthContext";
+import Button from '@/components/Button/Button';
 
 const Navbar = () => {
-  const [isSubscribed, setIsSubscribed] = useState(false); // default: not subscribed
-  useEffect(() => {
-    // ✅ Check from localStorage OR API call
-    const subscribedStatus = localStorage.getItem("isSubscribed");
+  const [isSubscribed, setIsSubscribed] = useState(false);
+  const { user } = useAuth();
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    const subscribedStatus = localStorage.getItem("isSubscribed");
     if (subscribedStatus === "true") {
       setIsSubscribed(true);
     }
   }, []);
+
+  const handleClick = () => {
+    if (user) {
+      navigate("/profile");
+    } else {
+      navigate("/login");
+    }
+  };
 
   return (
     <div className="navbar">
@@ -28,9 +37,6 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-profile-section">
-          {/* <div className="navbar-subscribe-btn">
-            <NavLink to="/subscribe" label="Subscribe" className="button-link"/>
-          </div> */}
           {!isSubscribed && (
             <div className="navbar-subscribe-btn">
               <NavLink to="/subscribe" label="Subscribe" className="button-link" />
@@ -40,16 +46,17 @@ const Navbar = () => {
             <i className="fa-light fa-bell notification-icon"></i>
             <div className="notification-indication"></div>
           </div>
-          <div className="navbar-profile">
-            <img src={images.avtar} alt="" />
-            <div className="profile-dropdown">
-              <i className="fa-solid fa-chevron-down"></i>
+
+            <div onClick={handleClick} className="navbar-profile">
+              <img src={images.avtar} alt="avatar" />
+              <div className="profile-dropdown">
+                <i className="fa-solid fa-chevron-down"></i>
+              </div>
             </div>
-          </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

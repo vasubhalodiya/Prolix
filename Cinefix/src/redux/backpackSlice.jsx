@@ -1,4 +1,3 @@
-// redux/backpackSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -10,16 +9,15 @@ const backpackSlice = createSlice({
   initialState,
   reducers: {
     addToBackpack: (state, action) => {
-      // Check if movie already exists in backpack
       const movieExists = state.movies.find(movie => movie.id === action.payload.id);
       if (!movieExists) {
         state.movies.push(action.payload);
-        localStorage.setItem('backpack', JSON.stringify(state.movies)); // Persist backpack to localStorage
+        localStorage.setItem('backpack', JSON.stringify(state.movies));
       }
     },
     removeFromBackpack: (state, action) => {
       state.movies = state.movies.filter(movie => movie.id !== action.payload.id);
-      localStorage.setItem('backpack', JSON.stringify(state.movies)); // Persist after removal
+      localStorage.setItem('backpack', JSON.stringify(state.movies));
     },
     loadBackpack: (state) => {
       const savedMovies = JSON.parse(localStorage.getItem('backpack')) || [];

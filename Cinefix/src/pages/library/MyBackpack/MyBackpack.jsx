@@ -1,4 +1,3 @@
-// src/pages/library/MyBackpack.jsx
 import React, { useEffect, useState } from "react";
 
 const MyBackpack = () => {
@@ -11,7 +10,6 @@ const MyBackpack = () => {
 
   useEffect(() => {
     loadBackpack();
-    // Sync when movie is added
     window.addEventListener("backpackUpdated", loadBackpack);
     return () => window.removeEventListener("backpackUpdated", loadBackpack);
   }, []);
