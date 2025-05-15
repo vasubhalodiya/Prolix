@@ -5,6 +5,7 @@ import AppRoutes from "./routes/AppRoutes";
 import { useLocation } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './responsive.css';
 
 
 const App = () => {
