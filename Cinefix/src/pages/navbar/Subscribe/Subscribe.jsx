@@ -28,7 +28,7 @@ const Subscribe = () => {
   //     });
   //     const data = await res.json();
   //     if (!res.ok) throw new Error(data.message || "Failed to create order");
-      
+
   //     const options = {
   //       key: "rzp_test_f72l5fnGjUGpvZ",
   //       amount: data.amount,
@@ -41,7 +41,7 @@ const Subscribe = () => {
 
   //         // Store subscription details
   //         localStorage.setItem('isSubscribed', 'true');
-          
+
   //         // Set expiry for 1 minute (or adjust for actual time)
   //         const currentDate = new Date();
   //         const expiryDate = new Date(currentDate);
@@ -66,58 +66,58 @@ const Subscribe = () => {
   //     console.error("Error in payment flow:", error);
   //   }
   // };
-const handlePayment = async (amount) => {
-  console.log("Payment initiated for amount:", amount);
+  const handlePayment = async (amount) => {
+    console.log("Payment initiated for amount:", amount);
 
-  try {
-    const res = await fetch("http://localhost:5000/create-order", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ amount })
-    });
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.message || "Failed to create order");
+    try {
+      const res = await fetch("http://localhost:5000/create-order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ amount })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.message || "Failed to create order");
 
-    // Set the expiration time based on the selected plan
-    let expirationTime = 0;
-    if (amount === 189) {
-      expirationTime = new Date().getTime() + 60 * 1000; // 1 minute for 189
-    } else if (amount === 2189) {
-      expirationTime = new Date().getTime() + 3 * 60 * 1000; // 3 minutes for 2189
-    }
-
-    localStorage.setItem('isSubscribed', 'true');
-    localStorage.setItem('subscriptionExpiry', expirationTime); // Save expiration time in localStorage
-
-    const options = {
-      key: "rzp_test_f72l5fnGjUGpvZ",
-      amount: data.amount,
-      currency: "INR",
-      name: "Cinefix",
-      description: "Subscription Payment",
-      order_id: data.id,
-      handler: function (response) {
-        console.log("Payment successful!", response);
-        navigate('/paymentsuccessfull');
-      },
-      prefill: {
-        name: "Vasu",
-        email: "vasu@example.com",
-        contact: "1234567890"
-      },
-      theme: {
-        color: "#e43a3a"
+      // Set the expiration time based on the selected plan
+      let expirationTime = 0;
+      if (amount === 189) {
+        expirationTime = new Date().getTime() + 60 * 1000; // 1 minute for 189
+      } else if (amount === 2189) {
+        expirationTime = new Date().getTime() + 3 * 60 * 1000; // 3 minutes for 2189
       }
-    };
-    const razor = new window.Razorpay(options);
-    razor.open();
 
-  } catch (error) {
-    console.error("Error in payment flow:", error);
-  }
-};
+      localStorage.setItem('isSubscribed', 'true');
+      localStorage.setItem('subscriptionExpiry', expirationTime); // Save expiration time in localStorage
+
+      const options = {
+        key: "rzp_test_f72l5fnGjUGpvZ",
+        amount: data.amount,
+        currency: "INR",
+        name: "Cinefix",
+        description: "Subscription Payment",
+        order_id: data.id,
+        handler: function (response) {
+          console.log("Payment successful!", response);
+          navigate('/paymentsuccessfull');
+        },
+        prefill: {
+          name: "Vasu",
+          email: "vasu@example.com",
+          contact: "1234567890"
+        },
+        theme: {
+          color: "#e43a3a"
+        }
+      };
+      const razor = new window.Razorpay(options);
+      razor.open();
+
+    } catch (error) {
+      console.error("Error in payment flow:", error);
+    }
+  };
 
   useEffect(() => {
     const subscribedStatus = localStorage.getItem("isSubscribed");
