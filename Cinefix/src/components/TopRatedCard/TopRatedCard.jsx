@@ -9,8 +9,8 @@ const TopRatedCard = ({ rank, title, poster, rating, genre, onClick }) => {
             <button className='master-btn' onClick={onClick}>
                 <div className="top-rated-card">
                     <div className="top-rated-rank-img-part">
-                        <div className="top-rated-card-rank">{rank}</div>
                         <div className="top-rated-card-img-section">
+                            <div className="top-rated-card-rank">{rank}</div>
                             <img src={imageUrl} alt={title} className="top-rated-card-img" />
                         </div>
                     </div>

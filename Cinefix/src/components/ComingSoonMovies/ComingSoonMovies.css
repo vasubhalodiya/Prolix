@@ -59,6 +59,11 @@
     font-size: 27px;
     font-family: 'Int-Bold';
     margin-bottom: 5px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .movie-episode

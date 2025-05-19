@@ -94,16 +94,16 @@ const MovieDetails = () => {
                       <div className="play-btn-circle">
                         <i className="fa-solid fa-play btn-play"></i>
                       </div>
-                      <div className="play-btn-text moviecard-title">
+                      {/* <div className="play-btn-text moviecard-title">
                         {movieDetails.title || movieDetails.name}
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>
               ) : (
                 <iframe
                   width="100%"
-                  height="500"
+                  height="100%"
                   src={`https://www.youtube.com/embed/${videoKey}?autoplay=1`}
                   title="YouTube video player"
                   frameBorder="0"
@@ -119,7 +119,7 @@ const MovieDetails = () => {
               <h1 className="movie-details-title">
                 {movieDetails.title || movieDetails.name}
               </h1>
-              <button className="add-to-backpack-btn" onClick={() => handleAddToBackpack(movieDetails)}><i class="fa-regular fa-backpack"></i>Add to Backpack</button>
+              <button className="add-to-backpack-btn" onClick={() => handleAddToBackpack(movieDetails)}><i class="fa-regular fa-backpack"></i><span>Add to Backpack</span></button>
             </div>
             <p className="movie-details-genres">
               <i className="fa-light fa-film"></i>{" "}

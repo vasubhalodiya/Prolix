@@ -3,11 +3,20 @@ import { useGetMoviesQuery } from '../../../redux/movieApi';
 import MovieCard from '../../../components/MovieCard/MovieCard';
 import '../../../components/MovieCard/MovieCard.css';
 import { useNavigate } from 'react-router-dom';
+import SkeletonCard from '../../../components/MovieCard/SkeletonCard';
 
 const Movies = () => {
   const { data: movies, isLoading, isError, error } = useGetMoviesQuery();
   const [genres, setGenres] = useState([]);
   const navigate = useNavigate();
+  const [showSkeleton, setShowSkeleton] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowSkeleton(false);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=0c9eb6c7265733aad8b14540ca4cdf5f&language=en-US')
@@ -26,16 +35,26 @@ const Movies = () => {
     return productionCompanies.map((company) => company.name).join(', ');
   };
 
-  const handleCardClick = (movieId) => {
-    navigate(`/movies/${movieId}`);
-  };
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
   if (isError) {
     return <div>Error: {error.message}</div>;
+  }
+
+  // Show skeleton if loading OR still within 3 seconds
+  if (isLoading || showSkeleton) {
+    return (
+      <div className="movies">
+        <div className="movies-cnt">
+          <h1 className="section-heading">All Movies</h1>
+          <div className="movies-list">
+            {[...Array(10)].map((_, index) => (
+              <div className="skeleton-card-container">
+                <SkeletonCard key={index} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -47,7 +66,7 @@ const Movies = () => {
             movies.results.map((movie) => (
               <MovieCard
                 key={movie.id}
-                poster={movie.backdrop_path || movie.poster_path} // backdrop_path = horizontal, poster_path = vertical
+                poster={movie.backdrop_path || movie.poster_path}
                 title={movie.title}
                 rating={movie.vote_average}
                 genre={getGenreName(movie.genre_ids[0])}
@@ -65,4 +84,3 @@ const Movies = () => {
 };
 
 export default Movies;
-

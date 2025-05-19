@@ -8,7 +8,6 @@ import Discovery from '../pages/menu/Discovery/Discovery';
 import Search from '../pages/menu/Search/Search';
 import TopRated from '../pages/menu/TopRated/TopRated';
 import MyBackpack from '../pages/library/MyBackpack/MyBackpack';
-import Setting from '../pages/library/Setting/Setting';
 import MovieDetails from '../components/MovieDetails/MovieDetails';
 import PaymentSuccessfull from '../pages/navbar/PaymentSuccessfull/PaymentSuccessfull';
 import ProtectedPage from '../pages/navbar/protected/ProtectedPage';
@@ -33,7 +32,6 @@ const AppRoutes = () => {
         <Route path="/search" element={<Search />} />
         <Route path="/toprated" element={<TopRated />} />
         <Route path="/mybackpack" element={<MyBackpack />} />
-        <Route path="/setting" element={<Setting />} />
         <Route path="/toprated/:movieId" element={<MovieDetails />} />
         <Route path="/movies/:movieId" element={<MovieDetails />} />
         <Route path="/series/:movieId" element={<MovieDetails />} />

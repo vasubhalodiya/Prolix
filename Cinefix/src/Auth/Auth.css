@@ -37,7 +37,8 @@
 
 .auth-input-field
 {
-    width: 25%;
+    /* width: 25%; */
+    width: 400px;
 }
 
 .auth-input-title
@@ -64,7 +65,8 @@
 
 .auth-btn
 {
-    width: 25%;
+    /* width: 25%; */
+    width: 400px;
     height: 45px;
     color: var(--ligh-color);
     background-color: var(--red-color);

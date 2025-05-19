@@ -3,11 +3,21 @@ import { useGetSeriesQuery } from '../../../redux/movieApi';
 import MovieCard from '../../../components/MovieCard/MovieCard';
 import '../../../components/MovieCard/MovieCard.css';
 import { useNavigate } from 'react-router-dom';
+import SkeletonCard from '../../../components/MovieCard/SkeletonCard';
+
 
 const Series = () => {
   const { data: series, isLoading, isError, error } = useGetSeriesQuery();
   const [genres, setGenres] = useState([]);
   const navigate = useNavigate();
+  const [showSkeleton, setShowSkeleton] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowSkeleton(false);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     fetch('https://api.themoviedb.org/3/genre/tv/list?api_key=0c9eb6c7265733aad8b14540ca4cdf5f&language=en-US')
@@ -30,8 +40,21 @@ const Series = () => {
     navigate(`/series/${movieId}`);
   };
 
-  if (isLoading) {
-    return <div>Loading...</div>;
+  if (isLoading || showSkeleton) {
+    return (
+      <div className="movies">
+        <div className="movies-cnt">
+          <h1 className="section-heading">All Movies</h1>
+          <div className="movies-list">
+            {[...Array(10)].map((_, index) => (
+              <div className="skeleton-card-container">
+                <SkeletonCard key={index} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
   }
 
   if (isError) {

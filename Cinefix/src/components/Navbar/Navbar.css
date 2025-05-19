@@ -132,8 +132,10 @@
     background-color: #cb1f1f;
 }
 
-
-
+.navbar.shifted .navbar-subscribe-btn
+{
+    display: none;
+}
 
 
 

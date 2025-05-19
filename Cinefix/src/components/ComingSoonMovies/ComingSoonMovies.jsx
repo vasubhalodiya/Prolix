@@ -21,22 +21,16 @@ const ComingSoonMovies = () => {
                 title="Coming Soon"
                 data={comingSoonData}
                 renderCard={(movie) => (
-                    <div key={movie.id} className="coming-soon-movie-poster">
+                    <div key={movie.id} className="coming-soon-movie-poster" onClick={() => navigate(`/movie/${movie.id}`)}>
                         <img
                             src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
                             alt={movie.title}
-                            className='coming-soon-poster-img'
-                        />
+                            className='coming-soon-poster-img'/>
                         <div className="coming-soon-poster-txt">
                             <div className="coming-soon-poster-txt-title">
                                 <h6 className='movie-type'>Coming Soon</h6>
                                 <h1 className='movie-name'>{movie.title}</h1>
                                 <h6 className='movie-episode'>On {new Date(movie.release_date).toLocaleDateString()}</h6>
-                            </div>
-                            <div className="coming-soon-poster-txt-btns">
-                                <Button variant="outline" icon="fa-light fa-clapperboard-play" style={{ color: 'green' }} onClick={() => navigate(`/movie/${movie.id}`)}>
-                                    Watch Now
-                                </Button>
                             </div>
                         </div>
                     </div>

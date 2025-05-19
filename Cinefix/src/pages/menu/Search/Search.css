@@ -1,10 +1,10 @@
-.moviecard-list-container
+/* .moviecard-list-container
 {
     display: grid;
     gap: 15px;
     grid-template-columns: repeat(4, 1fr);
     margin-top: 10px;
-}
+} */
 
 .search-bar
 {

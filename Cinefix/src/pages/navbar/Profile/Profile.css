@@ -1,11 +1,10 @@
 .profile-content {
-    display: grid;
-    grid-template-columns: repeat(11, 1fr);
+    display: flex;
     gap: 20px;
 }
 
 .profile-sidebar {
-    grid-column: span 3;
+    width: 280px;
     height: 83vh;
     border-right: 1px solid var(--border-color);
     padding-right: 30px;

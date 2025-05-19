@@ -68,37 +68,32 @@
     position: relative;
 }
 
-.play-btn-circle
+.play-btn .btn-play
 {
     width: 60px;
     height: 60px;
     background-color: rgb(0, 0, 0, 0.4);
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    border-radius: 50%;
-}
-
-.play-btn .btn-play
-{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     border-radius: 50%;
     font-size: 18px;
-}
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+      top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+/* 
 .play-btn-text
 {
     position: absolute;
-    top: 60%;
+    top: 55%;
     left: 54%;
     transform: translate(-50%, -50%);
     font-size: 18px;
     color: #fff;
     text-align: center;
-}
+} */
 
 .movie-details-section
 {

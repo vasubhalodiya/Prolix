@@ -60,10 +60,6 @@ const Profile = () => {
             <div className="profile-edit-profile-section">
               <div className='profile-welcome-title'>Welcome to Cinefix</div>
               <div className='profile-name'>Email : <span>{user.email}</span>
-                  {/* <button>Edit Email</button> */}
-              </div>
-              <div className='profile-name'>Password : <span>hello</span>
-                  {/* <button>Edit Password</button> */}
               </div>
             </div>
           </div>

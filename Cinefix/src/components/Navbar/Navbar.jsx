@@ -1,83 +1,14 @@
-// import React, { useState, useEffect } from 'react';
-// import './Navbar.css';
-// import images from '../../utils/images';
-// import NavLink from '../NavLink/NavLink';
-// import { useNavigate } from "react-router-dom";
-// import { useAuth } from "../../Auth/AuthContext";
-// import Button from '@/components/Button/Button';
-
-// const Navbar = () => {
-//   const [isSubscribed, setIsSubscribed] = useState(false);
-//   const { user } = useAuth();
-//   const navigate = useNavigate();
-
-//   useEffect(() => {
-//     const subscribedStatus = localStorage.getItem("isSubscribed");
-//     if (subscribedStatus === "true") {
-//       setIsSubscribed(true);
-//     }
-//   }, []);
-
-//   const handleClick = () => {
-//     if (user) {
-//       navigate("/profile");
-//     } else {
-//       navigate("/login");
-//     }
-//   };
-
-//   return (
-//     <div className="navbar">
-//       <div className="navbar-cnt">
-//         <div className="navbar-link-list">
-//           <ul className="navbar-links">
-//             <NavLink to="/movies" label="Movies" />
-//             <NavLink to="/series" label="Series" />
-//             <NavLink to="/tvshows" label="Tv Shows" />
-//           </ul>
-//         </div>
-//         <div className="navbar-profile-section">
-//           {!isSubscribed && (
-//             <div className="navbar-subscribe-btn">
-//               <NavLink to="/subscribe" label="Subscribe" className="button-link" />
-//             </div>
-//           )}
-//           <div className="navbar-notification">
-//             <i className="fa-light fa-bell notification-icon"></i>
-//             <div className="notification-indication"></div>
-//           </div>
-
-//             <div onClick={handleClick} className="navbar-profile">
-//               <img src={images.avtar} alt="avatar" />
-//               <div className="profile-dropdown">
-//                 <i className="fa-solid fa-chevron-down"></i>
-//               </div>
-//             </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Navbar;
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './Navbar.css';
 import images from '../../utils/images';
 import NavLink from '../NavLink/NavLink';
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../Auth/AuthContext";
+import { Link } from 'react-router-dom';
 
-const Navbar = ({ isTablet, onToggle, isOpen }) => {
-  const [isSubscribed, setIsSubscribed] = useState(false);
+const Navbar = ({ isTablet, onToggle, isOpen, closeSidebar, showSubscribe }) => {
   const { user } = useAuth();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const subscribedStatus = localStorage.getItem("isSubscribed");
-    if (subscribedStatus === "true") {
-      setIsSubscribed(true);
-    }
-  }, []);
 
   const handleClick = () => {
     if (user) {
@@ -94,13 +25,14 @@ const Navbar = ({ isTablet, onToggle, isOpen }) => {
         {isTablet && (
           <div className="navbar-mobile-header">
             <button className="navbar-toggle-btn" onClick={onToggle}>
-              <i class="fa-light fa-sidebar"></i>
+              <i className="fa-light fa-sidebar"></i>
             </button>
-            <img src={images.logo} alt="cinefix-logo" className="navbar-mobile-logo" />
+            <Link to="/">
+              <img src={images.logo} alt="cinefix-logo" className='navbar-mobile-logo' />
+            </Link>
           </div>
         )}
 
-        {/* Navbar links - hide on tablet (because sidebar is toggleable) */}
         {!isTablet && (
           <div className="navbar-link-list">
             <ul className="navbar-links">
@@ -111,17 +43,23 @@ const Navbar = ({ isTablet, onToggle, isOpen }) => {
           </div>
         )}
 
-        {/* Profile & Subscribe Section */}
         <div className="navbar-profile-section">
-          {!isSubscribed && (
+          {showSubscribe && (
             <div className="navbar-subscribe-btn">
-              <NavLink to="/subscribe" label="Subscribe" className="button-link" />
+              <NavLink
+                to="/subscribe"
+                label="Subscribe"
+                className="button-link"
+                isSidebar={isTablet && isOpen}
+                onClick={isTablet && isOpen ? closeSidebar : undefined}
+              />
             </div>
           )}
-          <div className="navbar-notification">
+
+          {/* <div className="navbar-notification">
             <i className="fa-light fa-bell notification-icon"></i>
             <div className="notification-indication"></div>
-          </div>
+          </div> */}
 
           <div onClick={handleClick} className="navbar-profile">
             <img src={images.avtar} alt="avatar" />
@@ -130,7 +68,6 @@ const Navbar = ({ isTablet, onToggle, isOpen }) => {
             </div>
           </div>
         </div>
-
       </div>
     </div>
   );
