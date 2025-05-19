@@ -17,7 +17,6 @@ export const movieApi = createApi({
     }),
     getMovies: builder.query({
       query: () => 'discover/movie?api_key=0c9eb6c7265733aad8b14540ca4cdf5f&with_companies=420&language=en-US&release_date.gte=2013-01-01&release_date.lte=2025-12-31&page=1',
-
       // Marvel Studios: 420(tmdb studio id)
       // DC Films: 495(tmdb studio id)
       // Universal Pictures Studio: 2(tmdb studio id)

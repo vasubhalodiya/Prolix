@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { checkSubscription } from '../../../utils/checkSubscription'; // Import checkSubscription logic
+import { checkSubscription } from '../../../utils/checkSubscription';
 import './ProtectedPage.css';
 import confetti from 'canvas-confetti/dist/confetti.module.mjs';
 
@@ -8,13 +8,11 @@ const ProtectedPage = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Check if the user is subscribed
         if (!checkSubscription()) {
-            navigate('/subscribe'); // Redirect to subscribe if expired or not subscribed
+            navigate('/subscribe');
             return;
         }
 
-        // If the user hasn't celebrated yet, trigger the confetti animation
         const hasCelebrated = sessionStorage.getItem('hasCelebrated');
         if (!hasCelebrated) {
             const duration = 2000;

@@ -3,7 +3,6 @@ import { useGetTopRatedMoviesQuery } from '../../../redux/movieApi';
 import TopRatedCard from '../../../components/TopRatedCard/TopRatedCard';
 import '../../../components/TopRatedCard/TopRatedCard.css';
 import { useNavigate } from 'react-router-dom';
-import NProgressbar from '../../../components/NProgressbar/NProgressbar';
 import SkeletonCard from '../../../components/MovieCard/SkeletonCard';
 
 
@@ -42,7 +41,6 @@ const TopRated = () => {
       return <div>Error: {error.message}</div>;
     }
   
-    // Show skeleton if loading OR still within 3 seconds
     if (isDataLoading || showSkeleton) {
       return (
         <div className="movies">

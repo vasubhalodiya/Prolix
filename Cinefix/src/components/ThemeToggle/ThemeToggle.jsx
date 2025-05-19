@@ -2,13 +2,12 @@ import React, { useEffect, useState } from "react";
 
 const ThemeToggle = () => {
   const [theme, setTheme] = useState(() => {
-    // ✅ First load pe localStorage se theme lo, warna default 'dark'
     return localStorage.getItem("theme") || "dark";
   });
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme); // ✅ theme permanently save hoti hai
+    localStorage.setItem("theme", theme);
   }, [theme]);
 
   const toggleTheme = () => {

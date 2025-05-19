@@ -39,7 +39,6 @@ const Movies = () => {
     return <div>Error: {error.message}</div>;
   }
 
-  // Show skeleton if loading OR still within 3 seconds
   if (isLoading || showSkeleton) {
     return (
       <div className="movies">

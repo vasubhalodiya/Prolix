@@ -15,57 +15,6 @@ const Subscribe = () => {
     };
   }, []);
 
-  // const handlePayment = async (amount) => {
-  //   console.log("Payment initiated for amount:", amount);
-
-  //   try {
-  //     const res = await fetch("http://localhost:5000/create-order", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json"
-  //       },
-  //       body: JSON.stringify({ amount })
-  //     });
-  //     const data = await res.json();
-  //     if (!res.ok) throw new Error(data.message || "Failed to create order");
-
-  //     const options = {
-  //       key: "rzp_test_f72l5fnGjUGpvZ",
-  //       amount: data.amount,
-  //       currency: "INR",
-  //       name: "Cinefix",
-  //       description: "Subscription Payment",
-  //       order_id: data.id,
-  //       handler: function (response) {
-  //         console.log("Payment successful!", response);
-
-  //         // Store subscription details
-  //         localStorage.setItem('isSubscribed', 'true');
-
-  //         // Set expiry for 1 minute (or adjust for actual time)
-  //         const currentDate = new Date();
-  //         const expiryDate = new Date(currentDate);
-  //         expiryDate.setMinutes(currentDate.getMinutes() + 1); // 1 minute expiry for demo
-  //         localStorage.setItem('subscriptionExpiry', expiryDate.toISOString());
-
-  //         navigate('/paymentsuccessfull');
-  //       },
-  //       prefill: {
-  //         name: "Vasu",
-  //         email: "vasu@example.com",
-  //         contact: "1234567890"
-  //       },
-  //       theme: {
-  //         color: "#e43a3a"
-  //       }
-  //     };
-  //     const razor = new window.Razorpay(options);
-  //     razor.open();
-
-  //   } catch (error) {
-  //     console.error("Error in payment flow:", error);
-  //   }
-  // };
   const handlePayment = async (amount) => {
     console.log("Payment initiated for amount:", amount);
 

@@ -60,7 +60,6 @@ const TvShows = () => {
     return <div>Error: {error.message}</div>;
   }
 
-
   return (
     <div className="movies">
       <div className="movies-cnt">
