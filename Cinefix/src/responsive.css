@@ -21,34 +21,57 @@
 
 @media screen and (min-width:992px) and (max-width:1024px)
 {
-	
+	.sidebar.open{transform: translateX(0);}
+    .navbar-link-list{display: none;}
+    .app-layout{margin-left: 0;}
+    .navbar{left: 0;}
 
 
 }
 
 @media screen and (min-width:768px) and (max-width:991px)
 {
-	
+	.sidebar.open{transform: translateX(0);}
+    .navbar-link-list{display: none;}
+    .app-layout{margin-left: 0;}
+    .navbar{left: 0;}
 
 	
 }
 
 @media (max-width: 767px)
 {
-	
+	.sidebar.open{transform: translateX(0);}
+    .navbar-link-list{display: none;}
+    .app-layout{margin-left: 0;}
+    .navbar{left: 0;}
   
 
 }
 
 @media screen and (max-width:575px)
 {
-
+    .main-cnt{padding: 20px 23px;}
+    .navbar-cnt{padding: 0px 23px;}
 	
 
 }
 
 @media screen and (max-width:480px)
 {
+    .main-cnt{padding: 20px 15px;}
+    .navbar-cnt{padding: 0px 15px;}
+    .navbar-profile-section, .navbar-mobile-header{gap: 20px;}
+    .profile-dropdown i{display: none;}
 
 	
 }
+
+@media screen and (max-width:375px)
+{
+    .sidebar{width: 100%;}
+
+}
+
+
+

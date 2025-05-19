@@ -88,12 +88,13 @@ const Navbar = ({ isTablet, onToggle, isOpen }) => {
   };
 
   return (
-    <div className="navbar">
+    <div className={`navbar ${isTablet && isOpen ? "shifted" : ""}`}
+      style={{ zIndex: isOpen ? -1 : 999999999999 }}>
       <div className="navbar-cnt">
         {isTablet && (
           <div className="navbar-mobile-header">
             <button className="navbar-toggle-btn" onClick={onToggle}>
-              <i className={`fa-regular ${isOpen ? 'fa-xmark' : 'fa-bars-sort'}`}></i>
+              <i class="fa-light fa-sidebar"></i>
             </button>
             <img src={images.logo} alt="cinefix-logo" className="navbar-mobile-logo" />
           </div>

@@ -9,31 +9,26 @@
   z-index: 1000;
 } */
 
-.sidebar-logo
-{
+.sidebar-logo {
   height: 65px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.logo
-{
+.logo {
   width: 100px;
 }
 
-.sidebar-list-group
-{
+.sidebar-list-group {
   margin-bottom: 20px;
 }
 
-.sidebar-list
-{
+.sidebar-list {
   margin-top: 20px;
 }
 
-.sidebar-title h6
-{
+.sidebar-title h6 {
   color: var(--text-light-color);
   font-size: 12px;
   font-family: 'Int-Medium';
@@ -43,13 +38,11 @@
   letter-spacing: 1px;
 }
 
-.sidebar-link-list
-{
+.sidebar-link-list {
   padding: 0 20px;
 }
 
-.sidebar-link
-{
+.sidebar-link {
   height: 45px;
   color: var(--text-color);
   font-size: 15px;
@@ -65,8 +58,7 @@
 
 }
 
-.sidebar-link i
-{
+.sidebar-link i {
   font-size: 16px;
   transition: all 0.3s ease;
 }
@@ -92,8 +84,7 @@
   font-weight: 800;
 }
 
-.sidebar-links .fa-tv
-{
+.sidebar-links .fa-tv {
   font-size: 13px;
 }
 
@@ -106,7 +97,7 @@
   background-color: #111;
   transform: translateX(-100%);
   transition: transform 0.3s ease;
-  z-index: 1000;
+  z-index: 99999999999999;
 }
 
 .sidebar.open {
@@ -116,16 +107,12 @@
 .navbar-mobile-header {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 30px;
   margin-left: 5px;
 }
 
-.navbar-mobile-logo {
-  width: 80px;
-}
-
-.navbar-toggle-btn i{
-  font-size: 17px;
+.navbar-toggle-btn i {
+  font-size: 20px;
   background: none;
   border: none;
   color: white;
@@ -146,8 +133,112 @@
 }
 
 .navbar-cnt.shifted {
-  transform: translateX(200px); /* you can adjust distance */
+  transform: translateX(200px);
 }
+
+.navbar-cnt {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.navbar-cnt.shifted {
+  transform: translateX(250px);
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 99999999;
+  cursor: pointer;
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.sidebar.open .sidebar-logo .logo, .navbar-mobile-logo{width: 90px;}
+.sidebar.open .sidebar-logo
+{
+  padding: 0px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sidebar-close-btn i {
+  color: white;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.gradient-overlay.left-gradient{left: -1px;}
+.gradient-overlay.right-gradient{right: -1px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
