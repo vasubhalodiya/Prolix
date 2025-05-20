@@ -85,3 +85,97 @@ const TopRated = () => {
 };
 
 export default TopRated;
+
+// import React, { useState, useEffect } from 'react';
+// import {
+//   useGetTopRatedMoviesQuery,
+//   useGetGenresQuery,
+// } from '../../../redux/movieApi';
+// import TopRatedCard from '../../../components/TopRatedCard/TopRatedCard';
+// import '../../../components/TopRatedCard/TopRatedCard.css';
+// import { useNavigate } from 'react-router-dom';
+// import SkeletonCard from '../../../components/MovieCard/SkeletonCard';
+
+// const TopRated = () => {
+//   const navigate = useNavigate();
+
+//   const {
+//     data: movies,
+//     isLoading: isMoviesLoading,
+//     isError: isMoviesError,
+//     error: moviesError,
+//   } = useGetTopRatedMoviesQuery();
+
+//   const {
+//     data: genreData,
+//     isLoading: isGenresLoading,
+//     isError: isGenresError,
+//   } = useGetGenresQuery();
+
+//   const genres = genreData?.genres || [];
+//   const [showSkeleton, setShowSkeleton] = useState(true);
+
+//   useEffect(() => {
+//     const timer = setTimeout(() => {
+//       setShowSkeleton(false);
+//     }, 1000);
+//     return () => clearTimeout(timer);
+//   }, []);
+
+//   const getGenreName = (genreId) => {
+//     const genre = genres.find((genre) => genre.id === genreId);
+//     return genre ? genre.name : 'Unknown';
+//   };
+
+//   const handleCardClick = (movieId) => {
+//     navigate(`/toprated/${movieId}`);
+//   };
+
+//   const isDataLoading = isMoviesLoading || isGenresLoading || showSkeleton;
+
+//   if (isMoviesError || isGenresError) {
+//     return <div>Error loading data.</div>;
+//   }
+
+//   if (isDataLoading) {
+//     return (
+//       <div className="movies">
+//         <div className="movies-cnt">
+//           <h1 className="section-heading">Top Rated Movies</h1>
+//           <div className="movies-list">
+//             {[...Array(10)].map((_, index) => (
+//               <div className="skeleton-card-container" key={index}>
+//                 <SkeletonCard />
+//               </div>
+//             ))}
+//           </div>
+//         </div>
+//       </div>
+//     );
+//   }
+
+//   return (
+//     <div className="top-rated-movies">
+//       <h1 className="section-heading">Top Rated Movies</h1>
+//       <div className="top-rated-movie-list">
+//         {movies?.results?.length > 0 ? (
+//           movies.results.map((movie, index) => (
+//             <TopRatedCard
+//               key={movie.id}
+//               rank={index + 1}
+//               title={movie.title}
+//               poster={movie.poster_path}
+//               rating={movie.vote_average}
+//               genre={getGenreName(movie.genre_ids[0])}
+//               onClick={() => handleCardClick(movie.id)}
+//             />
+//           ))
+//         ) : (
+//           <p>No top-rated movies available</p>
+//         )}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default TopRated;

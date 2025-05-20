@@ -41,10 +41,14 @@
 - when user haven't acoount then user have option to create a account then login to recent created account
 
 
+===================================================
+File for Perticular Features
+===================================================
 
-
-
-
+------ movies fetch ------
+movieApi.jsx
+store.jsx
+Movies.jsx
 
 
 
