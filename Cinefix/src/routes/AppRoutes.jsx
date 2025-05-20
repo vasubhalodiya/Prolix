@@ -10,7 +10,7 @@ import TopRated from '../pages/menu/TopRated/TopRated';
 import MyBackpack from '../pages/library/MyBackpack/MyBackpack';
 import MovieDetails from '../components/MovieDetails/MovieDetails';
 import PaymentSuccessfull from '../pages/navbar/PaymentSuccessfull/PaymentSuccessfull';
-import ProtectedPage from '../pages/navbar/protected/ProtectedPage';
+import ProtectedPage from '../pages/navbar/Protected/ProtectedPage';
 import ProtectedRoute from './ProtectedRoute';
 import { AuthProvider } from "../auth/AuthContext";
 import Login from "../auth/Login";

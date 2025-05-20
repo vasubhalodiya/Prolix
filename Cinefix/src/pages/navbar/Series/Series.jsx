@@ -36,9 +36,9 @@ const Series = () => {
     return productionCompanies.map((company) => company.name).join(', ');
   };
 
-  const handleCardClick = (movieId) => {
-    navigate(`/series/${movieId}`);
-  };
+  // const handleCardClick = (movieId) => {
+  //   navigate(`/series/${movieId}`);
+  // };
 
   if (isLoading || showSkeleton) {
     return (
@@ -62,7 +62,6 @@ const Series = () => {
     return <div>Error: {error.message}</div>;
   }
 
-
   return (
     <div className="movies">
       <div className="movies-cnt">
@@ -75,7 +74,7 @@ const Series = () => {
                 poster={series.backdrop_path || series.poster_path}
                 title={series.name}
                 rating={series.vote_average}
-                // genre={getGenreName(series.genre_ids[0])}
+                genre={getGenreName(series.genre_ids[0])}
                 studio={getStudioNames(series.production_companies)}
                 onClick={() => navigate(`/series/${series.id}`)}
               />
