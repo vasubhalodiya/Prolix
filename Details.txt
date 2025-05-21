@@ -1,0 +1,6 @@
+stripe & square payment gateway use
+
+restorant website in
+
+when user pay $100 dollar then automatic cut 
+5% of fee for developing app or company
