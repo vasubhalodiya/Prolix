@@ -18,12 +18,12 @@ const Movies = () => {
     return () => clearTimeout(timer);
   }, []);
 
-    useEffect(() => {
-      fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=0c9eb6c7265733aad8b14540ca4cdf5f&language=en-US')
-        .then((response) => response.json())
-        .then((data) => setGenres(data.genres))
-        .catch((error) => console.error('Error fetching genres:', error));
-    }, []);
+  useEffect(() => {
+    fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=0c9eb6c7265733aad8b14540ca4cdf5f&language=en-US')
+      .then((response) => response.json())
+      .then((data) => setGenres(data.genres))
+      .catch((error) => console.error('Error fetching genres:', error));
+  }, []);
 
   const getGenreName = (genreId) => {
     const genre = genres.find((genre) => genre.id === genreId);

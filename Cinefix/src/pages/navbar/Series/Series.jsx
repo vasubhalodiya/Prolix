@@ -36,10 +36,6 @@ const Series = () => {
     return productionCompanies.map((company) => company.name).join(', ');
   };
 
-  // const handleCardClick = (movieId) => {
-  //   navigate(`/series/${movieId}`);
-  // };
-
   if (isLoading || showSkeleton) {
     return (
       <div className="movies">

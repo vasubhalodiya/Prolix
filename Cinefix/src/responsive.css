@@ -130,7 +130,7 @@
     .profile-welcome-title{margin-bottom: 20px;}
     .trailer iframe{height: 340px;}
     .backpack-movies-section{grid-template-columns: repeat(3, 1fr);}
-    
+    .master-btn:hover{transform: scale(1.05);}
 
 }
 

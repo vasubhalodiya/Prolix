@@ -62,7 +62,7 @@ const MovieDetails = () => {
     const movieToStore = {
       id: movie.id,
       title: movie.title || movie.name,
-      poster_path: movie.poster_path,
+      poster_path: movie.backdrop_path,
     };
 
     const updated = [...stored, movieToStore];
@@ -84,19 +84,12 @@ const MovieDetails = () => {
                   <img
                     src={`https://image.tmdb.org/t/p/w500${movieDetails.backdrop_path}`}
                     alt={movieDetails.title || movieDetails.name}
-                    className="movie-thumbnail"
-                  />
-                  <div
-                    className="movie-play-btn-detail"
-                    onClick={() => setShowVideo(true)}
-                  >
+                    className="movie-thumbnail" />
+                  <div className="movie-play-btn-detail" onClick={()=> setShowVideo(true)}>
                     <div className="play-btn">
                       <div className="play-btn-circle">
                         <i className="fa-solid fa-play btn-play"></i>
                       </div>
-                      {/* <div className="play-btn-text moviecard-title">
-                        {movieDetails.title || movieDetails.name}
-                      </div> */}
                     </div>
                   </div>
                 </div>
@@ -108,8 +101,7 @@ const MovieDetails = () => {
                   title="YouTube video player"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
+                  allowFullScreen></iframe>
               )}
             </div>
           )}
@@ -119,7 +111,7 @@ const MovieDetails = () => {
               <h1 className="movie-details-title">
                 {movieDetails.title || movieDetails.name}
               </h1>
-              <button className="add-to-backpack-btn" onClick={() => handleAddToBackpack(movieDetails)}><i class="fa-regular fa-backpack"></i><span>Add to Backpack</span></button>
+              <button className="add-to-backpack-btn" onClick={() => handleAddToBackpack(movieDetails)}><i className="fa-regular fa-backpack"></i><span>Add to Backpack</span></button>
             </div>
             <p className="movie-details-genres">
               <i className="fa-light fa-film"></i>{" "}
