@@ -1,32 +1,3 @@
-// import React from 'react'
-// import './discovery.css'
-// import StudioSlider from '@/components/StudioSlider/StudioSlider';
-// import ComingSoonMovies from '@/components/ComingSoonMovies/ComingSoonMovies';
-// import PopularMovies from '@/components/PopularMovies/PopularMovies';
-
-// const Discovery = () => {
-
-//   return (
-//     <>
-//       <div className="discovery">
-//         <div className="discovery-cnt">
-//           <div className="coming-soon-movies-slider slider-section">
-//             <ComingSoonMovies/>
-//           </div>
-//           <div className="disc-studios-slider slider-section">
-//             <StudioSlider />
-//           </div>
-//           <div className="disc-continue-watching-slider">
-//             <PopularMovies />
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   )
-// }
-
-// export default Discovery
-
 import React from 'react';
 import './discovery.css';
 import StudioSlider from '@/components/StudioSlider/StudioSlider';

@@ -29,16 +29,15 @@ const Subscribe = () => {
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || "Failed to create order");
 
-      // Set the expiration time based on the selected plan
       let expirationTime = 0;
       if (amount === 189) {
-        expirationTime = new Date().getTime() + 60 * 1000; // 1 minute for 189
+        expirationTime = new Date().getTime() + 60 * 1000;
       } else if (amount === 2189) {
-        expirationTime = new Date().getTime() + 3 * 60 * 1000; // 3 minutes for 2189
+        expirationTime = new Date().getTime() + 3 * 60 * 1000;
       }
 
       localStorage.setItem('isSubscribed', 'true');
-      localStorage.setItem('subscriptionExpiry', expirationTime); // Save expiration time in localStorage
+      localStorage.setItem('subscriptionExpiry', expirationTime);
 
       const options = {
         key: "rzp_test_f72l5fnGjUGpvZ",

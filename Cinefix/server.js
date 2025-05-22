@@ -17,7 +17,7 @@ app.post('/create-order', async (req, res) => {
   try {
     const { amount } = req.body;
     const options = {
-      amount: amount * 100,  // Razorpay expects the amount in paise
+      amount: amount * 100,
       currency: 'INR',
       receipt: `receipt#${Math.floor(Math.random() * 100000)}`,
     };

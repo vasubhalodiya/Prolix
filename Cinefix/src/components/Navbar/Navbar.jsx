@@ -23,7 +23,6 @@ const Navbar = ({ isTablet, onToggle, isOpen, closeSidebar, showSubscribe }) => 
       style={{ zIndex: isOpen ? -1 : 999999999999 }}
     >
       <div className="navbar-cnt">
-        {/* Mobile / Tablet Header */}
         {isTablet && (
           <div className="navbar-mobile-header">
             <button className="navbar-toggle-btn" onClick={onToggle}>
@@ -35,7 +34,6 @@ const Navbar = ({ isTablet, onToggle, isOpen, closeSidebar, showSubscribe }) => 
           </div>
         )}
 
-        {/* Desktop Links */}
         {!isTablet && (
           <div className="navbar-link-list">
             <ul className="navbar-links">
@@ -46,7 +44,6 @@ const Navbar = ({ isTablet, onToggle, isOpen, closeSidebar, showSubscribe }) => 
           </div>
         )}
 
-        {/* Right Section - Subscribe + Profile */}
         <div className="navbar-profile-section">
           {showSubscribe && (
             <div className="navbar-subscribe-btn">
@@ -60,7 +57,6 @@ const Navbar = ({ isTablet, onToggle, isOpen, closeSidebar, showSubscribe }) => 
             </div>
           )}
 
-          {/* Optional Notification Icon */}
           {/*
           <div className="navbar-notification">
             <i className="fa-light fa-bell notification-icon"></i>
@@ -68,7 +64,6 @@ const Navbar = ({ isTablet, onToggle, isOpen, closeSidebar, showSubscribe }) => 
           </div>
           */}
 
-          {/* Profile Avatar */}
           <div onClick={handleClick} className="navbar-profile">
             <img src={images.avtar} alt="avatar" />
             <div className="profile-dropdown">

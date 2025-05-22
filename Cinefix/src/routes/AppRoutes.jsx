@@ -44,9 +44,13 @@ const AppRoutes = () => {
               <ProtectedPage />
             </ProtectedRoute>
           }/>
+        <Route path="/" element={
+          <PrivateRoute>
+            <Discovery />
+          </PrivateRoute>
+        } />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/" element={<PrivateRoute><Discovery /></PrivateRoute>} />
       </Routes>
     </AuthProvider>
   );

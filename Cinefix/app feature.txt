@@ -45,14 +45,27 @@
 File for Perticular Features
 ===================================================
 
------- movies fetch ------
+------ Movies Fetch ------
 movieApi.jsx
 store.jsx
 Movies.jsx
 
+------ Payment Integration ------
+server.js
+Subscribe.jsx
+ProtectedPage.jsx
+checkSubscription.jsx
+PaymentSuccessfull.jsx
+ProtectedRoute.jsx
+AppRoutes.jsx
 
-
-
+------ Authentication ------
+AuthContext.jsx
+firebase.js
+Login.jsx
+PrivateRoute.jsx
+Signup.jsx
+AppRoutes.jsx
 
 
 
