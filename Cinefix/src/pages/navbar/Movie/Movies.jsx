@@ -62,17 +62,34 @@ const Movies = () => {
         <h1 className="section-heading">All Movies</h1>
         <div className="movies-list">
           {movies && movies.results && movies.results.length > 0 ? (
-            movies.results.map((movie) => (
-              <MovieCard
-                key={movie.id}
-                poster={movie.backdrop_path || movie.poster_path}
-                title={movie.title}
-                rating={movie.vote_average}
-                genre={getGenreName(movie.genre_ids[0])}
-                studio={getStudioNames(movie.production_companies)}
-                onClick={() => navigate(`/movies/${movie.id}`)}
-              />
-            ))
+            movies.results.map((movie) => {
+              const isPremium = (movie.id % 10) < 5;
+              const handleClick = () => {
+                if (isPremium) {
+                  const isSubscribed = localStorage.getItem('isSubscribed');
+                  if (isSubscribed === 'true') {
+                    navigate(`/movies/${movie.id}`);
+                  } else {
+                    localStorage.setItem('redirectAfterPayment', `/movies/${movie.id}`);
+                    navigate('/subscribenotify');
+                  }
+                } else {
+                  navigate(`/movies/${movie.id}`);
+                }
+              };
+              return (
+                <MovieCard
+                  key={movie.id}
+                  poster={movie.backdrop_path || movie.poster_path}
+                  title={movie.title}
+                  rating={movie.vote_average}
+                  genre={getGenreName(movie.genre_ids[0])}
+                  studio={getStudioNames(movie.production_companies)}
+                  isPremium={isPremium}
+                  onClick={handleClick}
+                />
+              );
+            })
           ) : (
             <p>No movies available</p>
           )}

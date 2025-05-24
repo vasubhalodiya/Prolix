@@ -1,5 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
+// createApi → function chhe je API slice banava mate use thay
+// fetchBaseQuery → simple HTTP requests (GET,POST,..) karva mate use thay
+
 const apiKey = '0c9eb6c7265733aad8b14540ca4cdf5f';
 
 export const movieApi = createApi({

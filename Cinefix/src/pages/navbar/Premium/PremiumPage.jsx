@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { checkSubscription } from '../../../utils/checkSubscription';
-import './ProtectedPage.css';
+import './PremiumPage.css';
 import confetti from 'canvas-confetti/dist/confetti.module.mjs';
 
-const ProtectedPage = () => {
+const PremiumPage = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -73,4 +73,4 @@ const ProtectedPage = () => {
     );
 };
 
-export default ProtectedPage;
+export default PremiumPage;

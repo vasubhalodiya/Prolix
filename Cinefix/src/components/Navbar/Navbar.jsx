@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Navbar.css';
 import images from '../../utils/images';
 import NavLink from '../NavLink/NavLink';
@@ -8,6 +8,12 @@ import { useAuth } from '../../Auth/AuthContext';
 const Navbar = ({ isTablet, onToggle, isOpen, closeSidebar, showSubscribe }) => {
   const { user } = useAuth();
   const navigate = useNavigate();
+  const [isSubscribed, setIsSubscribed] = useState(false);
+
+  useEffect(() => {
+    const storedStatus = localStorage.getItem('isSubscribed');
+    setIsSubscribed(storedStatus === 'true');
+  }, []);
 
   const handleClick = () => {
     if (user) {
@@ -46,7 +52,7 @@ const Navbar = ({ isTablet, onToggle, isOpen, closeSidebar, showSubscribe }) => 
 
         <div className="navbar-profile-section">
           {showSubscribe && (
-            <div className="navbar-subscribe-btn">
+            <div className={`navbar-subscribe-btn ${isSubscribed ? 'd-none' : ''}`}>
               <NavLink
                 to="/subscribe"
                 label="Subscribe"
@@ -56,13 +62,6 @@ const Navbar = ({ isTablet, onToggle, isOpen, closeSidebar, showSubscribe }) => 
               />
             </div>
           )}
-
-          {/*
-          <div className="navbar-notification">
-            <i className="fa-light fa-bell notification-icon"></i>
-            <div className="notification-indication"></div>
-          </div>
-          */}
 
           <div onClick={handleClick} className="navbar-profile">
             <img src={images.avtar} alt="avatar" />

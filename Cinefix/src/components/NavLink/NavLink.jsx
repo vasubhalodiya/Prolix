@@ -7,8 +7,7 @@ const NavLink = ({ to, iconClass, label, isSidebar = false, onClick }) => {
             {({ isActive }) => (
                 <li
                     className={`${isSidebar ? 'sidebar-link' : 'navbar-link'} ${isActive ? 'active' : ''}`}
-                    onClick={onClick}
-                >
+                    onClick={onClick}>
                     <i className={`${iconClass} ${isActive ? 'active-icon' : ''}`}></i>
                     {label}
                 </li>

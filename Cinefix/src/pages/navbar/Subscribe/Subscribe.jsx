@@ -31,10 +31,15 @@ const Subscribe = () => {
 
       let expirationTime = 0;
       if (amount === 189) {
-        expirationTime = new Date().getTime() + 60 * 1000;
+        const now = new Date();
+        now.setDate(now.getDate() + 1);  // 1 day vadhaaro
+        expirationTime = now.getTime();
       } else if (amount === 2189) {
-        expirationTime = new Date().getTime() + 3 * 60 * 1000;
+        const now = new Date();
+        now.setDate(now.getDate() + 3);  // 3 days vadhaaro
+        expirationTime = now.getTime();
       }
+
 
       localStorage.setItem('isSubscribed', 'true');
       localStorage.setItem('subscriptionExpiry', expirationTime);

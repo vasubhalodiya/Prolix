@@ -37,3 +37,58 @@
     grid-template-columns: repeat(4, 1fr);
     margin-top: 10px;
 }
+
+.premium-badge
+{
+    position: absolute;
+    top: 0;
+}
+
+.premium-badge i
+{
+    width: 35px;
+    height: 35px;
+    color: var(--yellow-color);
+    background-color: var(--red-color);
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    z-index: 9999999;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

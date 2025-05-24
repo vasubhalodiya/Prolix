@@ -3,6 +3,8 @@ import { useParams, useLocation } from "react-router-dom";
 import MovieSidebar from "../MovieSidebar/MovieSidebar";
 import "./MovieDetails.css";
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -11,6 +13,8 @@ const MovieDetails = () => {
   const [videoKey, setVideoKey] = useState(null);
   const [recommendations, setRecommendations] = useState([]);
   const [showVideo, setShowVideo] = useState(false);
+  const navigate = useNavigate();
+  
 
   const type = location.pathname.includes("/series/") ? "tv" : "movie";
 
@@ -51,6 +55,10 @@ const MovieDetails = () => {
     }
   }, [movieId, type]);
 
+  useEffect(() => {
+      localStorage.removeItem('redirectAfterPayment');
+  }, [navigate])
+  
   const handleAddToBackpack = (movie) => {
     const stored = JSON.parse(localStorage.getItem("myBackpack")) || [];
 

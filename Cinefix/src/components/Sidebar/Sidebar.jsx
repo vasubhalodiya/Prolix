@@ -11,6 +11,7 @@ const Sidebar = () => {
   const [isTablet, setIsTablet] = useState(window.innerWidth < 1240);
   const isSubscribed = useSelector(state => state.user ? state.user.isSubscribed : false);
 
+
   useEffect(() => {
     const handleResize = () => {
       const tablet = window.innerWidth < 1240;
@@ -79,8 +80,8 @@ const Sidebar = () => {
               </div>
             </div>
 
-            {isTablet && isOpen && !isSubscribed && (
-              <div className="sidebar-list-group">
+            {/* {isTablet && isOpen && !isSubscribed && (
+              <div className="sidebar-list-group sidebar-subscribe">
                 <div className="sidebar-title"><h6>Subscribe</h6></div>
                 <div className="sidebar-link-list">
                   <ul className="sidebar-links subscribe-link">
@@ -88,7 +89,18 @@ const Sidebar = () => {
                   </ul>
                 </div>
               </div>
-            )}
+            )} */}
+            {isTablet && isOpen && (
+  <div className={`sidebar-list-group sidebar-subscribe ${isSubscribed ? 'd-none' : ''}`}>
+    <div className="sidebar-title"><h6>Subscribe</h6></div>
+    <div className="sidebar-link-list">
+      <ul className="sidebar-links subscribe-link">
+        <NavLink to="/subscribe" iconClass="fa-regular fa-badge-dollar" label="Subscribe" isSidebar={true} onClick={closeSidebar} />
+      </ul>
+    </div>
+  </div>
+)}
+
           </div>
         </div>
       </div>

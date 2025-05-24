@@ -97,7 +97,23 @@
     justify-content: center;
 }
 
-
+.coming-soon-premium-badge i
+{
+    width: 40px;
+    height: 40px;
+    color: var(--yellow-color);
+    background-color: var(--red-color);
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    position: absolute;
+    top: 0;
+    left: 20px;
+    z-index: 9999999;
+}
 
 
 
