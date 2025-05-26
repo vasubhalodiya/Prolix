@@ -51,11 +51,11 @@ const AppRoutes = () => {
             <PremiumPage /> 
           </ProtectedRoute>
         }/>
-        <Route path="/subscribenotify" element={
+        {/* <Route path="/subscribenotify" element={
           <ProtectedRoute redirectTo="/subscribenotify">
             <MovieDetails />
           </ProtectedRoute>
-          } />
+          } /> */}
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>

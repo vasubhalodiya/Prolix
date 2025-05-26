@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import images from '../../../utils/images';
 import SubscribeCard from '@/components/SubscribeCard/SubscribeCard';
 import { useNavigate } from 'react-router-dom';
+import { doc, updateDoc, serverTimestamp, Timestamp } from "firebase/firestore";
+import { auth, db } from "../../../Auth/firebase";  // adjust the import path as needed
 
 const Subscribe = () => {
   const navigate = useNavigate();
@@ -15,61 +17,117 @@ const Subscribe = () => {
     };
   }, []);
 
+  // const handlePayment = async (amount) => {
+  //   console.log("Payment initiated for amount:", amount);
+
+  //   try {
+  //     const res = await fetch("http://localhost:5000/create-order", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json"
+  //       },
+  //       body: JSON.stringify({ amount })
+  //     });
+  //     const data = await res.json();
+  //     if (!res.ok) throw new Error(data.message || "Failed to create order");
+
+  //     let expirationTime = 0;
+  //     if (amount === 189) {
+  //       const now = new Date();
+  //       now.setDate(now.getDate() + 1);  // 1 day vadhaaro
+  //       expirationTime = now.getTime();
+  //     } else if (amount === 2189) {
+  //       const now = new Date();
+  //       now.setDate(now.getDate() + 3);  // 3 days vadhaaro
+  //       expirationTime = now.getTime();
+  //     }
+
+
+  //     localStorage.setItem('isSubscribed', 'true');
+  //     localStorage.setItem('subscriptionExpiry', expirationTime);
+
+  //     const options = {
+  //       key: "rzp_test_f72l5fnGjUGpvZ",
+  //       amount: data.amount,
+  //       currency: "INR",
+  //       name: "Cinefix",
+  //       description: "Subscription Payment",
+  //       order_id: data.id,
+  //       handler: function (response) {
+  //         console.log("Payment successful!", response);
+  //         navigate('/paymentsuccessfull');
+  //       },
+  //       prefill: {
+  //         name: "Vasu",
+  //         email: "vasu@example.com",
+  //         contact: "1234567890"
+  //       },
+  //       theme: {
+  //         color: "#e43a3a"
+  //       }
+  //     };
+  //     const razor = new window.Razorpay(options);
+  //     razor.open();
+
+  //   } catch (error) {
+  //     console.error("Error in payment flow:", error);
+  //   }
+  // };
   const handlePayment = async (amount) => {
-    console.log("Payment initiated for amount:", amount);
+    // ... existing code to create order
 
-    try {
-      const res = await fetch("http://localhost:5000/create-order", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ amount })
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.message || "Failed to create order");
-
-      let expirationTime = 0;
-      if (amount === 189) {
-        const now = new Date();
-        now.setDate(now.getDate() + 1);  // 1 day vadhaaro
-        expirationTime = now.getTime();
-      } else if (amount === 2189) {
-        const now = new Date();
-        now.setDate(now.getDate() + 3);  // 3 days vadhaaro
-        expirationTime = now.getTime();
-      }
-
-
-      localStorage.setItem('isSubscribed', 'true');
-      localStorage.setItem('subscriptionExpiry', expirationTime);
-
-      const options = {
-        key: "rzp_test_f72l5fnGjUGpvZ",
-        amount: data.amount,
-        currency: "INR",
-        name: "Cinefix",
-        description: "Subscription Payment",
-        order_id: data.id,
-        handler: function (response) {
-          console.log("Payment successful!", response);
-          navigate('/paymentsuccessfull');
-        },
-        prefill: {
-          name: "Vasu",
-          email: "vasu@example.com",
-          contact: "1234567890"
-        },
-        theme: {
-          color: "#e43a3a"
-        }
-      };
-      const razor = new window.Razorpay(options);
-      razor.open();
-
-    } catch (error) {
-      console.error("Error in payment flow:", error);
+    let expirationTime = 0;
+    if (amount === 189) {
+      const now = new Date();
+      now.setDate(now.getDate() + 1);  // 1 day expiry
+      expirationTime = now.getTime();
+    } else if (amount === 2189) {
+      const now = new Date();
+      now.setDate(now.getDate() + 3);  // 3 days expiry (adjust as needed)
+      expirationTime = now.getTime();
     }
+
+    // Store locally
+    localStorage.setItem('isSubscribed', 'true');
+    localStorage.setItem('subscriptionExpiry', expirationTime);
+
+    // Firestore update for current user
+    try {
+      const currentUser = auth.currentUser;
+      if (currentUser) {
+        const expiryTimestamp = Timestamp.fromDate(new Date(expirationTime));
+        await updateDoc(doc(db, "users", currentUser.uid), {
+          subscriptionStatus: "active",
+          subscriptionExpiry: expiryTimestamp,
+          lastSubscriptionUpdate: serverTimestamp()
+        });
+      }
+    } catch (err) {
+      console.error("Failed to update subscription info in Firestore:", err);
+    }
+
+    const options = {
+      key: "rzp_test_f72l5fnGjUGpvZ",
+      amount: data.amount,
+      currency: "INR",
+      name: "Cinefix",
+      description: "Subscription Payment",
+      order_id: data.id,
+      handler: function (response) {
+        console.log("Payment successful!", response);
+        navigate('/paymentsuccessfull');
+      },
+      prefill: {
+        name: "Vasu",
+        email: "vasu@example.com",
+        contact: "1234567890"
+      },
+      theme: {
+        color: "#e43a3a"
+      }
+    };
+    const razor = new window.Razorpay(options);
+    razor.open();
   };
 
   useEffect(() => {

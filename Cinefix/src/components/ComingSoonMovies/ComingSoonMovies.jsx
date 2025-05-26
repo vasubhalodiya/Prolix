@@ -84,15 +84,17 @@ const ComingSoonMovies = () => {
                     <div
                         key={movie.id}
                         className="coming-soon-movie-poster"
-                        onClick={() => {
-                            const isSubscribed = localStorage.getItem('isSubscribed');
-                            if (isSubscribed === 'true') {
-                                navigate(`/movies/${movie.id}`);
-                            } else {
-                                localStorage.setItem('redirectAfterPayment', `/movies/${movie.id}`);
-                                navigate('/subscribenotify');
-                            }
-                        }}>
+                        // onClick={() => {
+                        //     const isSubscribed = localStorage.getItem('isSubscribed');
+                        //     if (isSubscribed === 'true') {
+                        //         navigate(`/movies/${movie.id}`);
+                        //     } else {
+                        //         localStorage.setItem('redirectAfterPayment', `/movies/${movie.id}`);
+                        //         navigate('/subscribenotify');
+                        //     }
+                        // }}
+                        onClick={() => navigate(`/movie/${movie.id}`)}
+                        >
                         <img
                             src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
                             alt={movie.title}
