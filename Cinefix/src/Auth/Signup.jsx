@@ -6,7 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import images from '../utils/images';
 import { useState } from "react";
 import { auth } from "./firebase";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { toast } from 'react-toastify';
 
 
 const Signup = () => {
@@ -24,13 +25,17 @@ const Signup = () => {
   const handleSignup = async () => {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      alert("Signup successful!");
-      navigate("/login");
+      toast.success("Signup successful!");
+      await signInWithEmailAndPassword(auth, email, password);
+      navigate("/");
     } catch (error) {
-      alert(error.message);
+      if (error.code === "auth/email-already-in-use") {
+        toast.error("User already registered.");
+      } else {
+        toast.error("Signup failed. Please check credentials or network.");
+      }
     }
   };
-
   return (
     <>
       <div className="auth">
@@ -44,13 +49,13 @@ const Signup = () => {
             <h2 className='auth-title'>Create Account</h2>
             <div className="auth-input-field">
               <h6 className='auth-input-title'>Email Address</h6>
-              <input type="text" placeholder="Email" className='auth-input' onChange={(e) => setEmail(e.target.value)}/>
+              <input type="text" placeholder="Email" className='auth-input' onChange={(e) => setEmail(e.target.value)} />
             </div>
             <div className="auth-input-field">
               <h6 className='auth-input-title'>Password</h6>
-              <input type="password" placeholder="Password" className='auth-input' onChange={(e) => setPassword(e.target.value)}/>
+              <input type="password" placeholder="Password" className='auth-input' onChange={(e) => setPassword(e.target.value)} />
             </div>
-            <button className='auth-btn' onClick={handleSignup}>Create Account</button>
+            <button className='auth-btn' onClick={handleSignup} onKeyDown={(e) => {if (e.key === "Enter") {handleLogin();}}}>Create Account</button>
             <p className='auth-already-account'>Already have an account? <Link to="/login">Login</Link></p>
           </div>
         </div>

@@ -4,13 +4,16 @@ import images from '@/utils/Images';
 import NavLink from '../NavLink/NavLink';
 import Navbar from '../Navbar/Navbar';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { doc, getDoc } from "firebase/firestore";
+import { auth, db } from "../../Auth/firebase";
+import { onAuthStateChanged } from "firebase/auth";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isTablet, setIsTablet] = useState(window.innerWidth < 1240);
-  const isSubscribed = useSelector(state => state.user ? state.user.isSubscribed : false);
 
+  // Local state for subscription (instead of redux)
+  const [isSubscribed, setIsSubscribed] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -23,6 +26,38 @@ const Sidebar = () => {
     handleResize();
 
     return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Firebase check subscriptionStatus on auth state change
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        try {
+          const userRef = doc(db, 'users', user.uid);
+          const userSnap = await getDoc(userRef);
+
+          if (userSnap.exists()) {
+            const userData = userSnap.data();
+            // Check if subscriptionStatus is active
+            if (userData.subscriptionStatus === 'active') {
+              setIsSubscribed(true);
+            } else {
+              setIsSubscribed(false);
+            }
+          } else {
+            setIsSubscribed(false);
+          }
+        } catch (error) {
+          console.error('Error fetching user subscription status:', error);
+          setIsSubscribed(false);
+        }
+      } else {
+        // No user logged in, subscription off
+        setIsSubscribed(false);
+      }
+    });
+
+    return () => unsubscribe();
   }, []);
 
   const toggleSidebar = () => setIsOpen(!isOpen);
@@ -80,8 +115,8 @@ const Sidebar = () => {
               </div>
             </div>
 
-            {/* {isTablet && isOpen && !isSubscribed && (
-              <div className="sidebar-list-group sidebar-subscribe">
+            {isTablet && isOpen && (
+              <div className={`sidebar-list-group sidebar-subscribe ${isSubscribed ? 'd-none' : ''}`}>
                 <div className="sidebar-title"><h6>Subscribe</h6></div>
                 <div className="sidebar-link-list">
                   <ul className="sidebar-links subscribe-link">
@@ -89,17 +124,7 @@ const Sidebar = () => {
                   </ul>
                 </div>
               </div>
-            )} */}
-            {isTablet && isOpen && (
-  <div className={`sidebar-list-group sidebar-subscribe ${isSubscribed ? 'd-none' : ''}`}>
-    <div className="sidebar-title"><h6>Subscribe</h6></div>
-    <div className="sidebar-link-list">
-      <ul className="sidebar-links subscribe-link">
-        <NavLink to="/subscribe" iconClass="fa-regular fa-badge-dollar" label="Subscribe" isSidebar={true} onClick={closeSidebar} />
-      </ul>
-    </div>
-  </div>
-)}
+            )}
 
           </div>
         </div>

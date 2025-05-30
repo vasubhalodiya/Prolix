@@ -1,17 +1,37 @@
-export const checkSubscription = () => {
-  const isSubscribed = localStorage.getItem("isSubscribed") === "true";
-  const expiry = localStorage.getItem("subscriptionExpiry");
+import { auth, db } from "../Auth/firebase";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
+export const checkSubscription = async () => {
+  try {
+    const currentUser = auth.currentUser;
+    if (!currentUser) return false;
 
-  if (!isSubscribed || !expiry) return false;
+    const userRef = doc(db, "users", currentUser.uid);
+    const userSnap = await getDoc(userRef);
+    if (!userSnap.exists()) return false;
 
-  const expiryDate = new Date(parseInt(expiry));
-  const currentDate = new Date();
+    const userData = userSnap.data();
+    const subscriptionStatus = userData.subscriptionStatus;
+    const subscriptionExpiry = userData.subscriptionExpiry;
 
-  if (currentDate > expiryDate) {
-    localStorage.setItem("isSubscribed", "false");
-    localStorage.removeItem("subscriptionExpiry");
+    if (!subscriptionExpiry) return false;
+
+    const expiryDate = subscriptionExpiry.toDate ? subscriptionExpiry.toDate() : new Date(subscriptionExpiry);
+    const now = new Date();
+
+    if (now <= expiryDate) {
+      if (subscriptionStatus !== "active") {
+        await updateDoc(userRef, { subscriptionStatus: "active" });
+      }
+      return true;
+    } else {
+      if (subscriptionStatus !== "deactive") {
+        await updateDoc(userRef, { subscriptionStatus: "deactive" });
+      }
+      return false;
+    }
+  } catch (error) {
+    console.error("Error checking subscription:", error);
     return false;
   }
-
-  return true;
 };
+

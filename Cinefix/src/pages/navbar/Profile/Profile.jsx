@@ -18,7 +18,7 @@ const Profile = () => {
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      console.log("User logged out successfully.");
+      setIsSubscribed(null);
       navigate("/");
     } catch (error) {
       console.error("Logout error: ", error.message);

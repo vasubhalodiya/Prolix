@@ -10,7 +10,6 @@ import TopRated from '../pages/menu/TopRated/TopRated';
 import MyBackpack from '../pages/library/MyBackpack/MyBackpack';
 import MovieDetails from '../components/MovieDetails/MovieDetails';
 import SubscribeNotify from '../components/SubscribeNotify/SubscribeNotify';
-import PaymentSuccessfull from '../pages/navbar/PaymentSuccessfull/PaymentSuccessfull';
 import PremiumPage from '../pages/navbar/Premium/PremiumPage';
 import ProtectedRoute from './ProtectedRoute';
 import { AuthProvider } from "../auth/AuthContext";
@@ -39,7 +38,6 @@ const AppRoutes = () => {
         <Route path="/tvshows/:movieId" element={<MovieDetails />} />
         <Route path="/moviedetails/:movieId" element={<MovieDetails />} />
         <Route path="/:contentType/:movieId" element={<MovieDetails />} />
-        <Route path="/paymentsuccessfull" element={<PaymentSuccessfull />} />
         <Route path="/subscribenotify" element={<SubscribeNotify />} />
         <Route path="/" element={
           <PrivateRoute>
@@ -47,15 +45,10 @@ const AppRoutes = () => {
           </PrivateRoute>
         } />
         <Route path="/premium" element={
-          <ProtectedRoute redirectTo="/subscribe">
+          <ProtectedRoute>
             <PremiumPage /> 
           </ProtectedRoute>
         }/>
-        {/* <Route path="/subscribenotify" element={
-          <ProtectedRoute redirectTo="/subscribenotify">
-            <MovieDetails />
-          </ProtectedRoute>
-          } /> */}
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>

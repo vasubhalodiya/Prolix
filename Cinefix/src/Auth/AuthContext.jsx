@@ -1,73 +1,7 @@
-// import { createContext, useContext, useEffect, useState } from "react";
-// import { onAuthStateChanged } from "firebase/auth";
-// import { auth } from './firebase';
-
-// const AuthContext = createContext();
-
-// export const AuthProvider = ({ children }) => {
-//   const [user, setUser] = useState(null);
-
-//   useEffect(() => {
-//     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-//       setUser(currentUser);
-//     });
-//     return () => unsubscribe();
-//   }, []);
-
-//   return (
-//     <AuthContext.Provider value={{ user, setUser }}>
-//       {children}
-//     </AuthContext.Provider>
-//   );
-// };
-
-// export const useAuth = () => useContext(AuthContext);
-
-
-// import { createContext, useContext, useEffect, useState } from "react";
-// import { onAuthStateChanged } from "firebase/auth";
-// import { auth, db } from "./firebase";
-// import { doc, getDoc } from "firebase/firestore";
-
-// const AuthContext = createContext();
-
-// export const AuthProvider = ({ children }) => {
-//   const [user, setUser] = useState(null);
-//   const [subscriptionStatus, setSubscriptionStatus] = useState(null);
-//   const [loading, setLoading] = useState(true);
-
-//   useEffect(() => {
-//     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
-//       if (currentUser) {
-//         setUser(currentUser);
-//         const docSnap = await getDoc(doc(db, "users", currentUser.uid));
-//         if (docSnap.exists()) {
-//           const data = docSnap.data();
-//           setSubscriptionStatus(data.subscriptionStatus || null);
-//         } else {
-//           setSubscriptionStatus(null);
-//         }
-//       } else {
-//         setUser(null);
-//         setSubscriptionStatus(null);
-//       }
-//       setLoading(false);
-//     });
-//     return unsubscribe;
-//   }, []);
-
-//   return (
-//     <AuthContext.Provider value={{ user, loading, subscriptionStatus }}>
-//       {children}
-//     </AuthContext.Provider>
-//   );
-// };
-
-// export const useAuth = () => useContext(AuthContext);
 import { createContext, useContext, useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth, db } from "./firebase";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 
 const AuthContext = createContext();
 
@@ -82,13 +16,11 @@ export const AuthProvider = ({ children }) => {
       if (currentUser) {
         setUser(currentUser);
 
-        // Fetch user subscription data from Firestore
-        const docSnap = await getDoc(doc(db, "users", currentUser.uid));
+        const docRef = doc(db, "users", currentUser.uid);
+        const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           const data = docSnap.data();
           setSubscriptionStatus(data.subscriptionStatus || null);
-
-          // Convert Firestore Timestamp to JS Date if exists
           setSubscriptionExpiry(data.subscriptionExpiry ? data.subscriptionExpiry.toDate() : null);
         } else {
           setSubscriptionStatus(null);
@@ -104,6 +36,20 @@ export const AuthProvider = ({ children }) => {
 
     return () => unsubscribe();
   }, []);
+
+  useEffect(() => {
+    if (subscriptionExpiry && subscriptionStatus === "active") {
+      const now = new Date();
+
+      if (now > subscriptionExpiry) {
+        setSubscriptionStatus("deactive");
+        if (user) {
+          const docRef = doc(db, "users", user.uid);
+          updateDoc(docRef, { subscriptionStatus: "deactive" }).catch(console.error);
+        }
+      }
+    }
+  }, [subscriptionExpiry, subscriptionStatus, user]);
 
   return (
     <AuthContext.Provider value={{ user, loading, subscriptionStatus, subscriptionExpiry }}>

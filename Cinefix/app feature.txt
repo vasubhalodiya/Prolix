@@ -55,7 +55,6 @@ server.js
 Subscribe.jsx
 PremiumPage.jsx
 checkSubscription.jsx
-PaymentSuccessfull.jsx
 ProtectedRoute.jsx
 AppRoutes.jsx
 

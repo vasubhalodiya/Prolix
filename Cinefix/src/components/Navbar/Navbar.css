@@ -140,8 +140,46 @@
 .d-none {
   display: none !important;
 }
+.navbar-premium-badge {
+  position: relative;
+  overflow: hidden;
+  width: 115px;
+  height: 35px;
+  color: var(--yellow-color);
+  background-color: rgba(255, 215, 0, 0.15);
+  font-size: 14px;
+  letter-spacing: 1px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
 
+/* Shimmer overlay at 135 degrees with smooth movement */
+.navbar-premium-badge::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 150%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    transparent 25%,
+    rgba(255, 215, 0, 0.4) 50%,
+    transparent 75%
+  );
+  border-radius: 7px; /* Smooth edges */
+  animation: shimmer 2s linear infinite;
+}
 
+/* Smooth diagonal movement */
+@keyframes shimmer {
+  100% {
+    transform: translateX(150%);
+  }
+}
 
 
 

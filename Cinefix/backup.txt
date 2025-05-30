@@ -1,59 +1,25 @@
-<div className="movies-list">
-    {movies && movies.results && movies.results.length > 0 ? (
-        movies.results.map((movie) => {
-            const isPremium = (movie.id % 10) < 7;
-            const handleClick = () => {
-                if (isPremium) {
-                    const isSubscribed = localStorage.getItem('isSubscribed');
-                    if (isSubscribed === 'true') {
-                        navigate(`/movies/${movie.id}`);
-                    } else {
-                        localStorage.setItem('redirectAfterPayment', `/movies/${movie.id}`);
-                        navigate('/subscribenotify');
-                    }
-                } else {
-                    navigate(`/movies/${movie.id}`);
-                }
-            };
-            return (
-                <MovieCard
-                    key={movie.id}
-                    poster={movie.backdrop_path || movie.poster_path}
-                    title={movie.title}
-                    rating={movie.vote_average}
-                    genre={getGenreName(movie.genre_ids[0])}
-                    studio={getStudioNames(movie.production_companies)}
-                    isPremium={isPremium}
-                    onClick={handleClick}
-                />
-            );
-        })
-    ) : (
-        <p>No movies available</p>
-    )}
-</div>
+useEffect(() => {
+  const masterPremiumMovies = async () => {
+    if (!movies?.results?.length) return;
 
+    const docRef = doc(db, 'PremiumMovieCollection', 'AllPremiumMovies');
+    const docSnap = await getDoc(docRef);
 
+    if (!docSnap.exists() || !docSnap.data()?.PremiumMovieIds?.length) {
+      const shuffled = [...movies.results].sort(() => 0.5 - Math.random());
+      const seventyPercent = Math.floor(movies.results.length * 0.7);
+      const movieIdsToStore = shuffled.slice(0, seventyPercent).map((m) => m.id);
 
+      await setDoc(docRef, { PremiumMovieIds: movieIdsToStore });
+      setPremiumMovieIds(movieIdsToStore);
+    } else {
+      const data = docSnap.data();
+      const numericIds = data.PremiumMovieIds.map((id) => Number(id));
+      setPremiumMovieIds(numericIds);
+    }
 
+    setPremiumLoading(false);
+  };
 
-
-
-
-<div className="movies-list">
-    {movies && movies.results && movies.results.length > 0 ? (
-    movies.results.map((movie) => (
-        <MovieCard
-        key={movie.id}
-        poster={movie.backdrop_path || movie.poster_path}
-        title={movie.title}
-        rating={movie.vote_average}
-        genre={getGenreName(movie.genre_ids[0])}
-        studio={getStudioNames(movie.production_companies)}
-        onClick={() => navigate(`/movies/${movie.id}`)}
-        />
-    ))
-    ) : (
-    <p>No movies available</p>
-    )}
-</div>
+  masterPremiumMovies();
+}, [movies]);

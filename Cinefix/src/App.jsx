@@ -10,7 +10,6 @@ import './responsive.css';
 
 const App = () => {
   const location = useLocation();
-
   const hideSidebarRoutes = ["/subscribe", "/paymentsuccessfull", "/login", "/signup"];
   const isResetLayout = hideSidebarRoutes.includes(location.pathname);
 
